@@ -1,17 +1,17 @@
 <template>
-    <div class="bg-gray-400 p-5 w-4/6 mx-auto mt-5 rounded-t-lg">
-        <div class="flex justify-center">
+    <div class="bg-gray-400 px-5 py-2 w-5/6 mx-auto mt-5 rounded-t-lg">
+        <div class="flex justify-center items-center">
             <div class="flex w-2/6">
-                <IconLetter class="text-white" />
+                <IconLetter class="text-white me-1" />
                 <div class="text-white">ĐĂNG KÝ NHẬN BẢN TIN</div>
             </div>
             <div class="p-1 bg-white rounded-lg w-3/6 flex">
-                <input type="text" placeholder="Nhập địa chỉ email của bạn" class="w-full">
-                <button class="bg-orange-500 text-white rounded-lg py-2 px-5">Đăng ký</button>
+                <input type="text" placeholder="Nhập địa chỉ email của bạn" class="w-5/6 h-auto">
+                <button class="bg-orange-500 text-white rounded-lg py-2 px-5 w-1/6">Đăng ký</button>
             </div>
         </div>
     </div>
-    <div class="bg-white w-4/6 mx-auto flex pt-5">
+    <div class="bg-white w-5/6 mx-auto flex pt-5 px-3">
         <div class="w-2/6">
             <img src="img/logo.png" alt="">
             <div>
@@ -119,7 +119,7 @@
         </div>
 
     </div>
-    <div class="text-gray-300 w-4/6 mx-auto bg-white text-center pt-5">
+    <div class="text-gray-300 w-5/6 mx-auto bg-white text-center pt-5">
         Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 20/12/2005,
         đăng ký thay đổi lần thứ 10, ngày 20/05/2022.
     </div>

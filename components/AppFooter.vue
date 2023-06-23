@@ -39,7 +39,11 @@
                         <li>Điều khoản sử dụng</li>
                         <li>Chính sách bảo mật thông tin cá nhân</li>
                         <li>Chính sách bảo mật thanh toán</li>
-                        <li>Giới thiệu</li>
+                        <li>
+                            <NuxtLink to="/about">
+                                Giới thiệu
+                            </NuxtLink>
+                        </li>
                         <li>Hệ thống trung tâm - nhà sách</li>
                     </ul>
                 </div>

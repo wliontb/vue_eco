@@ -7,7 +7,9 @@
   <div class="bg-white">
     <div class="flex w-5/6 mx-auto justify-between py-2">
       <div class="flex justify-between items-center">
-        <img src="/img/fahasa_logo.png" alt="">
+        <NuxtLink to="/">
+          <img src="/img/fahasa_logo.png" alt="">
+        </NuxtLink>
         <div class="relative mt-auto">
           <div class="group" @mouseenter="isHovering = true" @mouseleave="isHovering = false">
             <div class="flex">

@@ -6,12 +6,12 @@
                 <div class="text-white">ĐĂNG KÝ NHẬN BẢN TIN</div>
             </div>
             <div class="p-1 bg-white rounded-lg w-3/6 flex">
-                <input type="text" placeholder="Nhập địa chỉ email của bạn" class="w-5/6 h-auto">
+                <input type="text" placeholder="Nhập địa chỉ email của bạn" class="w-5/6 h-auto focus:border-transparent focus:outline-none">
                 <button class="bg-orange-500 text-white rounded-lg py-2 px-5 w-1/6">Đăng ký</button>
             </div>
         </div>
     </div>
-    <div class="bg-white w-5/6 mx-auto flex pt-5 px-3">
+    <div class="bg-white w-5/6 mx-auto flex pt-5 px-4">
         <div class="w-2/6">
             <img src="img/logo.png" alt="">
             <div>
@@ -31,10 +31,12 @@
                 <IconSymbol />
             </div>
         </div>
-        <div class="w-4/6 border-l border-gray-400">
+        <div class="w-4/6 border-l border-gray-400 pl-4">
             <div class="flex">
                 <div class="w-2/6">
-                    DỊCH VỤ
+                    <div class="font-bold">
+                        DỊCH VỤ
+                    </div>
                     <ul>
                         <li>Điều khoản sử dụng</li>
                         <li>Chính sách bảo mật thông tin cá nhân</li>
@@ -48,7 +50,9 @@
                     </ul>
                 </div>
                 <div class="w-2/6">
-                    HỖ TRỢ
+                    <div class="font-bold">
+                        HỖ TRỢ
+                    </div>
                     <ul>
                         <li>Chính sách đổi - trả - hoàn tiền</li>
                         <li>Chính sách bảo hành - bồi hoàn</li>
@@ -58,7 +62,9 @@
                     </ul>
                 </div>
                 <div class="w-2/6">
-                    TÀI KHOẢN CỦA TÔI
+                    <div class="font-bold">
+                        TÀI KHOẢN CỦA TÔI
+                    </div>
                     <ul>
                         <li>Đăng nhập/Tạo mới tài khoản</li>
                         <li>Thay đổi địa chỉ khách hàng</li>
@@ -67,8 +73,10 @@
                     </ul>
                 </div>
             </div>
-            <div>
-                LIÊN HỆ
+            <div class="mt-4">
+                <div class="font-bold">
+                    LIÊN HỆ
+                </div>
                 <div class="flex">
                     <div class="w-2/6 flex">
                         <IconMapPin />
@@ -87,36 +95,36 @@
             <div>
                 <div class="flex">
                     <div class="w-1/5">
-                        <img src="img/transport/vnpost1.png" alt="">
+                        <img src="img/transport/vnpost1.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/ahamove_logo3.png" alt="">
+                        <img src="img/transport/ahamove_logo3.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/icon_giao_hang_nhanh1.png" alt="">
+                        <img src="img/transport/icon_giao_hang_nhanh1.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/icon_snappy1.png" alt="">
+                        <img src="img/transport/icon_snappy1.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/Logo_ninjavan.png" alt="">
+                        <img src="img/transport/Logo_ninjavan.png" class="max-w-full" alt="">
                     </div>
                 </div>
                 <div class="flex">
                     <div class="w-1/5">
-                        <img src="img/payment/vnpay_logo.png" alt="">
+                        <img src="img/payment/vnpay_logo.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/ZaloPay-logo-130x83.png" alt="">
+                        <img src="img/payment/ZaloPay-logo-130x83.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/momopay.png" alt="">
+                        <img src="img/payment/momopay.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/shopeepay_logo.png" alt="">
+                        <img src="img/payment/shopeepay_logo.png" class="max-w-full" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/logo_moca_120.jpg" alt="">
+                        <img src="img/payment/logo_moca_120.jpg" class="max-w-full" alt="">
                     </div>
                 </div>
             </div>

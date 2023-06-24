@@ -10,10 +10,10 @@
         <NuxtLink to="/">
           <img src="/img/fahasa_logo.png" alt="">
         </NuxtLink>
-        <div class="relative mt-auto">
+        <div class="relative mt-auto ml-4">
           <div class="group" @mouseenter="isHovering = true" @mouseleave="isHovering = false">
             <div class="flex">
-              <IconBar class="text-gray-800 cursor-pointer" />
+              <IconMenuBlack class="text-gray-800 cursor-pointer" />
               <IconSmallDown class="w-3" />
             </div>
             <div class="absolute right-0 top-full bg-white border border-gray-300 rounded-lg shadow-lg"
@@ -32,20 +32,20 @@
         </button>
       </div>
       <div class="flex justify-between items-center px-1">
-        <div class="flex flex-col items-center text-gray-800">
+        <div class="flex flex-col items-center text-gray-800 mr-2">
           <IconBell />
-          <div>Thông báo</div>
+          <div class="font-semibold">Thông báo</div>
         </div>
-        <div class="flex flex-col items-center text-gray-800">
+        <div class="flex flex-col items-center text-gray-800 mr-2">
           <IconCart />
-          <div>
+          <div class="font-semibold">
             Giỏ hàng
           </div>
 
         </div>
-        <div class="flex flex-col items-center text-gray-800">
+        <div class="flex flex-col items-center text-gray-800 mr-2">
           <IconUser />
-          <div>Tài khoản</div>
+          <div class="font-semibold">Tài khoản</div>
 
         </div>
         <IconLanguage class="text-gray-800" />

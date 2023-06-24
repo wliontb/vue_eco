@@ -4,7 +4,7 @@
             <img src="/img/product/balo0.jpg" alt="">
         </div>
         <div>
-            Ba Lô Clever Hippo Fancy Fairy Forest - BF1224
+            {{ product?.title || 'Ba Lô Clever Hippo Fancy Fairy Forest - BF1224' }}
         </div>
         <div class="flex flex-row justify-between">
             <div class="text-red-600 font-bold">
@@ -25,3 +25,9 @@
         </div>
     </div>
 </template>
+<script setup>
+
+    const props = defineProps({
+        product: Object
+    });
+</script>

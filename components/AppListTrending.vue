@@ -6,36 +6,36 @@
     </div>
     <div class="flex bg-white flex-col">
         <ul class="flex flex-row">
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
         </ul>
         <ul class="flex flex-row">
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
-            <li class="w-1/5 p-4">
+            <li class="w-1/5">
                 <ItemTrending />
             </li>
         </ul>

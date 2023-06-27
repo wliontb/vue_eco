@@ -36,13 +36,16 @@
           <IconBell />
           <div class="font-semibold">Thông báo</div>
         </div>
-        <div class="flex flex-col items-center text-gray-800 mr-2">
-          <IconCart />
-          <div class="font-semibold">
-            Giỏ hàng
+        <NuxtLink to="/cart">
+          <div class="flex flex-col items-center text-gray-800 mr-2">
+            <IconCart />
+            <div class="font-semibold">
+              Giỏ hàng
+            </div>
           </div>
+        </NuxtLink>
 
-        </div>
+
         <div class="flex flex-col items-center text-gray-800 mr-2">
           <IconUser />
           <div class="font-semibold">Tài khoản</div>

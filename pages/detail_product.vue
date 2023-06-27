@@ -104,9 +104,9 @@
             <div class="border-b-2 border-red-600 w-1/12 absolute"></div>
         </div>
         <div class="p-4 flex flex-row items-center">
-            <ItemCoupon class="text-orange-500 w-3.5/12 mr-2" icon="1" />
-            <ItemCoupon class="text-green-500 w-3.5/12 mr-2" icon="2" />
-            <ItemCoupon class="text-blue-500 w-3.5/12 mr-2" icon="3" />
+            <ItemCoupon class="text-orange-500 w-3.5/12 mr-2" :icon="1" />
+            <ItemCoupon class="text-green-500 w-3.5/12 mr-2" :icon="2" />
+            <ItemCoupon class="text-blue-500 w-3.5/12 mr-2" :icon="3" />
             <div class="flex items-center text-md flex-col ml-auto">
                 <div class="bg-red-700 p-1 rounded-full">
                     <IconRight class="text-white" />

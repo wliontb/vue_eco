@@ -11,7 +11,7 @@
 </template>
   
 <script setup>
-import { toRef } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps({
     count: {
@@ -20,7 +20,7 @@ const props = defineProps({
     }
 });
 
-const count = toRef(props, 'count');
+const count = ref(props.count)
 
 const decreaseCount = () => {
     if (count.value > 0) {

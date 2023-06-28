@@ -8,7 +8,7 @@
             <div class="w-2/3 flex-col">
                 <div class="bg-white flex p-4 rounded-lg">
                     <div class="w-1/12">
-                        <input type="checkbox" class="max-w-full h-5 w-5">
+                        <input type="checkbox" class="max-w-full h-5 w-5" @click="checkedAll = !checkedAll">
                     </div>
                     <div class="flex w-6/12 items-center">
                         <div class="mr-1 font-bold">Chọn tất cả</div>
@@ -18,8 +18,8 @@
                     <div class="w-2/12">Thành tiền</div>
                     <div class="w-1/12">Tác vụ</div>
                 </div>
-                <ItemOnCart />
-                <ItemOnCart />
+                <ItemOnCart :isChecked="checkedAll" />
+                <ItemOnCart :isChecked="checkedAll" />
             </div>
             <div class="w-1/3 flex flex-col ml-3">
                 <div class="bg-white py-3 px-3 flex flex-col rounded-lg">
@@ -72,6 +72,9 @@
 </template>
 <script setup>
     import {ref} from 'vue';
+
+    const checkedAll = ref(false);
+
     const cart = ref([
         {
             id: 1,

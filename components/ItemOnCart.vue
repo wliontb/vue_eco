@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="w-2/12">
-            <ItemInputNumberRange class="max-w-full" v-model:count="cartItemCount" />
+            <ItemInputNumberRange class="max-w-full" :count="2" />
         </div>
         <div class="w-2/12 font-bold text-red-700 ml-2">
             73.150 đ
@@ -33,8 +33,4 @@ const props = defineProps({
         default: false
     }
 })
-
-import { ref } from 'vue';
-
-const cartItemCount = ref(2);
 </script>

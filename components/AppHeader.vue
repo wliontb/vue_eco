@@ -19,7 +19,9 @@
             <div class="absolute right-0 top-full bg-white border border-gray-300 rounded-lg shadow-lg"
               :class="{ 'hidden': !isHovering }">
               <!-- Nội dung của dropdown -->
-              <div class="p-2">Nội dung dropdown</div>
+              <div class="p-2">
+                <NuxtLink to="/category">Chuyên mục</NuxtLink>
+              </div>
             </div>
           </div>
         </div>

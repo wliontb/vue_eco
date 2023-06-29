@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4">
+    <div class="p-4 hover:shadow-md">
         <div class="relative">
             <img src="/img/product/comic1.jpg" alt="">
             <div class="bg-orange-500 text-white rounded-full absolute top-5 right-0 z-10">10%</div>

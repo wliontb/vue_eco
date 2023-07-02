@@ -15,20 +15,29 @@
             <div class="flex w-7/12 flex-col">
                 <p class="font-semibold text-2xl">[Anime Comics] One Piece Stampede - Tập 2</p>
                 <div class="flex flex-wrap mt-4">
-                    <div class="w-1/2">
-                        Nhà cung cấp: NXB Kim Đồng
+                    <div class="w-1/2 flex mb-1">
+                        <div class="w-1/2 font-semibold">Nhà cung cấp:</div>
+                        <div class="w-1/2">NXB Kim Đồng</div>
                     </div>
-                    <div class="w-1/2">
-                        Tác giả: Eiichiro Oda
+                    <div class="w-1/2 flex mb-1">
+                        <div class="w-1/2 font-semibold">
+                            Tác giả:
+                        </div>
+                        <div class="w-1/2">
+                            Eiichiro Oda
+                        </div>
                     </div>
-                    <div class="w-1/2">
-                        Nhà xuất bản: Kim Đồng
+                    <div class="w-1/2 flex mb-1">
+                        <div class="w-1/2 font-semibold">Nhà xuất bản:</div>
+                        <div class="w-1/2">Kim Đồng</div>
                     </div>
-                    <div class="w-1/2">
-                        Hình thức bìa: Bìa Mềm
+                    <div class="w-1/2 flex mb-1">
+                        <div class="w-1/2 font-semibold">Hình thức bìa:</div>
+                        <div class="w-1/2">Bìa Mềm</div>
                     </div>
-                    <div class="w-1/2">
-                        Bộ: Anime Comics: One Piece Film Strong World
+                    <div class="w-1/2 flex mb-1">
+                        <div class="w-1/2 font-semibold">Bộ:</div>
+                        <div class="w-1/2">Anime Comics: One Piece Film Strong World</div>
                     </div>
                 </div>
                 <div class="flex mt-2">
@@ -57,8 +66,8 @@
                     </div>
                 </div>
                 <div class="flex items-center mt-4">
-                    <div class="font-bold mr-4">Số lượng:</div>
-                    <ItemInputNumberRange />
+                    <div class="font-bold mr-4 w-1/6">Số lượng:</div>
+                    <ItemInputNumberRange class="w-1/6" />
 
                 </div>
             </div>

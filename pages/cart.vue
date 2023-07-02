@@ -1,4 +1,20 @@
 <template>
+    <div class="cart">
+    <h2>Giỏ hàng</h2>
+    <div v-if="cartItems.length === 0">
+      <p>Giỏ hàng trống.</p>
+    </div>
+    <div v-else>
+      <ul>
+        <li v-for="(item, index) in cartItems" :key="index">
+          {{ item.name }} - {{ item.price }} đ
+          <button @click="removeItem(index)">Xóa</button>
+        </li>
+      </ul>
+      <button @click="clearCart">Xóa toàn bộ giỏ hàng</button>
+    </div>
+  </div>
+
     <div class="flex flex-col my-3">
         <div class="flex my-2 items-center">
             <div class="text-xl mr-2">GIỎ HÀNG</div>
@@ -75,18 +91,5 @@
 
     const checkedAll = ref(false);
 
-    const cart = ref([
-        {
-            id: 1,
-            isChecked: false,
-            price: 10000,
-            total: 3
-        },
-        {
-            id: 2,
-            isChecked: true,
-            price: 2000,
-            total: 2
-        }
-    ])
+    const { cartItems, addItem, removeItem, clearCart } = useCart();
 </script>

@@ -29,7 +29,6 @@
     </div>
 </template>
 <script setup>
-import IconPercent from './IconPercent.vue';
 
     const props = defineProps({
         icon: {

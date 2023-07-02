@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="bg-white w-5/6 mx-auto flex pt-5 px-4">
-        <div class="w-2/6">
+        <div class="w-2/6 mr-2">
             <img src="img/logo.png" alt="">
             <div class="mt-4">
                 <p>
@@ -27,9 +27,9 @@
             </div>
             <img src="img/logocongthuong.png" class="w-2/6 mt-4" alt="">
             <div class="flex mt-4">
-                <IconSymbol />
-                <IconSymbol />
-                <IconSymbol />
+                <IconSymBol />
+                <IconSymBol />
+                <IconSymBol />
             </div>
         </div>
         <div class="w-4/6 border-l border-gray-400 pl-4">

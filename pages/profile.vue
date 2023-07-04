@@ -24,6 +24,9 @@
 <script setup>
 import { ref, reactive } from 'vue';
 
+const isDashboardTab = ref(true);
+const isProfileTab = ref(false);
+
 const tabStatus = reactive({ dashboard: true, user: false, cart: false, voucher: false, noti: false });
 
 

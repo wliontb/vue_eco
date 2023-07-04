@@ -121,26 +121,26 @@
         <div class="flex flex-col mb-4">
           <div>Số điện thoại</div>
           <div class="flex flex-col">
-            <input type="text" name="phone_reg" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại">
+            <input type="text" name="phone_reg" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại" v-model="payload.phone">
           </div>
         </div>
         <div class="flex flex-col mb-4">
           <div>Email</div>
-          <input type="email" class="border rounded-sm px-4 py-2" placeholder="Nhập email">
+          <input type="email" class="border rounded-sm px-4 py-2" placeholder="Nhập email" v-model="payload.email">
         </div>
         <div class="flex flex-col mb-4">
           <div>Mật khẩu</div>
           <div class="flex flex-col">
-            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu">
+            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" v-model="payload.password">
           </div>
         </div>
         <div class="flex flex-col mb-4">
           <div>Nhập lại mật khẩu</div>
           <div class="flex flex-col">
-            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu">
+            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" v-model="payload.re_password">
           </div>
         </div>
-        <button class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
+        <button @click="submitRegister()" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
           ký</button>
         <button
           class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
@@ -153,7 +153,7 @@
       </div>
 
       <!-- regis temp -->
-      <div class="p-4 flex flex-col" :class="{
+      <!-- <div class="p-4 flex flex-col" :class="{
         hidden: true,
         'slide-in': !isOnLogin
       }">
@@ -189,7 +189,7 @@
           <NuxtLink to="#" class="text-blue-500">Điều khoản dịch vụ</NuxtLink> & <NuxtLink to="#" class="text-blue-500">
             Chính sách bảo mật</NuxtLink>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -213,16 +213,19 @@
 import { ref, computed } from 'vue';
 
 const isHovering = ref(false);
-
 const isHoveringAccount = ref(true);
-
 const isHoveringCart = ref(true);
-
 const isDisplayLoginBox = ref(false);
-
 const isOnLogin = ref(true);
+const passType = ref('password');
+let adu = ref({});
 
-const passType = ref('password')
+const payload = ref({
+  phone: '',
+  email: '',
+  password: '',
+  re_password: ''
+})
 
 const onTabStyle = computed(() => {
   if (isOnLogin) {
@@ -245,5 +248,20 @@ const displayLoginBox = () => {
 const closeLoginBox = () => {
   isDisplayLoginBox.value = false;
 };
+
+const submitRegister = async () => {
+  adu = await useFetch('http://localhost:8000/api/user',{
+    method: 'POST',
+    body: payload.value
+  })
+
+  console.log(adu);
+
+  if(adu.status){
+    alert('Đăng ký thành công')
+  } else {
+    alert('Đăng ký thất bại' + adu.message);
+  }
+}
 
 </script>

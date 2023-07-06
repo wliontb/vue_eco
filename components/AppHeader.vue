@@ -62,8 +62,8 @@
               :class="{ hidden: isHoveringAccount }">
               <button class="bg-red-700 text-white px-4 py-2 my-2 rounded-lg text-center font-semibold"
                 @click="displayLoginBox">Đăng nhập</button>
-              <NuxtLink to="/profile" class="border-2 font-semibold border-red-700 text-red-700 px-4 py-2 rounded-lg text-center">Đăng
-                ký</NuxtLink>
+              <button @click="displayRegisterBox" class="border-2 font-semibold border-red-700 text-red-700 px-4 py-2 rounded-lg text-center">Đăng
+                ký</button>
             </div>
           </div>
 
@@ -152,45 +152,6 @@
         </div>
       </div>
 
-      <!-- regis temp -->
-      <!-- <div class="p-4 flex flex-col" :class="{
-        hidden: true,
-        'slide-in': !isOnLogin
-      }">
-        <div class="flex flex-col mb-4">
-          <div>Số điện thoại</div>
-          <div class="relative flex flex-col">
-            <input type="text" name="phone_reg" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại">
-            <div class="absolute right-1.5 top-1.5">
-              <a href="#" class="text-blue-500 cursor-pointer text-sm">Gửi mã OTP</a>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col mb-4">
-          <div>Mã xác nhận OTP</div>
-          <input type="number" disabled="true" class="border rounded-sm px-4 py-2" placeholder="6 ký tự">
-        </div>
-        <div class="flex flex-col mb-4">
-          <div>Mật khẩu</div>
-          <div class="relative flex flex-col">
-            <input type="password" disabled="true" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu">
-            <div class="absolute right-1.5 top-1.5">
-              <a href="#" class="text-blue-500 cursor-pointer text-sm">Hiện</a>
-            </div>
-          </div>
-        </div>
-        <button class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
-          ký</button>
-        <button
-          class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
-          qua</button>
-        <div class="text-center text-xs mt-4">
-          Bằng việc đăng ký, bạn đã đồng ý với Fahasa.com về <br>
-          <NuxtLink to="#" class="text-blue-500">Điều khoản dịch vụ</NuxtLink> & <NuxtLink to="#" class="text-blue-500">
-            Chính sách bảo mật</NuxtLink>
-        </div>
-      </div> -->
-
     </div>
   </div>
 </template>
@@ -218,7 +179,6 @@ const isHoveringCart = ref(true);
 const isDisplayLoginBox = ref(false);
 const isOnLogin = ref(true);
 const passType = ref('password');
-let adu = ref({});
 
 const payload = ref({
   phone: '',
@@ -243,24 +203,30 @@ const onTabStyle = computed(() => {
 
 const displayLoginBox = () => {
   isDisplayLoginBox.value = true;
+  isOnLogin.value = true;
 };
+
+const displayRegisterBox = () => {
+  isDisplayLoginBox.value = true;
+  isOnLogin.value = false;
+}
 
 const closeLoginBox = () => {
   isDisplayLoginBox.value = false;
 };
 
 const submitRegister = async () => {
-  adu = await useFetch('http://localhost:8000/api/user',{
+  const {data: adu} = await useCustomFetch('/api/user',{
     method: 'POST',
     body: payload.value
   })
 
-  console.log(adu);
+  console.log(adu.value);
 
-  if(adu.status){
+  if(adu.value.status){
     alert('Đăng ký thành công')
   } else {
-    alert('Đăng ký thất bại' + adu.message);
+    alert('Đăng ký thất bại' + adu.value.message);
   }
 }
 

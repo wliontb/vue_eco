@@ -5,7 +5,7 @@ export default function useCustomFetch (url, options) {
         url, 
         {
             baseURL: config.public.baseURL || 'http://localhost:8000',
-            ...options
+            ...options,
         }
     )
 }

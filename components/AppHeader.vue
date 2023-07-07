@@ -56,7 +56,7 @@
           <div class="group" @mouseenter="isHoveringAccount = false" @mouseleave="isHoveringAccount = true">
             <div class="flex flex-col items-center text-gray-800 mr-2 text-sm">
               <IconUser class="font-semibold" />
-              <div>Tài khoản</div>
+              <div>{{ store.full_name }}</div>
             </div>
             <div class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded-b shadow-sm border-t"
               :class="{ hidden: isHoveringAccount }">
@@ -172,6 +172,7 @@
 </style>
 <script setup>
 import { ref, computed } from 'vue';
+import { useUserStore } from '~/store/user';
 
 const isHovering = ref(false);
 const isHoveringAccount = ref(true);
@@ -179,6 +180,7 @@ const isHoveringCart = ref(true);
 const isDisplayLoginBox = ref(false);
 const isOnLogin = ref(true);
 const passType = ref('password');
+const store = useUserStore()
 
 const payload = ref({
   phone: '',
@@ -215,19 +217,27 @@ const closeLoginBox = () => {
   isDisplayLoginBox.value = false;
 };
 
+
+
 const submitRegister = async () => {
-  const {data: adu} = await useCustomFetch('/api/user',{
+  await useCustomFetch('/api/user',{
     method: 'POST',
-    body: payload.value
+    body: payload.value,
+    async onResponse({request, response, options}) {
+      if(response.ok){
+        const id = response._data.result.id;
+
+        const { data: ketqua } = await useCustomFetch(`/api/user/${id}`);
+
+        console.log(ketqua.value)
+
+        store.addUser(id, ketqua.value.result.full_name, 'abc')
+
+      } else {
+        alert(response._data.message)
+      }
+    },
   })
-
-  console.log(adu.value);
-
-  if(adu.value.status){
-    alert('Đăng ký thành công')
-  } else {
-    alert('Đăng ký thất bại' + adu.value.message);
-  }
 }
 
 </script>

@@ -48,7 +48,7 @@
             <MiniCart :isHoveringCart="isHoveringCart" />
           </div>
 
-
+          
         </div>
 
 
@@ -56,9 +56,12 @@
           <div class="group" @mouseenter="isHoveringAccount = false" @mouseleave="isHoveringAccount = true">
             <div class="flex flex-col items-center text-gray-800 mr-2 text-sm">
               <IconUser class="font-semibold" />
-              <div>{{ store.full_name }}</div>
+              <div v-if="!store.isLoggin">{{ store.full_name }}</div>
+              <div v-else>
+                <NuxtLink to="/profile">{{ store.full_name }}</NuxtLink>
+              </div>
             </div>
-            <div class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded-b shadow-sm border-t"
+            <div v-if="!store.isLoggin" class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded-b shadow-sm border-t"
               :class="{ hidden: isHoveringAccount }">
               <button class="bg-red-700 text-white px-4 py-2 my-2 rounded-lg text-center font-semibold"
                 @click="displayLoginBox">Đăng nhập</button>
@@ -87,12 +90,12 @@
       }">
         <div class="flex flex-col mb-4">
           <div>Số điện thoại/Email</div>
-          <input type="text" name="phone" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại hoặc email">
+          <input type="text" name="phone" v-model="payloadLogin.username" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại hoặc email">
         </div>
         <div class="flex flex-col mb-4">
           <div>Mật khẩu</div>
           <div class="relative flex flex-col">
-            <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType">
+            <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType" v-model="payloadLogin.password">
             <div class="absolute right-1.5 top-1.5">
               <button class="text-blue-500 cursor-pointer text-sm" @click="passType == 'text' ? passType = 'password' : passType = 'text'">ẩn hiện</button>
             </div>
@@ -101,7 +104,7 @@
         <div class="text-right mb-4">
           <NuxtLink to="#" class="text-red-700 text-sm">Quên mật khẩu?</NuxtLink>
         </div>
-        <button class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
+        <button @click="submitLogin()" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
           nhập</button>
         <button
           class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
@@ -189,6 +192,11 @@ const payload = ref({
   re_password: ''
 })
 
+const payloadLogin = ref({
+  username: '',
+  password: ''
+})
+
 const onTabStyle = computed(() => {
   if (isOnLogin) {
     return {
@@ -217,7 +225,25 @@ const closeLoginBox = () => {
   isDisplayLoginBox.value = false;
 };
 
+const submitLogin = async () => {
+  console.log('adu');
+  await useCustomFetch('/api/user',{
+    method: 'GET',
+    query: payloadLogin.value,
+    async onResponse({request, response, options}) {
+      if(response.ok){
+        const {id, full_name, phone} = response._data.result;
 
+        store.addUser(id, phone, 'abc');
+        alert('Login thành công');
+        closeLoginBox();
+
+      } else {
+        alert(response._data.message)
+      }
+    },
+  })
+}
 
 const submitRegister = async () => {
   await useCustomFetch('/api/user',{
@@ -225,13 +251,11 @@ const submitRegister = async () => {
     body: payload.value,
     async onResponse({request, response, options}) {
       if(response.ok){
-        const id = response._data.result.id;
+        const {id, full_name, phone} = response._data.result;
 
-        const { data: ketqua } = await useCustomFetch(`/api/user/${id}`);
-
-        console.log(ketqua.value)
-
-        store.addUser(id, ketqua.value.result.full_name, 'abc')
+        store.addUser(id, phone, 'abc');
+        alert('Đăng ký thành công');
+        closeLoginBox();
 
       } else {
         alert(response._data.message)

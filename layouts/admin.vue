@@ -140,13 +140,13 @@
         </div>
         <div class="w-5/6 px-5 flex flex-col relative">
             <div class="flex pt-5 transition duration-700" :class="{
-                'sticky top-0 border rounded-md px-4 pb-5 border-gray-500 border-t-0 rounded-tl-none rounded-tr-none backdrop-blur-lg': addClassScroll
+                'sticky top-0 border rounded-md px-4 pb-5 border-gray-500 border-t-0 rounded-tl-none rounded-tr-none bg-hehe': addClassScroll
             }">
                 <form class="flex space-x-2 items-center">
                     <button>
                         <IconSearch />
                     </button>
-                    <input type="text" placeholder="Search" class="bg-admin">
+                    <input type="text" placeholder="Search" class="bg-transparent">
                 </form>
                 <div class="flex ml-auto space-x-2 items-center justify-end">
                     <IconLanguage />
@@ -183,3 +183,10 @@ if (process.client) {
 
 
 </script>
+<style>
+.bg-hehe {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background-color: rgb(40, 42, 66, .9);
+}
+</style>

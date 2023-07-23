@@ -1,5 +1,5 @@
 <template>
-    Admin
+    Materialize
 </template>
 <script setup>
 definePageMeta({

@@ -9,14 +9,41 @@
         </div>
         <AdminLeftBarHeadMenu />
 
-        <AdminLeftBarItem />
-        <AdminLeftBarItem />
-        <AdminLeftBarItem />
-        <AdminLeftBarItem />
+        <AdminLeftBarItem v-for="route in dataRoute" :name="route.name" :data="route.data"  />
 
 
     </div>
 </template>
+<script setup>
+const dataRoute = ref([
+    {
+        name: 'Category',
+        data: [
+            {
+                url: '/admin/category',
+                name: 'Danh sách'
+            },
+            {
+                url: '/admin/category/1',
+                name: 'Chi tiết'
+            }
+        ]
+    },
+    {
+        name: 'Child',
+        data: [
+            {
+                url: '/admin/category',
+                name: 'Danh sách'
+            },
+            {
+                url: '/admin/category/1',
+                name: 'Chi tiết'
+            }
+        ]
+    }
+])
+</script>
 <style>
 .scroll-custom::-webkit-scrollbar {
     width: 1px;
@@ -34,6 +61,4 @@
     background-color: #555;
     /* Màu của thumb khi hover */
 }
-
-
 </style>

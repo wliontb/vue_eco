@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-1/6 border-r border-gray-500 min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
+        class="border-r border-gray-500 min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
         <div class="flex items-center sticky top-0 bg-admin pt-5 pb-2 px-3">
             <div class="w-3/5">
                 <NuxtLink to="/admin"><img src="/img/logo.png" /></NuxtLink>
@@ -17,28 +17,28 @@
 <script setup>
 const dataRoute = ref([
     {
-        name: 'Category',
+        name: 'Danh mục sản phẩm',
         data: [
             {
                 url: '/admin/category',
-                name: 'Danh sách'
+                name: 'Tổng quan'
             },
             {
-                url: '/admin/category/1',
-                name: 'Chi tiết'
+                url: '/admin/category/add',
+                name: 'Thêm mới'
             }
         ]
     },
     {
-        name: 'Child',
+        name: 'Danh mục con',
         data: [
             {
-                url: '/admin/category',
+                url: '/admin/subcategory',
                 name: 'Danh sách'
             },
             {
-                url: '/admin/category/1',
-                name: 'Chi tiết'
+                url: '/admin/subcategory/add',
+                name: 'Thêm mới'
             }
         ]
     }

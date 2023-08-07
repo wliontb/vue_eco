@@ -1,6 +1,6 @@
 <template>
     <div class="flex space-x-5">
-        <div class="w-1/2 flex border border-gray-500 rounded-lg flex-col p-5 gap-y-3 h-fit">
+        <div class="w-1/3 flex border border-gray-500 rounded-lg flex-col p-5 gap-y-3 h-fit">
             <div class="flex">
                 <div class="flex flex-col">
                     <div class="font-bold text-lg">Sales Overview</div>
@@ -40,7 +40,47 @@
             </div>
 
         </div>
-        <div class="w-1/2 flex space-x-5">
+        <div class="w-1/3 flex border border-gray-500 rounded-lg flex-col p-5 gap-y-3 h-fit">
+            <div class="flex">
+                <div class="flex flex-col">
+                    <div class="font-bold text-lg">Sales Overview</div>
+                    <div class="text-gray-400 text-sm">Total 42.5k Sales <span class="text-green-400">+18%</span>
+                    </div>
+                </div>
+                <IconThreeDot class="ml-auto" />
+            </div>
+            <div class="flex">
+                <div class="flex items-center gap-x-4 w-1/3">
+                    <div class="p-1.5 text-white-500 bg-red-500 rounded">
+                        <IconUser />
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg">8,458</div>
+                        <div class="text-sm text-gray-400">Customers</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-4 w-1/3">
+                    <div class="p-1.5 text-white-500 bg-green-500 rounded">
+                        <IconUser />
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg">8,458</div>
+                        <div class="text-sm text-gray-400">Customers</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-4 w-1/3">
+                    <div class="p-1.5 text-white-500 bg-blue-500 rounded">
+                        <IconUser />
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg ">8,458</div>
+                        <div class="text-sm text-gray-400">Customers</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="w-1/3 flex space-x-5">
             <div class="w-1/2 flex border border-gray-500 rounded-lg px-5 pt-5 items-center">
                 <div class="w-1/2 flex flex-col gap-y-3">
                     <div class="font-bold text-lg">Ratings</div>
@@ -48,7 +88,7 @@
                     <div class="font-bold text-lg">8.14k <span class="text-green-500 text-sm">+15.6%</span></div>
                 </div>
                 <div class="w-1/2 place-self-end">
-                    <img src="/img/avatar/boy.png" alt="">
+                    <img src="/img/avatar/boy.png" class="scale-75" alt="">
                 </div>
             </div>
             <div class="w-1/2 flex border border-gray-500 rounded-lg px-5 pt-5 items-center">
@@ -58,7 +98,7 @@
                     <div class="font-bold text-lg">8.14k <span class="text-green-500 text-sm">+15.6%</span></div>
                 </div>
                 <div class="w-1/2 place-self-end">
-                    <img src="/img/avatar/girl.png" alt="">
+                    <img src="/img/avatar/girl.png" class="scale-75" alt="">
                 </div>
             </div>
         </div>

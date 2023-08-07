@@ -6,7 +6,7 @@
         </div>
         <ul class="flex flex-col px-5 gap-5">
             <li class="flex" v-for="item in data">
-                <IconMapPin />
+                <IconHashtag class="scale-75" />
                 <div class="ml-2">
                     <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
                 </div>

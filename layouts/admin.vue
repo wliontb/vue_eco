@@ -1,7 +1,7 @@
 <template>
     <div class="flex bg-admin text-gray-200">
-        <AdminLeftBar />
-        <div class="w-5/6 px-5 flex flex-col relative gap-y-5">
+        <AdminLeftBar class="w-left" />
+        <div class="w-right px-5 flex flex-col relative gap-y-5">
             <div class="flex pt-4 transition duration-700 mb-8" :class="{
                 'sticky top-0 border rounded-md px-4 pb-4 border-gray-500 border-t-0 rounded-tl-none rounded-tr-none bg-hehe': addClassScroll
             }">
@@ -43,6 +43,14 @@ if (process.client) {
 
 </script>
 <style>
+.w-left {
+    width: 13%;
+}
+
+.w-right {
+    width: 87%;
+}
+
 .bg-hehe {
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);

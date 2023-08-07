@@ -13,7 +13,6 @@
     </div>
     <AdminLeftBarHeadMenuItem />
     <AdminLeftBarHeadMenuItem />
-    <AdminLeftBarHeadMenuItem />
 
     
 </template>

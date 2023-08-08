@@ -4,7 +4,7 @@ export default function useCustomFetch (url, options) {
     return useFetch(
         url, 
         {
-            baseURL: config.public.baseURL || 'http://localhost:8000',
+            baseURL: config.public.baseURL || 'http://localhost:3000',
             ...options,
         }
     )

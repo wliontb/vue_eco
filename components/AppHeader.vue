@@ -246,12 +246,13 @@ const submitLogin = async () => {
 }
 
 const submitRegister = async () => {
-  await useCustomFetch('/api/user',{
+  await useCustomFetch('/user',{
     method: 'POST',
     body: payload.value,
     async onResponse({request, response, options}) {
+      console.log(response);
       if(response.ok){
-        const {id, full_name, phone} = response._data.result;
+        const {id, phone} = response._data.result;
 
         store.addUser(id, phone, 'abc');
         alert('Đăng ký thành công');

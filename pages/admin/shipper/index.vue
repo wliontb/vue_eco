@@ -42,7 +42,7 @@
 
             </div>
             <div class="flex flex-col gap-y-5 p-5 rounded-lg border border-gray-600">
-                <div class="text-lg font-semibold capitalize" id="add">Thêm danh mục</div>
+                <div class="text-lg font-semibold capitalize" id="add">Thêm shipper</div>
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
                         <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ngành hàng
@@ -60,9 +60,14 @@
                             class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mô tả</div>
-                        <textarea name="" id="" placeholder="nhập mô tả"
-                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tên công ty</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Số điện thoại</div>
+                        <input type="number" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                     </div>
                     <div class="flex items-center">
                         <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ảnh đại diện</div>

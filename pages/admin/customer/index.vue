@@ -42,30 +42,75 @@
 
             </div>
             <div class="flex flex-col gap-y-5 p-5 rounded-lg border border-gray-600">
-                <div class="text-lg font-semibold capitalize" id="add">Thêm danh mục</div>
+                <div class="text-lg font-semibold capitalize" id="add">Thêm khách hàng</div>
                 <div class="flex flex-col gap-y-3">
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ngành hàng
-                        </div>
-                        <select
-                            class="w-2/3 px-2 py-2 border-gray-600 rounded-lg border-2 outline-none  bg-admin text-gray-400 text-sm ">
-                            <option value="1">Sách</option>
-                            <option value="1">Truyện</option>
-                            <option value="1">Vở</option>
-                        </select>
-                    </div>
                     <div class="flex items-center">
                         <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tên</div>
                         <input type="text" name="" id="" placeholder="nhập tên danh mục"
                             class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mô tả</div>
-                        <textarea name="" id="" placeholder="nhập mô tả"
-                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Họ</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ảnh đại diện</div>
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Chức vụ</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Phòng</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tòa nhà</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Địa chỉ 1</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Địa chỉ 2</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Thành phố</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Quốc gia</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Trạng thái</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mã bưu cục</div>
+                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Số điện thoại</div>
+                        <input type="text" name="" id="" placeholder="https://"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Email</div>
+                        <input type="text" name="" id="" placeholder="https://"
+                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mật khẩu</div>
                         <input type="text" name="" id="" placeholder="https://"
                             class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                     </div>

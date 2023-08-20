@@ -9,7 +9,7 @@
         </div>
         <AdminLeftBarHeadMenu />
 
-        <AdminLeftBarItem v-for="route in dataRoute" :name="route.name" :data="route.data"  />
+        <AdminLeftBarItem v-for="route in dataRoute" :name="route.name" :data="route.data" />
 
 
     </div>
@@ -17,7 +17,20 @@
 <script setup>
 const dataRoute = ref([
     {
-        name: 'Danh mục sản phẩm',
+        name: 'Ngành hàng',
+        data: [
+            {
+                url: '/admin/goodcategory',
+                name: 'Tổng quan'
+            },
+            {
+                url: '/admin/goodcategory/add',
+                name: 'Thêm mới'
+            }
+        ]
+    },
+    {
+        name: 'Danh mục',
         data: [
             {
                 url: '/admin/category',
@@ -30,18 +43,70 @@ const dataRoute = ref([
         ]
     },
     {
-        name: 'Danh mục con',
+        name: 'Nhà cung cấp',
         data: [
             {
-                url: '/admin/subcategory',
-                name: 'Danh sách'
+                url: '/admin/supplier',
+                name: 'Tổng quan'
             },
             {
-                url: '/admin/subcategory/add',
+                url: '/admin/supplier/add',
                 name: 'Thêm mới'
             }
         ]
-    }
+    },
+    {
+        name: 'Sản phẩm',
+        data: [
+            {
+                url: '/admin/product',
+                name: 'Tổng quan'
+            },
+            {
+                url: '/admin/product/add',
+                name: 'Thêm mới'
+            }
+        ]
+    },
+    {
+        name: 'Khách hàng',
+        data: [
+            {
+                url: '/admin/customer',
+                name: 'Tổng quan'
+            },
+            {
+                url: '/admin/product/add',
+                name: 'Thêm mới'
+            }
+        ]
+    },
+    {
+        name: 'Shipper',
+        data: [
+            {
+                url: '/admin/shipper',
+                name: 'Tổng quan'
+            },
+            {
+                url: '/admin/product/add',
+                name: 'Thêm mới'
+            }
+        ]
+    },
+    {
+        name: 'Hình thức thanh toán',
+        data: [
+            {
+                url: '/admin/payment',
+                name: 'Tổng quan'
+            },
+            {
+                url: '/admin/product/add',
+                name: 'Thêm mới'
+            }
+        ]
+    },
 ])
 </script>
 <style>

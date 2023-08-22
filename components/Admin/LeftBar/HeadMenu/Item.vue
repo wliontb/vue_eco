@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center px-5 py-1">
+    <div class="flex items-center px-5 py-1 text-gray-400 font-medium">
         <IconStop />
         <div class="ml-2">CRM</div>
     </div>

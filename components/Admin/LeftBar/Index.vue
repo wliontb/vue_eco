@@ -1,15 +1,15 @@
 <template>
     <div
-        class="border-r border-gray-500 min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
-        <div class="flex items-center sticky top-0 bg-admin pt-5 pb-2 px-3">
+        class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
+        <div class="flex items-center sticky top-0 pt-5 pb-2 px-5 z-50 bg-admin">
             <div class="w-3/5">
                 <NuxtLink to="/admin"><img src="/img/logo.png" /></NuxtLink>
             </div>
             <IconCollapseLeft class="w-1/5 max-h-6 ml-auto" />
         </div>
-        <AdminLeftBarHeadMenu />
+        <AdminLeftBarHeadMenu class="px-2" />
 
-        <AdminLeftBarItem v-for="route in dataRoute" :name="route.name" :data="route.data" />
+        <AdminLeftBarItem class="px-2" v-for="route in dataRoute" :name="route.name" :data="route.data" />
 
 
     </div>
@@ -116,7 +116,7 @@ const dataRoute = ref([
 }
 
 .scroll-custom::-webkit-scrollbar-thumb {
-    background-color: #888;
+    /* background-color: #ccc; */
     /* Màu của thumb (phần kéo) */
     border-radius: 4px;
     /* Bo góc cho thumb */

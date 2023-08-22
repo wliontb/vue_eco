@@ -3,7 +3,7 @@
         <div class="flex">
             <div class="w-1/2 flex gap-x-2">
                 <IconCircle class="text-red-500" />
-                <div class="font-semibold">8 Invoices have been paid</div>
+                <div class="font-semibold text-gray-400">8 Invoices have been paid</div>
             </div>
             <div class="w-1/2 text-right text-xs text-gray-400">
                 Wednesday
@@ -13,7 +13,7 @@
             <div class="text-gray-400 text-sm">Invoices have been paid to the company.</div>
             <div class="flex items-center">
                 <IconDocument class="text-rose-600" />
-                <div>booking-card.pdf</div>
+                <div class="text-gray-300">booking-card.pdf</div>
             </div>
         </div>
     </div>

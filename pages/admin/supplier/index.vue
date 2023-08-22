@@ -39,7 +39,7 @@
                 </div>
 
             </div>
-            
+
         </div>
         <div class="w-3/5 flex flex-col gap-y-5">
             <div class="flex p-5 flex-col border border-gray-500 rounded-lg gap-y-3">
@@ -68,40 +68,44 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col pt-5 border border-gray-500 rounded-md gap-y-5">
-                <div class="flex px-5">
-                    <div
-                        class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
-                        Export
-                    </div>
-                    <div class="ml-auto flex gap-x-5">
-                        <input type="text"
-                            class="border border-gray-500 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
-                            placeholder="Tìm danh mục...">
-                        <a href="#add" class="bg-green-500 text-white-500 px-3 py-1.5 rounded font-semibold">
-                            Thêm danh mục
-                        </a>
-                    </div>
-                </div>
-                <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+
+        </div>
+
+    </div>
+    <div class="flex flex-col pt-5 border border-gray-500 rounded-md gap-y-5">
+        <div class="flex px-5">
+            <div
+                class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
+                Export
+            </div>
+            <div class="ml-auto flex gap-x-5">
+                <input type="text"
+                    class="border border-gray-500 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
+                    placeholder="Tìm danh mục...">
+                <a href="#add" class="bg-green-500 text-white-500 px-3 py-1.5 rounded font-semibold">
+                    Thêm danh mục
+                </a>
             </div>
         </div>
+        <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
     </div>
 </template>
 <script setup>
 import { ref } from "vue";
+
 definePageMeta({
     layout: 'admin'
 })
 
 const headers = ref([
-    { text: "Tên danh mục", value: "name" },
-    { text: "sản phẩm", value: "prodQty", sortable: true },
-    { text: "Đơn đã bán", value: "prodSoldQty", sortable: true }
-])
-
-const items = ([
-    { id: 1, "name": "Tin Tức", "prodQty": 77, "prodSoldQty": 20, isSelected: false },
+    { text: "Tên", value: "name" },
+    { text: "Email", value: "email", sortable: true },
+    { text: "SĐT", value: "phone", sortable: true },
+    { text: "url", value: "url", sortable: true },
+    { text: "Mô tả", value: "description", sortable: true },
+    { text: "Địa chỉ", value: "address", sortable: true },
+    { text: "Logo", value: "logo", sortable: true },
+    { text: "Số sản phẩm", value: "prodQty", sortable: true }
 ])
 
 const changeSelect = (itemId, selectedValue) => {
@@ -110,5 +114,21 @@ const changeSelect = (itemId, selectedValue) => {
     );
 };
 
+
+const { data } = useFetch('http://localhost:3000/api/suppliers');
+const items = data.value.result.map((item) => {
+    return {
+        id: item.id,
+        name: item.name,
+        email: item.email,
+        phone: item.phone,
+        url: item.url,
+        prodQty: 0,
+        description: item.description,
+        address: item.address,
+        logo: item.logo,
+        isSelected: false
+    }
+});
 
 </script>

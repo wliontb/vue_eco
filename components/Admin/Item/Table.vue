@@ -20,8 +20,10 @@
 
                 <td class="text-left px-5 py-2.5 text-sm" v-for="header in headers" :key="header" v-html="item[header.value]">
                 </td>
-                <td class="text-center">
-                    <IconThreeDot />
+                <td class="text-center flex gap-x-1 justify-end p-4">
+                    <button class="rounded bg-sky-500 text-white px-3 py-1.5">Xem</button>
+                    <button class="rounded bg-orange-500 text-white px-3 py-1.5">Sửa</button>
+                    <button class="rounded bg-red-500 text-white px-3 py-1.5">Xóa</button>
                 </td>
             </tr>
         </tbody>

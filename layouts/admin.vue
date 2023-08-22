@@ -3,19 +3,19 @@
         <AdminLeftBar class="w-left" />
         <div class="w-right px-5 flex flex-col relative gap-y-5">
             <div class="flex pt-4 transition duration-700 mb-8" :class="{
-                'sticky top-0 border rounded-md px-4 pb-4 border-gray-500 border-t-0 rounded-tl-none rounded-tr-none bg-hehe': addClassScroll
+                'sticky top-0 px-4 pb-4 bg-hehe z-50 border border-b-gray-200': addClassScroll
             }">
-                <form class="flex space-x-2 items-center">
+                <form class="flex space-x-2 items-center w-4/6">
                     <button>
-                        <IconSearch />
+                        <IconSearch class="text-gray-500 font-bold" />
                     </button>
-                    <input type="text" placeholder="Search" class="bg-transparent">
+                    <input type="text" placeholder="Search" class="bg-transparent outline-none w-full text-gray-500">
                 </form>
-                <div class="flex ml-auto space-x-2 items-center justify-end">
+                <div class="flex ml-auto space-x-2 items-center justify-end text-gray-500">
                     <IconLanguage />
                     <IconNight />
                     <IconBell />
-                    <div class="rounded-full bg-rose-500 p-1.5">
+                    <div class="rounded-full bg-rose-500 p-1.5 text-white">
                         adu
                     </div>
                 </div>
@@ -52,8 +52,6 @@ if (process.client) {
 }
 
 .bg-hehe {
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    background-color: rgb(40, 42, 66, .9);
+    background-color: white;
 }
 </style>

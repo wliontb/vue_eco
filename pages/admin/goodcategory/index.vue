@@ -1,10 +1,10 @@
 <template>
     <div class="flex gap-x-5">
         <div class="w-2/5 gap-y-5 flex flex-col">
-            <div class="flex border border-gray-500 rounded-lg flex-col p-5 gap-y-3 h-fit">
+            <div class="flex bg-white shadow-md rounded-lg flex-col p-5 gap-y-3 h-fit">
                 <div class="flex">
                     <div class="flex flex-col">
-                        <div class="font-bold text-lg capitalize">Tổng quan</div>
+                        <div class="font-bold text-lg capitalize text-gray-500">Tổng quan</div>
                     </div>
                 </div>
                 <div class="flex">
@@ -13,7 +13,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg">100</div>
+                            <div class="font-semibold text-lg text-gray-500">100</div>
                             <div class="text-sm text-gray-400">Ngành hàng</div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg">300</div>
+                            <div class="font-semibold text-lg text-gray-500">300</div>
                             <div class="text-sm text-gray-400">Danh mục</div>
                         </div>
                     </div>
@@ -31,63 +31,72 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg ">1000</div>
+                            <div class="font-semibold text-lg text-gray-500">1000</div>
                             <div class="text-sm text-gray-400">Sản phẩm</div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="flex flex-col gap-y-5 p-5 rounded-lg border border-gray-600">
-                <div class="text-lg font-semibold capitalize" id="add">Thêm ngành hàng mới</div>
+            <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl" :class="{
+                'border border-red-500' : focusAdd
+            }">
+                <div class="text-lg font-semibold text-gray-500" id="add">Thêm ngành hàng mới :</div>
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tên ngành hàng</div>
-                        <input type="text" name="" id="" placeholder="nhập tên"
-                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Tên ngành hàng</div>
+                        <input type="text" placeholder="nhập tên" v-model="goodCate.good_name"
+                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mô tả</div>
-                        <textarea name="" id="" placeholder="nhập mô tả"
-                            class="w-2/3 px-2 py-2.5 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
+                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Mô tả</div>
+                        <textarea v-model="goodCate.description" placeholder="nhập mô tả"
+                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500"></textarea>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Nhà cung cấp</div>
-                        <select name="" id=""
-                            class="w-2/3 px-2 py-2 border-gray-600 rounded-lg border-2 outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                            <option value="1">Hehe</option>
-                            <option value="1">Hihi</option>
+                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Ảnh đại diện</div>
+                        <input type="text" v-model="goodCate.picture" placeholder="url ảnh đại diện"
+                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Nhà cung cấp</div>
+                        <select v-model="goodCate.supplier_id"
+                            class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
+                            <option v-for="supp in suppliers.result" :value="supp.id">
+                                {{ supp.name }}
+                            </option>
                         </select>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-3">
                     <div class="w-2/3 flex ml-auto gap-x-3">
-                        <button class="text-white bg-green-500 rounded py-1 px-4">Thêm</button>
+                        <button class="text-white bg-green-500 rounded py-1 px-4" @click="addGoodCate()">Thêm</button>
                         <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="w-3/5 flex flex-col gap-y-5">
-            
-            <div class="flex flex-col pt-5 border border-gray-500 rounded-md gap-y-5">
+
+            <div class="flex flex-col pt-5 shadow-xl bg-white rounded-md gap-y-5">
                 <div class="flex px-5">
                     <div
-                        class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
+                        class="border border-gray-300 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
                         Export
                     </div>
                     <div class="ml-auto flex gap-x-5">
-                        <input type="text" class="border border-gray-500 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
+                        <input type="text"
+                            class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm text-gray-500"
                             placeholder="Tìm ngành hàng...">
-                        <a href="#add" class="bg-green-500 text-white-500 px-3 py-1.5 rounded font-semibold">
+                        <a href="#add" class="bg-green-500 text-white px-3 py-1.5 rounded" @click="focusAddBox">
                             Thêm ngành hàng
                         </a>
                     </div>
                 </div>
-                <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+                <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" @removeItem="removeItem"/>
             </div>
         </div>
-        
+
     </div>
 </template>
 <script setup>
@@ -96,20 +105,78 @@ definePageMeta({
     layout: 'admin'
 })
 
+const focusAdd = ref(false);
+
+const focusAddBox = () => {
+    focusAdd.value = true;
+    setTimeout(() => {
+        focusAdd.value = false;
+    }, 2500)
+}
+
+const { data: suppliers } = useFetch('http://localhost:3000/api/suppliers');
+
+const goodCate = ref({
+    good_name: '',
+    description: '',
+    picture: '',
+    supplier_id: 1
+})
+
 const headers = ref([
-    { text: "Tên", value: "name" },
-    { text: "Số danh mục", value: "cateQty", sortable: true }
+    { text: "Tên danh mục", value: "name" },
+    { text: "Mô tả", value: "description", sortable: true },
+    { text: "Ảnh đại diện", value: "picture", sortable: true },
+    { text: "Nhà cung cấp", value: "supplier", sortable: true }
+
 ])
 
-const items = ([
-    { id: 1, "name": "Tin Tức", "cateQty": 20, isSelected: false },
-])
+let items = ref([]);
+
+// Fetch the goods categories and populate the items array
+const { data: goodsCategories } = await useFetch('http://localhost:3000/api/goods-category');
+
+// After fetching the data, populate the items array
+items.value = goodsCategories.value.result.map(gc => ({
+  name: gc.goodName,
+  description: gc.description,
+  picture: gc.picture,
+  supplier: gc.supplier?.name,
+  id: gc.id
+}));
+
+const addGoodCate = async () => {
+    await useFetch('http://localhost:3000/api/goods-category', {
+        method: 'POST',
+        body: goodCate.value,
+        async onResponse({
+            request, response, options
+        }) {
+            if (response.ok) {
+                const result = response._data.result;
+                items.value.push({
+                    name: result.goodName,
+                    description: result.description,
+                    picture: result.picture,
+                    supplier: result.supplier.name,
+                    id: result.id
+                })
+            } else {
+                alert('Tạo danh mục không thành công')
+            }
+        }
+    })
+}
 
 const changeSelect = (itemId, selectedValue) => {
-    items.value = items.map(item =>
+    items.value = items.value.map(item =>
         item.id === itemId ? { ...item, isSelected: selectedValue } : item
     );
 };
+
+const removeItem = (itemId) => {
+    items.value = items.value.filter(item => item.id !== itemId);
+}
 
 
 </script>

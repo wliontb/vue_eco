@@ -1,29 +1,29 @@
 <template>
     <table class="table-auto border-collapse">
         <thead>
-            <tr class="bg-gray-700">
+            <tr class="bg-gray-200">
                 <th class="p-2">
-                    <input type="checkbox">
+                    <input type="checkbox" @click="toggleAllCheckbox()">
                 </th>
-                <th v-for="item in headers" :key="item" class="text-left uppercase font-semibold text-sm py-2.5 px-5">{{
+                <th v-for="item in headers" :key="item" class="text-gray-500 text-left uppercase font-semibold text-sm py-2.5 px-5">{{
                     item.text }}</th>
-                <th class="text-center">Tác vụ</th>
+                <th class="text-center text-gray-500 uppercase font-semibold text-sm">Tác vụ</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in items" :key="item.id" class="border border-gray-600">
+            <tr v-for="item in items" :key="item.id" class="border border-gray-200">
 
                 <td class="text-center">
-                    <input type="checkbox" v-model="item.isSelected"
+                    <input type="checkbox" class="outline-gray-500" v-model="item.isSelected"
                         @change="$emit('changeSelect', item.id, item.isSelected)" />
                 </td>
 
-                <td class="text-left px-5 py-2.5 text-sm" v-for="header in headers" :key="header" v-html="item[header.value]">
+                <td class="text-left px-5 py-2.5 text-sm text-gray-500" v-for="header in headers" :key="header" v-html="item[header.value]">
                 </td>
                 <td class="text-center flex gap-x-1 justify-end p-4">
                     <button class="rounded bg-sky-500 text-white px-3 py-1.5">Xem</button>
                     <button class="rounded bg-orange-500 text-white px-3 py-1.5">Sửa</button>
-                    <button class="rounded bg-red-500 text-white px-3 py-1.5">Xóa</button>
+                    <button class="rounded bg-red-500 text-white px-3 py-1.5" @click="$emit('removeItem', item.id)">Xóa</button>
                 </td>
             </tr>
         </tbody>
@@ -32,6 +32,7 @@
 <script setup>
 import { ref } from 'vue';
 
+const checkboxCheck = ref(false);
 
 const props = defineProps({
     headers: {
@@ -43,8 +44,5 @@ const props = defineProps({
         required: true
     }
 });
-
-const headers = ref(props.headers);
-const items = ref(props.items);
 
 </script>

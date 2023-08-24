@@ -154,7 +154,7 @@ const addGoodCate = async () => {
         }) {
             if (response.ok) {
                 const result = response._data.result;
-                items.value.push({
+                items.value.unshift({
                     name: result.goodName,
                     description: result.description,
                     picture: result.picture,
@@ -174,8 +174,15 @@ const changeSelect = (itemId, selectedValue) => {
     );
 };
 
-const removeItem = (itemId) => {
-    items.value = items.value.filter(item => item.id !== itemId);
+const removeItem = async (itemId) => {
+    const {data: result} = await useFetch(`http://localhost:3000/api/goods-category/${itemId}`, {
+        method: 'DELETE'
+    })
+
+    if(result.value.status == 'success') {
+        items.value = items.value.filter(item => item.id !== itemId);
+        console.log(result)
+    }
 }
 
 

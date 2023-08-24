@@ -115,7 +115,7 @@ const changeSelect = (itemId, selectedValue) => {
 };
 
 
-const { data } = useFetch('http://localhost:3000/api/suppliers');
+const { data } = await useFetch('http://localhost:3000/api/suppliers');
 const items = data.value.result.map((item) => {
     return {
         id: item.id,

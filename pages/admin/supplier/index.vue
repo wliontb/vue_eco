@@ -82,12 +82,12 @@
                 <input type="text"
                     class="border border-gray-200 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
                     placeholder="Tìm danh mục...">
-                <a href="#add" class="bg-green-500 text-white px-3 py-1.5 rounded">
+                <NuxtLink to="/admin/supplier/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
                     Thêm danh mục
-                </a>
+                </NuxtLink>
             </div>
         </div>
-        <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+        <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" @removeItem="removeItem" />
     </div>
 </template>
 <script setup>
@@ -116,7 +116,8 @@ const changeSelect = (itemId, selectedValue) => {
 
 
 const { data } = await useFetch('http://localhost:3000/api/suppliers');
-const items = data.value.result.map((item) => {
+let items = ref([]);
+items.value = data.value.result.map((item) => {
     return {
         id: item.id,
         name: item.name,
@@ -130,5 +131,18 @@ const items = data.value.result.map((item) => {
         isSelected: false
     }
 });
+
+const removeItem = async (itemId) => {
+    await useFetch(`http://localhost:3000/api/suppliers/${itemId}`, {
+        method: 'DELETE',
+        onResponse(response) {
+            console.log(response)
+            if(response.ok) {
+                items.value = items.value.filter(item => item.id !== itemId)
+                alert('Remove item successfully')
+            }
+        }
+    })
+}
 
 </script>

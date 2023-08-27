@@ -1,6 +1,5 @@
 <template>
-    <div
-        class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
+    <div class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
         <div class="flex items-center sticky top-0 pt-5 pb-2 px-5 z-50 bg-admin">
             <div class="w-3/5">
                 <NuxtLink to="/admin"><img src="/img/logo.png" /></NuxtLink>
@@ -9,19 +8,20 @@
         </div>
         <AdminLeftBarHeadMenu class="px-2" />
 
-        <AdminLeftBarItem class="px-2" v-for="route in dataRoute" :name="route.name" :data="route.data" />
+        <AdminLeftBarItem v-model:dataRoute="dataRoute" />
 
 
     </div>
 </template>
 <script setup>
-const dataRoute = ref([
+const route = useRoute();
+let dataRoute = ref([
     {
         name: 'Ngành hàng',
         data: [
             {
                 url: '/admin/goodcategory',
-                name: 'Tổng quan'
+                name: 'Tổng quan',
             },
             {
                 url: '/admin/goodcategory/add',
@@ -108,6 +108,24 @@ const dataRoute = ref([
         ]
     },
 ])
+
+dataRoute.value = dataRoute.value.map(item => {
+    item.data.forEach(data => {
+        data.active = data.url === route.path;
+    });
+    return item;
+});
+
+watch(route, () => {
+    dataRoute.value = dataRoute.value.map(item => {
+        item.data.forEach(data => {
+            data.active = data.url === route.path; // Update active state based on current route
+        });
+        return item;
+    });
+})
+
+
 </script>
 <style>
 .scroll-custom::-webkit-scrollbar {

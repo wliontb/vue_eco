@@ -1,7 +1,9 @@
 <template>
-    <AdminItemBreadCrumb />
+    <div class="flex bg-white shadow-sm text-gray-500 font-semibold p-4 rounded">
+        Admin > Supplier > Edit > {{ route.params.id }}
+    </div>
     <div class="flex flex-col gap-y-5 p-5 rounded-lg shadow-xl bg-white">
-        <div class="text-sm font-semibold text-gray-500 uppercase" id="add">Thêm nhà cung cấp mới</div>
+        <div class="text-sm font-semibold text-gray-500 uppercase" id="add">Sửa nhà cung cấp</div>
         <div class="flex gap-x-10">
             <div class="w-1/2 flex flex-col gap-y-3">
                 <div class="flex items-center">
@@ -74,8 +76,8 @@
         </div>
         <div class="flex md:justify-center">
             <div class="flex gap-x-3">
-                <button class="text-white bg-green-600 rounded py-1 px-4" @click="createSupplier()">Thêm</button>
-                <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
+                <button class="text-white bg-orange-600 rounded py-1 px-4" @click="editSupplier">Sửa</button>
+                <button class="text-gray-400 border border-gray-400 rounded py-1 px-4" @click="goBack">Quay lại</button>
             </div>
         </div>
     </div>
@@ -85,35 +87,51 @@ definePageMeta({
     layout: 'admin'
 })
 
-const supplier = ref({
-    "name": "An An",
-    "description": "Test mô tả",
-    "phone": "0987196812",
-    "email": "anan@gmail.com",
-    "address": "Hưng Yên",
-    "city": "Hưng Yên",
-    "country": "Việt Nam",
-    "postal_code": "0123456",
-    "url": "https://anan.vn",
-    "logo": "imgur.com",
-    "ranking": 1,
+const route = useRoute();
+const idSupplier = route.params.id;
+
+const goBack = () => {
+    useRouter().back();
+}
+
+
+
+let supplier = ref({
+    "name": "",
+    "description": "",
+    "phone": "",
+    "email": "",
+    "address": "",
+    "city": "",
+    "country": "",
+    "postal_code": "",
+    "url": "",
+    "logo": "",
+    "ranking": 0,
     "active": false
 })
 
-const createSupplier = async () => {
-    console.log('create');
-    await useCustomFetch('api/suppliers', {
-        method: 'POST',
+const {data: initSupplier} = await useFetch('http://localhost:3000/api/suppliers/'+idSupplier, {
+    method: 'GET'
+})
+
+supplier.value = {
+    ...initSupplier.value.result,
+    postal_code: initSupplier.value.result.postalCode
+}
+
+const editSupplier = async () => {
+    await useFetch('http://localhost:3000/api/suppliers/'+idSupplier, {
+        method: 'PATCH',
         body: supplier.value,
-        async onResponse({
-            request, response, options
-        }) {
+        onResponse({response}) {
+            console.log(response)
             if(response.ok) {
-                console.log(response._data.result)
+                alert('Edit success')
             } else {
-                alert('Tạo supplier không thành công')
+                alert('Edit failed')
             }
-        }
+        },
     })
 }
 

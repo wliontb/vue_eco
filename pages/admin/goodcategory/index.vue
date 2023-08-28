@@ -1,10 +1,11 @@
 <template>
+    <AdminItemBreadCrumb />
     <div class="flex gap-x-5">
         <div class="w-2/5 gap-y-5 flex flex-col">
             <div class="flex bg-white shadow-md rounded-lg flex-col p-5 gap-y-3 h-fit">
                 <div class="flex">
                     <div class="flex flex-col">
-                        <div class="font-bold text-lg capitalize text-gray-500">Tổng quan</div>
+                        <div class="font-bold text-lg capitalize text-gray-700">Tổng quan</div>
                     </div>
                 </div>
                 <div class="flex">
@@ -14,7 +15,7 @@
                         </div>
                         <div>
                             <div class="font-semibold text-lg text-gray-500">100</div>
-                            <div class="text-sm text-gray-400">Ngành hàng</div>
+                            <div class="text-sm text-gray-500">Ngành hàng</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-4 w-1/3">
@@ -23,7 +24,7 @@
                         </div>
                         <div>
                             <div class="font-semibold text-lg text-gray-500">300</div>
-                            <div class="text-sm text-gray-400">Danh mục</div>
+                            <div class="text-sm text-gray-500">Danh mục</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-4 w-1/3">
@@ -32,7 +33,7 @@
                         </div>
                         <div>
                             <div class="font-semibold text-lg text-gray-500">1000</div>
-                            <div class="text-sm text-gray-400">Sản phẩm</div>
+                            <div class="text-sm text-gray-500">Sản phẩm</div>
                         </div>
                     </div>
                 </div>
@@ -41,25 +42,25 @@
             <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl" :class="{
                 'border border-red-500' : focusAdd
             }">
-                <div class="text-lg font-semibold text-gray-500" id="add">Thêm ngành hàng mới :</div>
+                <div class="text-md font-bold text-gray-700" id="add">Thêm ngành hàng mới :</div>
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Tên ngành hàng</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Tên ngành hàng</div>
                         <input type="text" placeholder="nhập tên" v-model="goodCate.good_name"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Mô tả</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Mô tả</div>
                         <textarea v-model="goodCate.description" placeholder="nhập mô tả"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500"></textarea>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Ảnh đại diện</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Ảnh đại diện</div>
                         <input type="text" v-model="goodCate.picture" placeholder="url ảnh đại diện"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 after:content-[':'] after:ml-1.5">Nhà cung cấp</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Nhà cung cấp</div>
                         <select v-model="goodCate.supplier_id"
                             class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                             <option v-for="supp in suppliers.result" :value="supp.id">

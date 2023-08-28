@@ -1,10 +1,11 @@
 <template>
+    <AdminItemBreadCrumb />
     <div class="flex gap-x-5">
         <div class="flex flex-col w-2/5 gap-y-5">
-            <div class="flex shadow-xl rounded-lg flex-col p-5 gap-y-3 h-fit bg-white">
+            <div class="flex shadow-sm rounded-lg flex-col p-5 gap-y-3 h-fit bg-white">
                 <div class="flex">
                     <div class="flex flex-col">
-                        <div class="font-bold text-lg capitalize text-gray-500">Tổng quan</div>
+                        <div class="font-bold text-lg capitalize text-gray-700">Tổng quan</div>
                     </div>
                     <IconThreeDot class="ml-auto" />
                 </div>
@@ -14,8 +15,8 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">100</div>
-                            <div class="text-sm text-gray-500">Nhà cung cấp</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ items.length }}</div>
+                            <div class="text-sm font-semibold text-gray-500">Nhà cung cấp</div>
                         </div>
                     </div>
                     <!-- <div class="flex items-center gap-x-4 w-1/3">
@@ -43,11 +44,11 @@
         </div>
         <div class="w-3/5 flex flex-col gap-y-5">
             <div class="flex p-5 flex-col shadow-xl bg-white rounded-lg gap-y-3">
-                <div class="font-bold text-lg text-gray-500">Tìm kiếm theo :</div>
+                <div class="font-bold text-lg text-gray-700">Tìm kiếm theo :</div>
                 <div class="flex gap-x-3">
                     <div class="w-1/3">
                         <select name="" id=""
-                            class="px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-400 outline-none border border-gray-200">
+                            class="px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-500 outline-none border border-gray-200">
                             <option value="" disabled selected>Tên ngành hàng</option>
                             <option value="">Sách</option>
                             <option value="">Văn phòng phẩm</option>
@@ -80,10 +81,10 @@
             </div>
             <div class="ml-auto flex gap-x-5">
                 <input type="text"
-                    class="border border-gray-200 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
-                    placeholder="Tìm danh mục...">
+                    class="border border-gray-200 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm text-gray-400"
+                    placeholder="Tìm nhà cung cấp...">
                 <NuxtLink to="/admin/supplier/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
-                    Thêm danh mục
+                    Thêm nhà cung cấp
                 </NuxtLink>
             </div>
         </div>

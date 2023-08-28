@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom">
+    <div class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom border-r border-gray-150">
         <div class="flex items-center sticky top-0 pt-5 pb-2 px-5 z-50 bg-admin">
             <div class="w-3/5">
                 <NuxtLink to="/admin"><img src="/img/logo.png" /></NuxtLink>
@@ -7,15 +7,26 @@
             <IconCollapseLeft class="w-1/5 max-h-6 ml-auto" />
         </div>
         <AdminLeftBarHeadMenu class="px-2" />
-
         <AdminLeftBarItem v-model:dataRoute="dataRoute" />
-
 
     </div>
 </template>
 <script setup>
 const route = useRoute();
 let dataRoute = ref([
+    {
+        name: 'Nhà cung cấp',
+        data: [
+            {
+                url: '/admin/supplier',
+                name: 'Tổng quan'
+            },
+            {
+                url: '/admin/supplier/add',
+                name: 'Thêm mới'
+            }
+        ]
+    },
     {
         name: 'Ngành hàng',
         data: [
@@ -38,19 +49,6 @@ let dataRoute = ref([
             },
             {
                 url: '/admin/category/add',
-                name: 'Thêm mới'
-            }
-        ]
-    },
-    {
-        name: 'Nhà cung cấp',
-        data: [
-            {
-                url: '/admin/supplier',
-                name: 'Tổng quan'
-            },
-            {
-                url: '/admin/supplier/add',
                 name: 'Thêm mới'
             }
         ]
@@ -129,19 +127,19 @@ watch(route, () => {
 </script>
 <style>
 .scroll-custom::-webkit-scrollbar {
-    width: 1px;
+    width: 5px;
     /* Độ rộng của thanh scrollbar */
 }
 
 .scroll-custom::-webkit-scrollbar-thumb {
-    /* background-color: #ccc; */
+    background-color: #e5e7eb;
     /* Màu của thumb (phần kéo) */
     border-radius: 4px;
     /* Bo góc cho thumb */
 }
 
 .scroll-custom::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: #ccc;
     /* Màu của thumb khi hover */
 }
 </style>

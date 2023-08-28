@@ -22,8 +22,8 @@
                 </td>
                 <td class="text-center flex gap-x-1 justify-end p-4">
                     <button class="rounded bg-sky-500 text-white px-3 py-1.5">Xem</button>
-                    <button class="rounded bg-orange-500 text-white px-3 py-1.5">Sửa</button>
-                    <button class="rounded bg-red-500 text-white px-3 py-1.5" @click="$emit('removeItem', item.id)">Xóa</button>
+                    <NuxtLink :to="`${route.path}/edit/${item.id}`" class="rounded bg-orange-500 text-white px-3 py-1.5">Sửa</NuxtLink>
+                    <NuxtLink :to="`${route.path}/remove/${item.id}`" class="rounded bg-red-500 text-white px-3 py-1.5">Xóa</NuxtLink>
                 </td>
             </tr>
         </tbody>
@@ -31,6 +31,8 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+
+const route = useRoute();
 
 const checkboxCheck = ref(false);
 

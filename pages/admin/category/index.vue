@@ -16,7 +16,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">100</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ items.length }}</div>
                             <div class="text-sm text-gray-400">Danh mục</div>
                         </div>
                     </div>
@@ -42,45 +42,49 @@
 
             </div>
             <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl">
-                <div class="text-lg font-semibold capitalize text-gray-500" id="add">Thêm danh mục</div>
+                <div class="text-sm font-bold uppercase text-gray-700" id="add">Thêm danh mục mới</div>
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] after:ml-1.5">Ngành hàng
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Ngành hàng
                         </div>
-                        <select
-                            class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none  bg-admin text-gray-400 text-sm ">
+                        <select v-model="category.goodCateId"
+                            class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin text-sm">
+                            <option value="" disabled selected>Tên ngành hàng</option>
                             <option v-for="item in goodCates.result" :value="item.id">{{ item.goodName }}</option>
                         </select>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] after:ml-1.5">Tên</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Tên</div>
+                        <input type="text" v-model="category.categoryName" placeholder="nhập tên danh mục..."
+                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin placeholder:lowercase focus:border-red-500 placeholder:text-sm">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] after:ml-1.5">Mô tả</div>
-                        <textarea name="" id="" placeholder="nhập mô tả"
-                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Mô tả</div>
+                        <textarea placeholder="nhập mô tả..." v-model="category.description"
+                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin placeholder:lowercase focus:border-red-500 placeholder:text-sm"></textarea>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] after:ml-1.5">Ảnh đại diện</div>
-                        <input type="text" name="" id="" placeholder="https://"
-                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Ảnh đại diện
+                        </div>
+                        <input type="text" placeholder="nhập url ảnh..." v-model="category.picture"
+                            class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin placeholder:lowercase focus:border-red-500 placeholder:text-sm">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] after:ml-1.5">Trạng thái
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Trạng thái
                         </div>
                         <select
-                            class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none  bg-admin text-gray-400 ">
+                            class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin text-sm"
+                            v-model="category.active">
                             <option value="1">Active</option>
-                            <option value="1">Disactive</option>
+                            <option value="0">Disactive</option>
                         </select>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-3">
                     <div class="w-2/3 flex ml-auto gap-x-3">
-                        <button class="text-white bg-green-600 rounded py-1 px-4">Thêm</button>
-                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
+                        <button class="text-white bg-green-600 rounded py-1 px-4" @click="addCategory">Thêm</button>
+                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4"
+                            @click="goBack">Reset</button>
                     </div>
                 </div>
             </div>
@@ -93,9 +97,7 @@
                         <select name="" id=""
                             class="border border-gray-300 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-400 outline-none">
                             <option value="" disabled selected>Tên ngành hàng</option>
-                            <option value="">Sách</option>
-                            <option value="">Văn phòng phẩm</option>
-                            <option value="">Điện thoại</option>
+                            <option v-for="item in goodCates.result" :value="item.id">{{ item.goodName }}</option>
                         </select>
                     </div>
                     <div class="w-1/3 hidden">
@@ -114,8 +116,8 @@
             </div>
             <div class="flex flex-col pt-5 bg-white shadow-xl rounded-md gap-y-5">
                 <div class="flex px-5">
-                    <div
-                        class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
+                    <div class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none"
+                        @click="refreshPage">
                         Export
                     </div>
                     <div class="ml-auto flex gap-x-5">
@@ -127,7 +129,7 @@
                         </a>
                     </div>
                 </div>
-                <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+                <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" />
             </div>
         </div>
     </div>
@@ -138,19 +140,73 @@ definePageMeta({
     layout: 'admin'
 })
 
-const {data: goodCates} = await useFetch('http://localhost:3000/api/goods-category')
+const category = ref({
+    categoryName: '',
+    picture: '',
+    goodCateId: '',
+    description: '',
+    active: '0'
+})
 
-console.log(goodCates.value.result)
+const goBack = () => {
+    useRouter().back()
+}
+
+const refreshPage = () => {
+    refresh()
+}
+
+const { data: goodCates, refresh } = await useFetch('http://localhost:3000/api/goods-category')
 
 const headers = ref([
-    { text: "Tên danh mục", value: "name" },
-    { text: "sản phẩm", value: "prodQty", sortable: true },
-    { text: "Đơn đã bán", value: "prodSoldQty", sortable: true }
+    { text: "Tên danh mục", value: "categoryName" },
+    { text: "Ảnh đại diện", value: "picture" },
+    { text: "Ngành hàng", value: "goodCateId" },
+    { text: "Trạng thái", value: "active" },
+
 ])
 
-const items = ([
-    { id: 1, "name": "Tin Tức", "prodQty": 77, "prodSoldQty": 20, isSelected: false },
-])
+const addCategory = async () => {
+    await useFetch('http://localhost:3000/api/category', {
+        method: 'POST',
+        body: category,
+        onResponse({ response }) {
+            if (response.ok) {
+                refresh();
+                alert('Add success')
+            } else {
+                alert('Add failed')
+            }
+        }
+    })
+}
+
+const items = ref([]);
+
+const { data: initCates } = await useFetch('http://localhost:3000/api/category');
+
+items.value = initCates.value.result.map(cate => {
+    return {
+        id: cate.id,
+        categoryName: cate.categoryName,
+        picture: cate.picture,
+        active: cate.active,
+        goodCateId: cate.goodCategory.goodName
+    }
+})
+
+watch(initCates, () => {
+    console.log('change');
+    items.value = initCates.value.result.map(cate => {
+        return {
+            id: cate.id,
+            categoryName: cate.categoryName,
+            picture: cate.picture,
+            active: cate.active,
+            goodCateId: cate.goodCategory.goodName
+        }
+    })
+})
 
 const changeSelect = (itemId, selectedValue) => {
     items.value = items.map(item =>

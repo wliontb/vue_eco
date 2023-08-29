@@ -14,7 +14,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">100</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ items.length }}</div>
                             <div class="text-sm text-gray-500">Ngành hàng</div>
                         </div>
                     </div>
@@ -89,9 +89,9 @@
                         <input type="text"
                             class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm text-gray-500"
                             placeholder="Tìm ngành hàng...">
-                        <a href="#add" class="bg-green-500 text-white px-3 py-1.5 rounded" @click="focusAddBox">
+                        <NuxtLink to="/admin/goodcategory/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
                             Thêm ngành hàng
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
                 <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" @removeItem="removeItem"/>
@@ -106,15 +106,6 @@ definePageMeta({
     layout: 'admin'
 })
 
-const focusAdd = ref(false);
-
-const focusAddBox = () => {
-    focusAdd.value = true;
-    setTimeout(() => {
-        focusAdd.value = false;
-    }, 2500)
-}
-
 const { data: suppliers } = useFetch('http://localhost:3000/api/suppliers');
 
 const goodCate = ref({
@@ -125,7 +116,7 @@ const goodCate = ref({
 })
 
 const headers = ref([
-    { text: "Tên danh mục", value: "name" },
+    { text: "Tên ngành hàng", value: "name" },
     { text: "Mô tả", value: "description", sortable: true },
     { text: "Ảnh đại diện", value: "picture", sortable: true },
     { text: "Nhà cung cấp", value: "supplier", sortable: true }

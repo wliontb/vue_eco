@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center py-2 bg-gray-200 px-5">
         <div class="w-3/5 flex">
             <IconHome class="text-gray-500" />
-            <div class="ml-2 text-gray-500 font-semibold">
+            <div class="ml-2 text-gray-500 font-semibold uppercase text-sm items-center flex">
                 Dashboards
             </div>
         </div>
@@ -11,6 +11,5 @@
         </div>
     </div>
     <AdminLeftBarHeadMenuItem />
-
     
 </template>

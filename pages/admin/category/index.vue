@@ -124,9 +124,9 @@
                         <input type="text"
                             class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm text-gray-500"
                             placeholder="Tìm danh mục...">
-                        <a href="#add" class="bg-green-500 text-white px-3 py-1.5 rounded">
+                        <NuxtLink to="/admin/category/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
                             Thêm danh mục
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
                 <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" />

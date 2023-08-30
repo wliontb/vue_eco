@@ -1,28 +1,51 @@
 <template>
-    <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl w-1/2">
-        <div class="text-lg font-semibold text-gray-500">Thêm Chuyên Mục Mới</div>
-        <div class="flex flex-col gap-y-3">
-            <div class="flex items-center">
-                <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tên chuyên mục</div>
-                <input type="text" name="" id="" placeholder="nhập tên" class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:capitalize focus:border-red-500">
+    <AdminItemBreadCrumb />
+    <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl w-full mx-auto">
+        <div class="text-sm font-bold text-gray-700 uppercase">Thêm Danh Mục Mới</div>
+        <div class="flex gap-x-5">
+            <div class="flex flex-col gap-y-3 w-1/2">
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Ngành hàng</div>
+                    <select placeholder="nhập đường dẫn..."
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500">
+                        <option value="" selected disabled>Chọn ngành hàng</option>
+                        <option :value="gc.id" v-for="gc in goodCates.result">{{ gc.goodName }}</option>
+                    </select>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Tên</div>
+                    <input type="text" placeholder="nhập tên danh mục..."
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin placeholder:uppercase placeholder:text-xs focus:border-red-500">
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Mô tả</div>
+                    <textarea placeholder="nhập mô tả..."
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin focus:border-red-500 placeholder:uppercase placeholder:text-xs text-gray-500"></textarea>
+                </div>
             </div>
-            <div class="flex items-center">
-                <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mô tả</div>
-                <textarea name="" id="" placeholder="nhập mô tả" class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:capitalize focus:border-red-500"></textarea>
-            </div>
-            <div class="flex items-center">
-                <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Từ khóa SEO</div>
-                <input type="text" name="" id="" placeholder="nhập keyword seo" class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:capitalize focus:border-red-500">
-            </div>
-            <div class="flex items-center">
-                <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Đường dẫn tùy chọn</div>
-                <input type="text" name="" id="" placeholder="nhập đường dẫn" class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:capitalize focus:border-red-500">
+
+            <div class="flex flex-col gap-y-3 w-1/2">
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Ảnh đại diện</div>
+                    <input type="text" placeholder="nhập link ảnh..."
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none placeholder:uppercase bg-admin placeholder:text-xs text-gray-500 focus:border-red-500">
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Trạng thái</div>
+                    <select placeholder="nhập đường dẫn..."
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500">
+                        <option value="" selected disabled>Chọn trạng thái</option>
+                        <option value="0">Disactive</option>
+                        <option value="1">Active</option>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="flex flex-col gap-y-3">
-            <div class="w-2/3 flex ml-auto gap-x-3">
-                <button class="text-white bg-green-500 rounded py-1 px-4">Thêm</button>
-                <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
+
+        <div class="flex flex-col gap-y-3 mx-auto">
+            <div class="w-1/3 flex gap-x-3">
+                <button class="text-white bg-green-500 rounded py-1 px-4" @click="addCate">Thêm</button>
+                <button class="text-gray-400 border border-gray-400 rounded py-1 px-4" @click="resetCate">Reset</button>
             </div>
         </div>
     </div>
@@ -31,4 +54,29 @@
 definePageMeta({
     layout: 'admin'
 })
+
+const category = ref({
+
+})
+
+const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category');
+
+const resetCate = () => {
+
+}
+
+const addCate = async () => {
+    await useFetch('http://localhost:3000/api/category', {
+        method: 'POST',
+        body: category,
+        onResponse: ({ response }) => {
+            if (response.ok) {
+                alert('Add success')
+            } else {
+                alert('Add failed')
+            }
+        }
+    })
+}
+
 </script>

@@ -63,6 +63,7 @@
                         <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Nhà cung cấp</div>
                         <select v-model="goodCate.supplier_id"
                             class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
+                            <option value="" selected disabled>Chọn nhà cung cấp</option>
                             <option v-for="supp in suppliers.result" :value="supp.id">
                                 {{ supp.name }}
                             </option>
@@ -71,7 +72,7 @@
                 </div>
                 <div class="flex flex-col gap-y-3">
                     <div class="w-2/3 flex ml-auto gap-x-3">
-                        <button class="text-white bg-green-500 rounded py-1 px-4" @click="addGoodCate()">Thêm</button>
+                        <button class="text-white bg-green-500 rounded py-1 px-4" @click="addGoodCate">Thêm</button>
                         <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
                     </div>
                 </div>
@@ -112,7 +113,7 @@ const goodCate = ref({
     good_name: '',
     description: '',
     picture: '',
-    supplier_id: 1
+    supplier_id: ''
 })
 
 const headers = ref([
@@ -140,7 +141,7 @@ items.value = goodsCategories.value.result.map(gc => ({
 const addGoodCate = async () => {
     await useFetch('http://localhost:3000/api/goods-category', {
         method: 'POST',
-        body: goodCate.value,
+        body: goodCate,
         async onResponse({
             request, response, options
         }) {

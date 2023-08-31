@@ -75,6 +75,7 @@
                         <select
                             class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin text-sm"
                             v-model="category.active">
+                            <option value="" selected disabled>Chọn trạng thái</option>
                             <option value="1">Active</option>
                             <option value="0">Disactive</option>
                         </select>
@@ -145,7 +146,7 @@ const category = ref({
     picture: '',
     goodCateId: '',
     description: '',
-    active: '0'
+    active: ''
 })
 
 const goBack = () => {

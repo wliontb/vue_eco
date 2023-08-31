@@ -82,20 +82,10 @@ cate.value = {
     active: initCate.value.result.active ? 1 : 0
 }
 
-const transformToStrings = (inputObj) => {
-  const transformed = {};
-
-  for (const [key, value] of Object.entries(inputObj)) {
-    transformed[key] = String(value); // Chuyển đổi giá trị số thành chuỗi
-  }
-
-  return transformed;
-};
-
 const editCategory = async () => {
     await useFetch('http://localhost:3000/api/category/' + idCate, {
         method: 'PATCH',
-        body: transformToStrings(cate.value),
+        body: this.transformToStrings(cate.value),
         onResponse({ response }) {
             if (response.ok) {
                 alert('Edit success')

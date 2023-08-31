@@ -66,8 +66,8 @@
                     </div>
                     <select v-model="supplier.active"
                         class="w-2/3 px-2 py-2 border-gray-300 rounded-lg text-gray-500 border outline-none  bg-admin">
-                        <option value="true">Hoạt động</option>
-                        <option value="false">Tắt hoạt động</option>
+                        <option value="1">Hoạt động</option>
+                        <option value="0">Tắt hoạt động</option>
                     </select>
                 </div>
             </div>
@@ -91,18 +91,18 @@ const goBack = () => {
 }
 
 const supplier = ref({
-    "name": "An An",
-    "description": "Test mô tả",
-    "phone": "0987196812",
-    "email": "anan@gmail.com",
-    "address": "Hưng Yên",
-    "city": "Hưng Yên",
-    "country": "Việt Nam",
-    "postal_code": "0123456",
-    "url": "https://anan.vn",
-    "logo": "imgur.com",
+    "name": "",
+    "description": "",
+    "phone": "",
+    "email": "",
+    "address": "",
+    "city": "",
+    "country": "",
+    "postal_code": "",
+    "url": "",
+    "logo": "",
     "ranking": 1,
-    "active": false
+    "active": 0
 })
 
 const createSupplier = async () => {

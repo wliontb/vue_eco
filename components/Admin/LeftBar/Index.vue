@@ -74,7 +74,7 @@ let dataRoute = ref([
                 name: 'Tổng quan'
             },
             {
-                url: '/admin/product/add',
+                url: '/admin/customer/add',
                 name: 'Thêm mới'
             }
         ]
@@ -87,7 +87,7 @@ let dataRoute = ref([
                 name: 'Tổng quan'
             },
             {
-                url: '/admin/product/add',
+                url: '/admin/shipper/add',
                 name: 'Thêm mới'
             }
         ]
@@ -100,7 +100,7 @@ let dataRoute = ref([
                 name: 'Tổng quan'
             },
             {
-                url: '/admin/product/add',
+                url: '/admin/payment/add',
                 name: 'Thêm mới'
             }
         ]

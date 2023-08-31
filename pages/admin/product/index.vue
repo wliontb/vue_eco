@@ -1,7 +1,7 @@
 <template>
-    <div class="flex gap-x-5">
-        <div class="flex flex-col w-2/5 gap-y-5">
-            <div class="flex bg-white shadow-xl rounded-lg flex-col p-5 gap-y-3 h-fit">
+    <div class="flex gap-y-5 flex-col">
+        <div class="flex gap-x-5">
+            <div class="w-1/2 flex bg-white shadow-xl rounded-lg flex-col p-5 gap-y-3 h-fit">
                 <div class="flex">
                     <div class="flex flex-col">
                         <div class="font-bold text-lg capitalize text-gray-700">Tổng quan</div>
@@ -12,12 +12,12 @@
                 </div>
                 <div class="flex">
                     <div class="flex items-center gap-x-4 w-1/3">
-                        <div class="p-1.5 text-white-500 bg-red-500 rounded">
+                        <div class="p-1.5 text-white-500 bg-sky-500 rounded">
                             <IconUser />
                         </div>
                         <div>
                             <div class="font-semibold text-lg text-gray-500">100</div>
-                            <div class="text-sm text-gray-400">Danh mục</div>
+                            <div class="text-sm text-gray-400">Sản phẩm</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-4 w-1/3">
@@ -26,159 +26,21 @@
                         </div>
                         <div>
                             <div class="font-semibold text-lg text-gray-500">200</div>
-                            <div class="text-sm text-gray-400">Sản phẩm</div>
+                            <div class="text-sm text-gray-400">Đã bán</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-4 w-1/3">
-                        <div class="p-1.5 text-white-500 bg-sky-500 rounded">
+                        <div class="p-1.5 text-white-500 bg-red-500 rounded">
                             <IconUser />
                         </div>
                         <div>
                             <div class="font-semibold text-lg text-gray-500">3000</div>
-                            <div class="text-sm text-gray-400">Đã bán</div>
+                            <div class="text-sm text-gray-400">Tồn kho</div>
                         </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl">
-                <div class="text-lg font-bold text-gray-700" id="add">Thêm mặt hàng mới :</div>
-                <div class="flex flex-col gap-y-3">
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ngành hàng
-                        </div>
-                        <select
-                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  text-sm ">
-                            <option value="1">Sách</option>
-                            <option value="1">Truyện</option>
-                            <option value="1">Vở</option>
-                        </select>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Nhà cung cấp
-                        </div>
-                        <select
-                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  text-sm ">
-                            <option value="1">Sách</option>
-                            <option value="1">Truyện</option>
-                            <option value="1">Vở</option>
-                        </select>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tên</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Mô tả</div>
-                        <textarea name="" id="" placeholder="nhập mô tả"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Số lượng mỗi đơn vị</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">đơn vị đo kích thước</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">đơn vị giá</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">MSRP</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Kích thước có sẵn</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Màu sắc có sẵn</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Giảm giá</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Đơn vị cân nặng</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Đơn vị cân nặng</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Unit in stocks</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Unit on order</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Reorder level</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tình trạng giảm giá</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">vị trí hiện tại</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">vị trí xếp hạng</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ghi chú</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ảnh đại diện</div>
-                        <input type="text" name="" id="" placeholder="https://"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tình trạng sản phẩm
-                        </div>
-                        <select
-                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
-                            <option value="1">Active</option>
-                            <option value="1">Disactive</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-y-3">
-                    <div class="w-2/3 flex ml-auto gap-x-3">
-                        <button class="text-white bg-green-600 rounded py-1 px-4">Thêm</button>
-                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="w-3/5 flex flex-col gap-y-5">
-            <div class="flex p-5 flex-col bg-white shadow-xl rounded-lg gap-y-3">
+            <div class="w-1/2 flex p-5 flex-col bg-white shadow-xl rounded-lg gap-y-3">
                 <div class="font-bold text-lg text-gray-700">Tìm kiếm theo</div>
                 <div class="flex gap-x-3">
                     <div class="w-1/3">
@@ -190,13 +52,13 @@
                             <option value="">Điện thoại</option>
                         </select>
                     </div>
-                    <div class="w-1/3 hidden">
+                    <div class="w-1/3">
                         <select name="" id=""
                             class="border border-gray-500 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-400">
                             <option value="">Select Plan</option>
                         </select>
                     </div>
-                    <div class="w-1/3 hidden">
+                    <div class="w-1/3">
                         <select name="" id=""
                             class="border border-gray-500 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-400">
                             <option value="">Select Status</option>
@@ -204,23 +66,23 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col pt-5 bg-white shadow-xl rounded-md gap-y-5">
-                <div class="flex px-5">
-                    <div
-                        class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
-                        Export
-                    </div>
-                    <div class="ml-auto flex gap-x-5">
-                        <input type="text"
-                            class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
-                            placeholder="Tìm danh mục...">
-                        <a href="#add" class="bg-green-500 text-white px-3 py-1.5 rounded">
-                            Thêm danh mục
-                        </a>
-                    </div>
+        </div>
+        <div class="flex flex-col pt-5 bg-white shadow-xl rounded-md gap-y-5">
+            <div class="flex px-5">
+                <div
+                    class="border border-gray-500 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
+                    Export
                 </div>
-                <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+                <div class="ml-auto flex gap-x-5">
+                    <input type="text"
+                        class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
+                        placeholder="Tìm danh mục...">
+                    <NuxtLink to="/admin/product/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
+                        Thêm danh mục
+                    </NuxtLink>
+                </div>
             </div>
+            <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
         </div>
     </div>
 </template>

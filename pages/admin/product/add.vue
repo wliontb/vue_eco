@@ -2,7 +2,7 @@
     <AdminItemBreadCrumb />
     <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl w-full mx-auto">
         <div class="flex flex-col gap-y-5">
-                <div class="text-lg font-bold text-gray-700" id="add">Thêm mặt hàng mới :</div>
+                <div class="text-lg font-bold text-gray-700" id="add">Thêm sản phẩm mới :</div>
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
                         <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Ngành hàng

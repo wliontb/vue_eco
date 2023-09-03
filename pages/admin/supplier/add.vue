@@ -110,11 +110,11 @@ const createSupplier = async () => {
     await useCustomFetch('api/suppliers', {
         method: 'POST',
         body: supplier.value,
-        async onResponse({
+        onResponse({
             request, response, options
         }) {
             if(response.ok) {
-                console.log(response._data.result)
+                alert('Tạo supplier thành công')
             } else {
                 alert('Tạo supplier không thành công')
             }

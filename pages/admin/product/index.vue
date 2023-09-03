@@ -78,7 +78,7 @@
                         class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
                         placeholder="Tìm danh mục...">
                     <NuxtLink to="/admin/product/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
-                        Thêm danh mục
+                        Thêm sản phẩm
                     </NuxtLink>
                 </div>
             </div>

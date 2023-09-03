@@ -141,6 +141,8 @@ definePageMeta({
     layout: 'admin'
 })
 
+const {$objstring} = useNuxtApp()
+
 const category = ref({
     categoryName: '',
     picture: '',
@@ -170,7 +172,7 @@ const headers = ref([
 const addCategory = async () => {
     await useFetch('http://localhost:3000/api/category', {
         method: 'POST',
-        body: category,
+        body: $objstring(category.value),
         onResponse({ response }) {
             if (response.ok) {
                 refresh();

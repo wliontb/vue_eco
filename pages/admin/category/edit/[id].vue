@@ -55,6 +55,8 @@ definePageMeta({
     layout: 'admin'
 })
 
+const {$objstring} = useNuxtApp()
+
 const route = useRoute();
 const idCate = route.params.id;
 
@@ -85,7 +87,7 @@ cate.value = {
 const editCategory = async () => {
     await useFetch('http://localhost:3000/api/category/' + idCate, {
         method: 'PATCH',
-        body: this.transformToStrings(cate.value),
+        body: $objstring(cate.value),
         onResponse({ response }) {
             if (response.ok) {
                 alert('Edit success')

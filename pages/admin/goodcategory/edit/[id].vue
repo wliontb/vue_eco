@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-y-5 p-5 rounded-lg shadow-xl bg-white">
         <div class="text-sm text-gray-700 font-bold uppercase" id="add">Sửa nhà cung cấp</div>
         <div class="flex gap-x-10">
-            <div class="w-1/2 flex flex-col gap-y-3">
+            <div class="w-full flex flex-col gap-y-3">
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Tên</div>
                     <input type="text" v-model="goodCate.good_name" placeholder="nhập tên nhà cung cấp"
@@ -14,21 +14,10 @@
                     <textarea v-model="goodCate.description" placeholder="nhập mô tả cho nhà cung cấp"
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg text-gray-500 border outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
                 </div>
-            </div>
-            <div class="w-1/2 flex flex-col gap-y-3">
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Ảnh mô tả</div>
                     <input type="text" v-model="goodCate.picture" placeholder="nhập số điện thoại"
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg text-gray-500 border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                </div>
-                <div class="flex items-center">
-                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Nhà cung cấp</div>
-                    <select v-model="goodCate.supplier_id"
-                        class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
-                        <option v-for="supp in suppliers.result" :value="supp.id">
-                            {{ supp.name }}
-                        </option>
-                    </select>
                 </div>
             </div>
         </div>
@@ -56,10 +45,7 @@ const goodCate = ref({
     "good_name": "",
     "description": "",
     "picture": "",
-    "supplier_id": ""
 })
-
-const { data: suppliers } = await useFetch('http://localhost:3000/api/suppliers');
 
 const { data: initGoodCate } = await useFetch('http://localhost:3000/api/goods-category/' + idGoodCate, {
     method: 'GET'
@@ -68,13 +54,12 @@ const { data: initGoodCate } = await useFetch('http://localhost:3000/api/goods-c
 goodCate.value = {
     ...initGoodCate.value.result,
     good_name: initGoodCate.value.result.goodName,
-    supplier_id: initGoodCate.value.result.supplier.id
 }
 
 const editSupplier = async () => {
     await useFetch('http://localhost:3000/api/goods-category/' + idGoodCate, {
         method: 'PATCH',
-        body: supplier.value,
+        body: goodCate,
         onResponse({ response }) {
             console.log(response)
             if (response.ok) {

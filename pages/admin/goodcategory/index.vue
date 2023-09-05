@@ -59,16 +59,6 @@
                         <input type="text" v-model="goodCate.picture" placeholder="url ảnh đại diện"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Nhà cung cấp</div>
-                        <select v-model="goodCate.supplier_id"
-                            class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
-                            <option value="" selected disabled>Chọn nhà cung cấp</option>
-                            <option v-for="supp in suppliers.result" :value="supp.id">
-                                {{ supp.name }}
-                            </option>
-                        </select>
-                    </div>
                 </div>
                 <div class="flex flex-col gap-y-3">
                     <div class="w-2/3 flex ml-auto gap-x-3">
@@ -113,14 +103,12 @@ const goodCate = ref({
     good_name: '',
     description: '',
     picture: '',
-    supplier_id: ''
 })
 
 const headers = ref([
     { text: "Tên ngành hàng", value: "name" },
     { text: "Mô tả", value: "description", sortable: true },
     { text: "Ảnh đại diện", value: "picture", sortable: true },
-    { text: "Nhà cung cấp", value: "supplier", sortable: true }
 
 ])
 
@@ -134,7 +122,6 @@ items.value = goodsCategories.value.result.map(gc => ({
   name: gc.goodName,
   description: gc.description,
   picture: gc.picture,
-  supplier: gc.supplier?.name,
   id: gc.id
 }));
 
@@ -151,7 +138,6 @@ const addGoodCate = async () => {
                     name: result.goodName,
                     description: result.description,
                     picture: result.picture,
-                    supplier: result.supplier.name,
                     id: result.id
                 })
             } else {

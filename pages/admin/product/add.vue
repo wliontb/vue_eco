@@ -54,56 +54,7 @@
                         <input type="text" name="" id="" placeholder="nhập tên danh mục"
                             class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Kích thước có sẵn</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Màu sắc có sẵn</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Giảm giá</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Đơn vị cân nặng</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Đơn vị cân nặng</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Unit in stocks</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Unit on order</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Reorder level</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">Tình trạng giảm giá</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">vị trí hiện tại</div>
-                        <input type="text" name="" id="" placeholder="nhập tên danh mục"
-                            class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
-                    </div>
+                    
                     <div class="flex items-center">
                         <div class="w-1/3 text-gray-400 font-semibold after:content-[':'] after:ml-1.5">vị trí xếp hạng</div>
                         <input type="text" name="" id="" placeholder="nhập tên danh mục"

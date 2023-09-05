@@ -21,16 +21,6 @@
                     <input type="text" v-model="goodCate.picture" placeholder="nhập link ảnh"
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg text-gray-500 border outline-none  bg-admin placeholder:lowercase focus:border-red-500 placeholder:text-sm">
                 </div>
-                <div class="flex items-center">
-                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Nhà cung cấp</div>
-                    <select v-model="goodCate.supplier_id"
-                        class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500 text-sm">
-                        <option value="" disabled selected>Chọn nhà cung cấp</option>
-                        <option v-for="supp in suppliers.result" :value="supp.id">
-                            {{ supp.name }}
-                        </option>
-                    </select>
-                </div>
             </div>
         </div>
         <div class="flex md:justify-center">
@@ -53,8 +43,7 @@ const goBack = () => {
 const goodCate = ref({
     "good_name": "",
     "description": "",
-    "picture": "",
-    "supplier_id": ""
+    "picture": ""
 })
 
 const { data: suppliers } = await useFetch('http://localhost:3000/api/suppliers');

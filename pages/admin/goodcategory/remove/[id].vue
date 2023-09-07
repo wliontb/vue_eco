@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-y-5 p-5 rounded-lg shadow-xl bg-white w-2/3 mx-auto">
-        <div class="text-sm text-gray-700 font-bold" id="add">Bạn có thật sự muốn xóa ngành hàng: {{ goodCate.good_name }} ?</div>
+        <div class="text-sm text-gray-700 font-bold" id="add">Bạn có thật sự muốn xóa ngành hàng: {{ goodCate.result.goodName }} ?</div>
         <div class="flex md:justify-center">
             <div class="flex gap-x-3">
                 <button class="text-white bg-orange-600 rounded py-1 px-4" @click="removeGoodCate">Xóa</button>
@@ -21,32 +21,15 @@ const goBack = () => {
     useRouter().back();
 }
 
-const goodCate = ref({
-    "good_name": "",
-    "description": "",
-    "picture": "",
-    "supplier_id": ""
-})
-
-const { data: suppliers } = await useFetch('http://localhost:3000/api/suppliers');
-
-const { data: initGoodCate } = await useFetch('http://localhost:3000/api/goods-category/' + idGoodCate, {
-    method: 'GET'
-})
-
-goodCate.value = {
-    ...initGoodCate.value.result,
-    good_name: initGoodCate.value.result.goodName,
-    supplier_id: initGoodCate.value.result.supplier.id
-}
+const {data: goodCate} = await useFetch('http://localhost:3000/api/goods-category/'+ idGoodCate);
 
 const removeGoodCate = async () => {
     await useFetch('http://localhost:3000/api/goods-category/' + idGoodCate, {
         method: 'DELETE',
         onResponse({ response }) {
-            console.log(response)
             if (response.ok) {
-                alert('Remove success')
+                alert('Remove success');
+                useRouter().back();
             } else {
                 alert('Remove failed')
             }

@@ -112,7 +112,8 @@ const addProduct = async () => {
         body: $objstring(product.value),
         onResponse: ({ response }) => {
             if (response.ok) {
-                alert('Add success')
+                alert('Add success');
+                useRouter().back()
             } else {
                 alert('Add failed')
             }

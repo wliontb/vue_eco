@@ -82,7 +82,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+            <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" />
         </div>
     </div>
 </template>
@@ -97,14 +97,24 @@ const {data: products} = await useFetch('http://localhost:3000/api/products')
 console.log(products.value.result)
 
 const headers = ref([
-    { text: "Tên danh mục", value: "name" },
-    { text: "sản phẩm", value: "prodQty", sortable: true },
-    { text: "Đơn đã bán", value: "prodSoldQty", sortable: true }
+    { text: "Tên sản phẩm", value: "name" },
+    { text: "Ảnh", value: "picture", sortable: true },
+    { text: "Giá", value: "price", sortable: true },
+    { text: "Danh mục", value: "category_id", sortable: true },
+    { text: "Nhà cung cấp", value: "supplier_id", sortable: true },
 ])
 
-const items = ([
-    { id: 1, "name": "Tin Tức", "prodQty": 77, "prodSoldQty": 20, isSelected: false },
-])
+const items = ref([])
+items.value = products.value.result.map((item) => {
+    return {
+        id: item.id,
+        name: item.name,
+        picture: item.picture,
+        price: item.price,
+        category_id: item.category.id,
+        supplier_id: item.supplier.id
+    }
+})
 
 const changeSelect = (itemId, selectedValue) => {
     items.value = items.map(item =>

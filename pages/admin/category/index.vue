@@ -176,7 +176,14 @@ const addCategory = async () => {
         onResponse({ response }) {
             if (response.ok) {
                 refresh();
-                alert('Add success')
+                const result = response._data.result;
+                items.value.unshift({
+                    categoryName: result.categoryName,
+                    picture: result.picture,
+                    goodCateId: result.goodCategory.id,
+                    description: result.description,
+                    active: result.active
+                })
             } else {
                 alert('Add failed')
             }
@@ -194,7 +201,7 @@ items.value = initCates.value.result.map(cate => {
         categoryName: cate.categoryName,
         picture: cate.picture,
         active: cate.active,
-        goodCateId: cate.goodCategory.goodName
+        goodCateId: cate.goodCategory.id
     }
 })
 

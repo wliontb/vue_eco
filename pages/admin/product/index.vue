@@ -92,6 +92,10 @@ definePageMeta({
     layout: 'admin'
 })
 
+const {data: products} = await useFetch('http://localhost:3000/api/products')
+
+console.log(products.value.result)
+
 const headers = ref([
     { text: "Tên danh mục", value: "name" },
     { text: "sản phẩm", value: "prodQty", sortable: true },

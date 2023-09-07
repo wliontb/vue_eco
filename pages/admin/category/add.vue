@@ -6,7 +6,7 @@
             <div class="flex flex-col gap-y-3 w-1/2">
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Ngành hàng</div>
-                    <select placeholder="nhập đường dẫn..."
+                    <select v-model="category.goodCateId" placeholder="nhập đường dẫn..."
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500">
                         <option value="" selected disabled>Chọn ngành hàng</option>
                         <option :value="gc.id" v-for="gc in goodCates.result">{{ gc.goodName }}</option>
@@ -14,12 +14,12 @@
                 </div>
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Tên</div>
-                    <input type="text" placeholder="nhập tên danh mục..."
+                    <input type="text" placeholder="nhập tên danh mục..." v-model="category.categoryName"
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin placeholder:uppercase placeholder:text-xs focus:border-red-500">
                 </div>
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Mô tả</div>
-                    <textarea placeholder="nhập mô tả..."
+                    <textarea v-model="category.description" placeholder="nhập mô tả..."
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin focus:border-red-500 placeholder:uppercase placeholder:text-xs text-gray-500"></textarea>
                 </div>
             </div>
@@ -27,13 +27,13 @@
             <div class="flex flex-col gap-y-3 w-1/2">
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Ảnh đại diện</div>
-                    <input type="text" placeholder="nhập link ảnh..."
+                    <input type="text" v-model="category.picture" placeholder="nhập link ảnh..."
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none placeholder:uppercase bg-admin placeholder:text-xs text-gray-500 focus:border-red-500">
                 </div>
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Trạng thái</div>
                     <select placeholder="nhập đường dẫn..."
-                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500">
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500" v-model="category.active">
                         <option value="" selected disabled>Chọn trạng thái</option>
                         <option value="0">Disactive</option>
                         <option value="1">Active</option>
@@ -55,8 +55,14 @@ definePageMeta({
     layout: 'admin'
 })
 
-const category = ref({
+const {$objstring} = useNuxtApp()
 
+const category = ref({
+    categoryName: '',
+    description: '',
+    picture: 'imgur',
+    active: '',
+    goodCateId: ''
 })
 
 const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category');
@@ -68,7 +74,7 @@ const resetCate = () => {
 const addCate = async () => {
     await useFetch('http://localhost:3000/api/category', {
         method: 'POST',
-        body: category,
+        body: $objstring(category.value),
         onResponse: ({ response }) => {
             if (response.ok) {
                 alert('Add success')

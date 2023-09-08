@@ -173,6 +173,7 @@ const addCategory = async () => {
     await useFetch('http://localhost:3000/api/category', {
         method: 'POST',
         body: $objstring(category.value),
+        watch: false,
         onResponse({ response }) {
             if (response.ok) {
                 refresh();

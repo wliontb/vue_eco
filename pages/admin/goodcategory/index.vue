@@ -42,28 +42,28 @@
             <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl" :class="{
                 'border border-red-500' : focusAdd
             }">
-                <div class="text-md font-bold text-gray-700" id="add">Thêm ngành hàng mới :</div>
+                <div class="font-bold text-gray-700 text-sm uppercase" id="add">Thêm ngành hàng mới :</div>
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Tên ngành hàng</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-xs uppercase">Tên ngành hàng</div>
                         <input type="text" placeholder="nhập tên" v-model="goodCate.good_name"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Mô tả</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-xs uppercase">Mô tả</div>
                         <textarea v-model="goodCate.description" placeholder="nhập mô tả"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500"></textarea>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Ảnh đại diện</div>
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-xs uppercase">Ảnh đại diện</div>
                         <input type="text" v-model="goodCate.picture" placeholder="url ảnh đại diện"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-3">
                     <div class="w-2/3 flex ml-auto gap-x-3">
-                        <button class="text-white bg-green-500 rounded py-1 px-4" @click="addGoodCate">Thêm</button>
-                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
+                        <button class="text-white bg-green-500 rounded py-1 px-4 uppercase text-sm" @click="addGoodCate">Thêm</button>
+                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4 uppercase text-sm">Reset</button>
                     </div>
                 </div>
             </div>
@@ -73,14 +73,14 @@
             <div class="flex flex-col pt-5 shadow-xl bg-white rounded-md gap-y-5">
                 <div class="flex px-5">
                     <div
-                        class="border border-gray-300 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none">
+                        class="border border-gray-300 px-3 py-1.5 text-gray-500 rounded text-sm hover:text-white hover:bg-sky-700 hover:border-none uppercase">
                         Export
                     </div>
                     <div class="ml-auto flex gap-x-5">
                         <input type="text"
-                            class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm text-gray-500"
+                            class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none text-gray-500 placeholder:uppercase placeholder:text-xs"
                             placeholder="Tìm ngành hàng...">
-                        <NuxtLink to="/admin/goodcategory/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
+                        <NuxtLink to="/admin/goodcategory/add" class="bg-green-500 text-white px-3 py-1.5 rounded uppercase text-xs">
                             Thêm ngành hàng
                         </NuxtLink>
                     </div>
@@ -97,12 +97,10 @@ definePageMeta({
     layout: 'admin'
 })
 
-const { data: suppliers } = useFetch('http://localhost:3000/api/suppliers');
-
 const goodCate = ref({
     good_name: '',
     description: '',
-    picture: '',
+    picture: 'imgur',
 })
 
 const headers = ref([
@@ -128,7 +126,8 @@ items.value = goodsCategories.value.result.map(gc => ({
 const addGoodCate = async () => {
     await useFetch('http://localhost:3000/api/goods-category', {
         method: 'POST',
-        body: goodCate,
+        body: goodCate.value,
+        watch: false,
         async onResponse({
             request, response, options
         }) {

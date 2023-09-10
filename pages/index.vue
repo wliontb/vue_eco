@@ -112,9 +112,7 @@
   </div>
 
   <!-- category -->
-  <AppCategoryIndex />
-
-  <AppCategoryIndex />
+  <AppCategoryIndex v-for="goodCate in goodCates.result" :goodCate="goodCate"/>
 
   <div class="flex bg-white mt-4 p-4">
     <img src="/img/banner/uni1.jpg" alt="" class="w-1/12"><img src="/img/banner/uni2.jpg" alt="" class="w-1/12"><img
@@ -125,5 +123,8 @@
   </div>
 </template>
 <script setup>
+
+const {data: goodCates} = await useFetch('http://localhost:3000/api/goods-category');
+
 </script>
   

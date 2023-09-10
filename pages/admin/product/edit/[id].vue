@@ -2,7 +2,7 @@
     <Adminproduct.value.resultBreadCrumb />
     <div class="flex flex-col gap-y-5 p-5 rounded-lg bg-white shadow-xl w-full mx-auto">
         <div class="flex flex-col gap-y-5">
-            <div class="text-sm font-bold text-gray-700 uppercase">Thêm sản phẩm mới :</div>
+            <div class="text-sm font-bold text-gray-700 uppercase">Sửa sản phẩm:</div>
             <div class="flex flex-col gap-y-3">
                 <div class="flex product.value.results-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Nhà cung cấp

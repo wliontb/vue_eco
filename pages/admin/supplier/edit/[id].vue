@@ -94,6 +94,7 @@ const goBack = () => {
     useRouter().back();
 }
 
+const {$objstring} = useNuxtApp();
 
 
 let supplier = ref({
@@ -123,7 +124,7 @@ supplier.value = {
 const editSupplier = async () => {
     await useFetch('http://localhost:3000/api/suppliers/'+idSupplier, {
         method: 'PATCH',
-        body: supplier.value,
+        body: $objstring(supplier.value),
         onResponse({response}) {
             console.log(response)
             if(response.ok) {

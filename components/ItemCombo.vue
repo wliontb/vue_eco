@@ -1,7 +1,7 @@
 <template>
     <div class="border p-2">
         <div class="relative">
-            <img src="/img/product/balo0.jpg" alt="">
+            <img src="/img/product/op.jpg" alt="">
         </div>
         <div>
             {{ product?.title || 'Ba Lô Clever Hippo Fancy Fairy Forest - BF1224' }}

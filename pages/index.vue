@@ -6,7 +6,7 @@
     <div class="w-3/12 p-2 pl-0"><img src="/img/banner/subbanner1.png" class="w-full" alt=""></div>
     <div class="w-3/12 p-2"><img src="/img/banner/subbanner2.png" class="w-full" alt=""></div>
     <div class="w-3/12 p-2"><img src="/img/banner/subbanner3.png" class="w-full" alt=""></div>
-    <div class="w-3/12 p-2 pr-0"><img src="/img/banner/subbanner4.png" class="w-full" alt=""></div>
+    <div class="w-3/12 p-2 pr-0"><img src="/img/banner/subbanner2.png" class="w-full" alt=""></div>
   </div>
   <!-- category -->
   <AppCategoryHeader />

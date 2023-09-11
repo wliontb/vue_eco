@@ -16,7 +16,7 @@
                     <IconNight />
                     <IconBell />
                     <div class="rounded-full bg-rose-500 p-1.5 text-white">
-                        adu
+                        admin
                     </div>
                 </div>
             </div>

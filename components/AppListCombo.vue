@@ -1,8 +1,8 @@
 <template>
     <div class="bg-white flex p-4 border-b border-gray-300 mt-4">
-        <div class="text-orange-500 p-2 border border-orange-500 rounded-lg font-semibold">Ba Lô Bán Chạy</div>
-        <div class="p-2 ml-4">Ba Lô - Giá Tốt</div>
-        <div class="p-2 ml-4">Ba Lô Mới</div>
+        <div class="text-orange-500 p-2 border border-orange-500 rounded-lg font-semibold">Sách Bán Chạy</div>
+        <div class="p-2 ml-4">Light Novel</div>
+        <div class="p-2 ml-4">Sách Mới</div>
     </div>
     <div class="flex bg-white flex-col">
         <ul class="flex flex-wrap">
@@ -21,31 +21,23 @@ import { ref } from 'vue';
 const products = ref([
     {
         id: 1,
-        title: 'cuoi dau bai'
+        title: 'Nhà giả kim'
     },
     {
         id: 2,
-        title: 'muahaha'
+        title: 'Tony Buổi Tối'
     },
     {
         id: 3,
-        title: 'muahaha'
+        title: 'Tony Buổi Tối'
     },
     {
         id: 4,
-        title: 'muahaha'
+        title: 'Tony Buổi Tối'
     },
     {
         id: 5,
-        title: 'muahaha'
+        title: 'Tony Buổi Tối'
     },
-    {
-        id: 6,
-        title: 'muahaha'
-    },
-    {
-        id: 7,
-        title: 'muahaha'
-    }
 ]);
 </script>

@@ -5,23 +5,23 @@
         </div>
         <div class="flex flex-col w-6/12">
             <div class="flex justify-between">
-                <img class="w-2/6" src="/img/product/op.jpg" alt="">
+                <img class="w-2/6" :src="item.picture" alt="">
                 <div class="flex flex-col w-4/6 justify-between">
-                    <div class="text-md">
-                        [Anime Comics] One Piece Stampede - Tập 2
-                    </div>
+                    <NuxtLink :to="'detail_product/'+item.id" class="font-semibold">
+                        {{ item.name }}
+                    </NuxtLink>
                     <div class="flex items-center">
-                        <div class="font-bold mr-2">73.150 đ</div>
-                        <div class="line-through text-gray-500 text-sm">77.000 đ</div>
+                        <div class="font-bold mr-2">{{ item.price.toLocaleString() }} đ</div>
+                        <div class="line-through text-gray-500 text-sm">{{ (item.price + item.price * item.discount).toLocaleString() }} đ</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="w-2/12">
-            <ItemInputNumberRange class="max-w-full" :count="2" />
+            <ItemInputNumberRange class="max-w-full" :count="item.qty" />
         </div>
         <div class="w-2/12 font-bold text-red-700 ml-2">
-            73.150 đ
+            {{ (item.qty * item.price).toLocaleString() }} đ
         </div>
         <IconTrash class="w-1/12" />
     </div>
@@ -31,6 +31,12 @@ const props = defineProps({
     isChecked: {
         type: Boolean,
         default: false
+    },
+    item: {
+        type: Object,
+        required: true
     }
 })
+
+console.log(props.item)
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col bg-white mt-4">
         <div class="font-bold p-4">
-            {{goodCate.goodName}}
+            {{ goodCate.goodName }}
         </div>
         <div class="flex border-gray-300 border-b pb-4">
             <ul class="flex py-2 px-8 items-center">
@@ -12,8 +12,8 @@
         <div class="flex">
             <img src="/img/banner/bannerdochoi.jpg" class="pl-8 py-4" alt="">
             <div class="flex flex-col">
-                <div class="flex flex-wrap p-4">
-                    <ItemCategoryIndex v-for="category in categories.result" />
+                <div class="flex flex-wrap">
+                    <ItemCategoryIndex v-for="category in categories.result" v-bind:category="category" />
                 </div>
                 <div
                     class="text-center text-red-500 border-2 border-red-500 px-4 py-2 rounded-lg w-1/6 mx-auto my-4 font-semibold">
@@ -35,13 +35,11 @@ const props = defineProps({
 
 const goodCate = ref(props.goodCate);
 
-const {data: categories} = await useFetch('http://localhost:3000/api/category/', {
+const { data: categories } = await useFetch('http://localhost:3000/api/category/', {
     method: 'GET',
     query: {
         goodCateId: goodCate.value.id
     }
 });
-
-console.log(categories.value)
 
 </script>

@@ -8,7 +8,7 @@
         <div class="bg-yellow-100 p-4">
             <div class="flex justify-between">
                 <div>Họ và tên:</div>
-                <div class="font-semibold">Tuấn Anh Nguyễn</div>
+                <div class="font-semibold">Đức Anh Nguyễn</div>
             </div>
             <div class="flex justify-between">
                 <div>Cấp độ thành viên:</div>

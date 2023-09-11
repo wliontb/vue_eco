@@ -1,30 +1,48 @@
 <template>
-    <div class="w-1/2 p-2">
-        <div class="border flex items-center">
-            <img src="/img/product/boardgame.jpg" class="w-1/2" alt="">
+    <div class="p-3 flex flex-wrap">
+        <div class="border flex items-center w-1/2 p-2" v-for="product in products.result">
+            <NuxtLink :to="'/detail_product/' + product.id" class="w-1/2"><img src="/img/product/boardgame.jpg" alt=""></NuxtLink>
             <div class="flex flex-col">
-                <div class="">
-                    Bộ Bài Trò Chơi giải trí Our Moments - Teenage 02
-                </div>
+                <NuxtLink class="text-lg font-semibold" :to="'/detail_product/' + product.id">{{ product.name }}</NuxtLink>
                 <div class="flex items-center">
                     <div class="font-semibold text-red-600 mr-2">
-                        53.700 đ
+                        {{ product.price.toLocaleString() }} đ
                     </div>
-                    <div class="bg-red-600 text-white p-1 rounded-lg">-25%</div>
+                    <div class="bg-red-600 text-white py-0.5 px-1 rounded-md">-{{product.discount}}%</div>
                 </div>
                 <div class="line-through">
-                    72.000 đ
+                    {{(product.price * product.discount + product.price).toLocaleString()}} đ
                 </div>
                 <div class="flex">
-                    <IconStar class="w-5" />
-                    <IconStar class="w-5"/>
-                    <IconStar class="w-5"/>
-                    <IconStar class="w-5"/>
-                    <IconStar class="w-5"/>
-                    <div class="text-orange-500">(0)</div>
+                    <IconStar class="w-5 text-orange-500" />
+                    <IconStar class="w-5 text-orange-500" />
+                    <IconStar class="w-5 text-orange-500" />
+                    <IconStar class="w-5 text-orange-500" />
+                    <IconStar class="w-5 text-orange-500" />
+                    
+                    <!-- <div class="text-orange-500">(0)</div> -->
                 </div>
             </div>
         </div>
-
+        
+        
     </div>
 </template>
+<script setup>
+const props = defineProps({
+    category: {
+        type: Object,
+        required: true
+    }
+})
+
+const category = ref(props.category);
+
+const {data: products} = await useFetch('http://localhost:3000/api/products',{
+    method: 'GET',
+    query: {
+        categoryId: category.value.id
+    }
+});
+
+</script>

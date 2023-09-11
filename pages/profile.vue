@@ -27,10 +27,10 @@ import { ref, reactive } from 'vue';
 const isDashboardTab = ref(true);
 const isProfileTab = ref(false);
 
-definePageMeta({
-    middleware: [
-        'auth'
-    ]
-})
+// definePageMeta({
+//     middleware: [
+//         'auth'
+//     ]
+// })
 
 </script>

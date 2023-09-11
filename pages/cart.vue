@@ -1,19 +1,19 @@
 <template>
-    <div class="cart">
-    <h2>Giỏ hàng</h2>
-    <div v-if="cartItems.length === 0">
-      <p>Giỏ hàng trống.</p>
-    </div>
-    <div v-else>
-      <ul>
-        <li v-for="(item, index) in cartItems" :key="index">
-          {{ item.name }} - {{ item.price }} đ
-          <button @click="removeItem(index)">Xóa</button>
-        </li>
-      </ul>
-      <button @click="clearCart">Xóa toàn bộ giỏ hàng</button>
-    </div>
-  </div>
+    <!-- <div class="cart">
+        <h2>Giỏ hàng</h2>
+        <div v-if="cartItems.length === 0">
+            <p>Giỏ hàng trống.</p>
+        </div>
+        <div v-else>
+            <ul>
+                <li v-for="(item, index) in cartItems" :key="index">
+                    {{ item.name }} - {{ item.price }} đ
+                    <button @click="removeItem(index)">Xóa</button>
+                </li>
+            </ul>
+            <button @click="clearCart">Xóa toàn bộ giỏ hàng</button>
+        </div>
+    </div> -->
 
     <div class="flex flex-col my-3">
         <div class="flex my-2 items-center">
@@ -34,14 +34,13 @@
                     <div class="w-2/12">Thành tiền</div>
                     <div class="w-1/12">Tác vụ</div>
                 </div>
-                <ItemOnCart :isChecked="checkedAll" />
-                <ItemOnCart :isChecked="checkedAll" />
+                <ItemOnCart :isChecked="checkedAll" :item="item" v-for="item in cartStore.cart" />
             </div>
             <div class="w-1/3 flex flex-col ml-3">
                 <div class="bg-white py-3 px-3 flex flex-col rounded-lg">
                     <div class="flex justify-between">
                         <div class="flex text-blue-500">
-                            <IconCoupon /> 
+                            <IconCoupon />
                             KHUYẾN MÃI
                         </div>
                         <div class="flex text-blue-500 text-sm">
@@ -55,7 +54,9 @@
                     <div class="border-b border-dashed border-gray-300 my-2"></div>
                     <div class="flex bg-blue-200 text-blue-600 text-sm mt-1 py-2 px-3 justify-between rounded-lg">
                         <div>3 khuyến mãi đủ điều kiện</div>
-                        <div><IconRight /></div>
+                        <div>
+                            <IconRight />
+                        </div>
                     </div>
                     <div class="text-gray-400 text-sm mt-1 flex">
                         Có thể áp dụng nhiều mã
@@ -87,9 +88,10 @@
     </div>
 </template>
 <script setup>
-    import {ref} from 'vue';
+import { ref } from 'vue';
+import { useCartStore } from '~/store/cart';
 
-    const checkedAll = ref(false);
+const checkedAll = ref(false);
+const cartStore = useCartStore();
 
-    const { cartItems, addItem, removeItem, clearCart } = useCart();
 </script>

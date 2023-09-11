@@ -1,14 +1,15 @@
 <template>
   <div class="flex bg-sky-600">
     <div class="w-5/6 mx-auto bg-sky-300">
-      <img src="/img/banner/banner-0.jpg" alt="" class="w-full">
+      <!-- <img src="/img/banner/banner-0.jpg" alt="" class="w-full"> -->
     </div>
   </div>
   <div class="bg-white">
     <div class="flex w-5/6 mx-auto justify-between py-2">
       <div class="flex justify-between items-center">
         <NuxtLink to="/">
-          <img src="/img/fahasa_logo.png" alt="">
+          <!-- <img src="/img/fahasa_logo.png" alt=""> -->
+          <div class="font-bold text-xl text-rose-700">HUYHANG</div>
         </NuxtLink>
         <div class="relative mt-auto ml-4">
           <div class="group" @mouseenter="isHovering = true" @mouseleave="isHovering = false">
@@ -45,7 +46,7 @@
               <IconCart class="font-semibold" />
               <div>Giỏ hàng</div>
             </div>
-            <MiniCart :isHoveringCart="isHoveringCart" />
+            <MiniCart :isHoveringCart="isHoveringCart" class="z-50" />
           </div>
 
           
@@ -97,14 +98,14 @@
           <div class="relative flex flex-col">
             <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType" v-model="payloadLogin.password">
             <div class="absolute right-1.5 top-1.5">
-              <button class="text-blue-500 cursor-pointer text-sm" @click="passType == 'text' ? passType = 'password' : passType = 'text'">ẩn hiện</button>
+              <button title="ẩn/hiện mật khẩu" class="cursor-pointer text-sm text-orange-600 hover:text-red-700" @click="passType == 'text' ? passType = 'password' : passType = 'text'"><IconEye/></button>
             </div>
           </div>
         </div>
         <div class="text-right mb-4">
           <NuxtLink to="#" class="text-red-700 text-sm">Quên mật khẩu?</NuxtLink>
         </div>
-        <button @click="submitLogin()" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
+        <button @click="submitLogin" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 hover:bg-red-700 hover:text-white">Đăng
           nhập</button>
         <button
           class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
@@ -143,13 +144,13 @@
             <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" v-model="payload.re_password">
           </div>
         </div>
-        <button @click="submitRegister()" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3">Đăng
+        <button @click="submitRegister" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 hover:bg-red-700 hover:text-white">Đăng
           ký</button>
         <button
           class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
           qua</button>
         <div class="text-center text-xs mt-4">
-          Bằng việc đăng ký, bạn đã đồng ý với Fahasa.com về <br>
+          Bằng việc đăng ký, bạn đã đồng ý với HuyHang.com về <br>
           <NuxtLink to="#" class="text-blue-500">Điều khoản dịch vụ</NuxtLink> & <NuxtLink to="#" class="text-blue-500">
             Chính sách bảo mật</NuxtLink>
         </div>
@@ -176,6 +177,8 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useUserStore } from '~/store/user';
+
+const {$objstring} = useNuxtApp();
 
 const isHovering = ref(false);
 const isHoveringAccount = ref(true);
@@ -226,10 +229,10 @@ const closeLoginBox = () => {
 };
 
 const submitLogin = async () => {
-  console.log('adu');
-  await useCustomFetch('/api/user',{
-    method: 'GET',
-    query: payloadLogin.value,
+  await useFetch('http://localhost:3000/api/customers/login',{
+    method: 'POST',
+    body: $objstring(payloadLogin.value),
+    watch: false,
     async onResponse({request, response, options}) {
       if(response.ok){
         const {id, full_name, phone} = response._data.result;
@@ -246,11 +249,11 @@ const submitLogin = async () => {
 }
 
 const submitRegister = async () => {
-  await useCustomFetch('/user',{
+  await useFetch('http://localhost:3000/api/customers/register',{
     method: 'POST',
-    body: payload.value,
+    body: $objstring(payload.value),
+    watch: false,
     async onResponse({request, response, options}) {
-      console.log(response);
       if(response.ok){
         const {id, phone} = response._data.result;
 

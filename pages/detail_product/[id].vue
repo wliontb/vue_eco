@@ -1,68 +1,71 @@
 <template>
     <!-- breadcrumb -->
     <div class="flex my-2">
-        SÁCH TIẾNG VIỆT > MANGA - COMIC > MANGA > SERIES MANGA
+        SÁCH TIẾNG VIỆT > {{ product.result.category.categoryName }} > {{ product.result.name }}
     </div>
     <div class="bg-white rounded-lg">
         <div class="flex p-4">
             <div class="flex flex-col w-1/12">
                 <img src="/img/product/op.jpg" alt="">
-                <img src="/img/product/op.jpg" alt="">
+                <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" alt="">
             </div>
             <div class="flex w-3/12">
                 <img src="/img/product/op.jpg" alt="">
             </div>
             <div class="flex w-7/12 flex-col">
-                <p class="font-semibold text-2xl">[Anime Comics] One Piece Stampede - Tập 2</p>
+                <p class="font-semibold text-2xl">{{ product.result.name }}</p>
                 <div class="flex flex-wrap mt-4">
                     <div class="w-1/2 flex mb-1">
                         <div class="w-1/2 font-semibold">Nhà cung cấp:</div>
-                        <div class="w-1/2">NXB Kim Đồng</div>
+                        <div class="w-1/2">{{ product.result.supplier.name }}</div>
                     </div>
                     <div class="w-1/2 flex mb-1">
                         <div class="w-1/2 font-semibold">
-                            Tác giả:
+                            Tình trạng:
                         </div>
                         <div class="w-1/2">
-                            Eiichiro Oda
+                            {{ product.result.productAvailable ? 'có sẵn' : 'không có sẵn' }}
                         </div>
                     </div>
                     <div class="w-1/2 flex mb-1">
-                        <div class="w-1/2 font-semibold">Nhà xuất bản:</div>
-                        <div class="w-1/2">Kim Đồng</div>
+                        <div class="w-1/2 font-semibold">Danh mục:</div>
+                        <div class="w-1/2">
+                            {{ product.result.category.categoryName }}
+                        </div>
                     </div>
                     <div class="w-1/2 flex mb-1">
-                        <div class="w-1/2 font-semibold">Hình thức bìa:</div>
-                        <div class="w-1/2">Bìa Mềm</div>
+                        <div class="w-1/2 font-semibold">Số sản phẩm con:</div>
+                        <div class="w-1/2">{{ prodChilds.result.length }}</div>
                     </div>
                     <div class="w-1/2 flex mb-1">
-                        <div class="w-1/2 font-semibold">Bộ:</div>
-                        <div class="w-1/2">Anime Comics: One Piece Film Strong World</div>
+                        <div class="w-1/2 font-semibold">Mô tả:</div>
+                        <div class="w-1/2">{{ product.result.description }}</div>
                     </div>
                 </div>
                 <div class="flex mt-2">
-                    <IconStar class="w-4" />
-                    <IconStar class="w-4" />
-                    <IconStar class="w-4" />
-                    <IconStar class="w-4" />
-                    <IconStar class="w-4" />
+                    <IconStar class="w-4 text-orange-500" />
+                    <IconStar class="w-4 text-orange-500" />
+                    <IconStar class="w-4 text-orange-500" />
+                    <IconStar class="w-4 text-orange-500" />
+                    <IconStar class="w-4 text-orange-500" />
+
                     <div class="text-orange-500 ml-2">(0 đánh giá)</div>
                 </div>
                 <!-- flash sale -->
                 <div class="flex items-center mt-4">
                     <div class="text-red-700 font-bold text-3xl mr-3">
-                        69.300 đ
+                        {{ product.result.price.toLocaleString() }} đ
                     </div>
                     <div class="line-through mr-3">
-                        77.000 đ
+                        {{(product.result.price * product.result.discount + product.result.price).toLocaleString()}} đ
                     </div>
-                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md">-10%</div>
+                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md">-{{product.result.discount}}%</div>
                 </div>
                 <div class="flex flex-col mt-4">
-                    <div>Thời gian giao hàng: 24-48h</div>
-                    <div>
+                    <div class="font-semibold">Thời gian giao hàng: 24-48h</div>
+                    <div class="font-semibold flex gap-x-2">
                         Chính sách đổi trả: Đổi trả sản phẩm trong 30 ngày
-                        <a href="#" class="text-blue-500 cursor-pointer font-semibold">Xem thêm</a>
+                        <a href="#" class="text-blue-500 cursor-pointer font-semibold text-sm uppercase"><IconQuestion /></a>
                     </div>
                 </div>
                 <div class="flex items-center mt-4">
@@ -73,10 +76,10 @@
             </div>
         </div>
         <div class="p-6 flex">
-            <div
+            <button @click="() => {addToCart(product.result)}"
                 class="py-2 px-6 border-2 border-red-700 rounded-lg flex items-center text-red-700 font-bold cursor-pointer">
-                <IconCart class="mr-2" /> Thêm vào giỏ hàng
-            </div>
+                <IconCart class="mr-2" /> {{ alreadyInCart(product.result) ? 'Đã trong giỏ' : 'Thêm vào giỏ hàng' }}
+            </button>
             <div class="bg-red-700 py-2 px-10 text-white rounded-lg font-bold cursor-pointer ml-2">
                 Mua ngay
             </div>
@@ -183,59 +186,54 @@
     <div class="mt-4 bg-white p-4 rounded-lg">
         <div class="font-bold text-md mb-4">Thông tin sản phẩm</div>
         <div class="flex flex-col">
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Mã hàng</div>
-                <div>8935244891294</div>
+            <div class="flex" v-for="prop in prodProps.result">
+                <div class="font-semibold mr-2 w-1/2">{{ prop.nameProp }}</div>
+                <div>{{ prop.valueProp }}</div>
             </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Độ Tuổi</div>
-                <div>15+</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Tên Nhà Cung Cấp</div>
-                <div>Nhà Xuất Bản Kim Đồng</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Tác giả</div>
-                <div>Eiichiro Oda, Jump Comics</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Người Dịch</div>
-                <div>Itsuwa Rei</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">NXB</div>
-                <div>Kim Đồng</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Năm XB</div>
-                <div>2023</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Ngôn Ngữ</div>
-                <div>Tiếng Việt</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Trọng lượng (gr)</div>
-                <div>280</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Kích Thước Bao Bì</div>
-                <div>17.6 x 11.3 x 1.2 cm</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Số trang</div>
-                <div>256</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Hình thức</div>
-                <div>Bìa Mềm</div>
-            </div>
-            <div class="flex">
-                <div class="font-semibold mr-2 w-1/2">Sản phẩm bán chạy nhất</div>
-                <div>Top 100 sản phẩm Series Manga bán chạy của tháng</div>
-            </div>
+            
         </div>
 
     </div>
 </template>
+<script setup>
+import { useCartStore } from '~/store/cart';
+
+const idProduct = useRoute().params.id;
+
+const {data: product} = await useFetch('http://localhost:3000/api/products/'+idProduct);
+
+const {data: prodProps} = await useFetch('http://localhost:3000/api/productprops', {
+    method: 'GET',
+    query: {
+        product: idProduct
+    }
+})
+
+const {data: prodChilds} = await useFetch('http://localhost:3000/api/productdetails', {
+    method: 'GET',
+    query: {
+        product: idProduct
+    }
+})
+
+//cart
+const cartStore = useCartStore();
+
+const alreadyInCart = (item) => {
+    const x = cartStore.cart?.find(el => el.id === item.id)
+    if(x?.id) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const addToCart = (item) => {
+    if(!alreadyInCart(item)) {
+        cartStore.addToCart(item);
+    } else {
+        alert(`${item.name} already in cart`)
+    }
+}
+
+</script>

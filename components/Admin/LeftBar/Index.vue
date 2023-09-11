@@ -1,8 +1,13 @@
 <template>
-    <div class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom border-r border-gray-150">
+    <div
+        class="min-h-screen flex-col space-y-4 font-bold h-screen overflow-y-auto sticky top-0 scroll-custom border-r border-gray-150">
         <div class="flex items-center sticky top-0 pt-5 pb-2 px-5 z-50 bg-admin">
             <div class="w-3/5">
-                <NuxtLink to="/admin"><img src="/img/logo.png" /></NuxtLink>
+                <NuxtLink to="/">
+                    <!-- <img src="/img/logo.png" /> -->
+                    <div class="text-rose-700 font-bold text-xl text-center">HUYHANG</div>
+
+                </NuxtLink>
             </div>
             <IconCollapseLeft class="w-1/5 max-h-6 ml-auto" />
         </div>

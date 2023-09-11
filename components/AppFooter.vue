@@ -13,19 +13,18 @@
     </div>
     <div class="bg-white w-5/6 mx-auto flex pt-5 px-4">
         <div class="w-2/6 mr-2">
-            <img src="img/logo.png" alt="">
+            <!-- <img src="img/logo.png" alt=""> -->
+            <div class="text-rose-700 font-bold text-xl">HUYHANG</div>
             <div class="mt-4">
                 <p>
-                    Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP HCM
-                    Công Ty Cổ Phần Phát Hành Sách TP HCM - FAHASA60 - 62 Lê Lợi,
-                    Quận 1, TP. HCM, Việt Nam
+                    Công Ty Cổ Phần Phát Hành Sách Và Văn Phòng Phẩm - Huy Hằng
                 </p>
                 <p class="mt-2">
-                    Fahasa.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp
-                    tại văn phòng cũng như tất cả Hệ Thống Fahasa trên toàn quốc.
+                    Huy Hằng.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp
+                    tại văn phòng cũng như tất cả Hệ Thống Huy Hằng trên toàn quốc.
                 </p>
             </div>
-            <img src="img/logocongthuong.png" class="w-2/6 mt-4" alt="">
+            <img src="/img/logocongthuong.png" class="w-2/6 mt-4" alt="">
             <div class="flex mt-4">
                 <IconSymBol />
                 <IconSymBol />
@@ -81,11 +80,11 @@
                 <div class="flex">
                     <div class="w-2/6 flex">
                         <IconMapPin class="mr-2" />
-                        60-62 Lê Lợi, Q.1, TP.HCM
+                        Thái Nguyên
                     </div>
                     <div class="w-2/6 flex">
                         <IconLetter class="mr-2" />
-                        cskh@fahasa.com.vn
+                        cskh@huyhang.com.vn
                     </div>
                     <div class="w-2/6 flex">
                         <IconPhone class="mr-2" />
@@ -96,36 +95,36 @@
             <div class="mt-4">
                 <div class="flex">
                     <div class="w-1/5">
-                        <img src="img/transport/vnpost1.png" class="max-h-28" alt="">
+                        <img src="/img/transport/vnpost1.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/ahamove_logo3.png" class="max-h-28" alt="">
+                        <img src="/img/transport/ahamove_logo3.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/icon_giao_hang_nhanh1.png" class="max-h-28" alt="">
+                        <img src="/img/transport/icon_giao_hang_nhanh1.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/icon_snappy1.png" class="max-h-28" alt="">
+                        <img src="/img/transport/icon_snappy1.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/transport/Logo_ninjavan.png" class="max-h-28" alt="">
+                        <img src="/img/transport/Logo_ninjavan.png" class="max-h-28" alt="">
                     </div>
                 </div>
                 <div class="flex">
                     <div class="w-1/5">
-                        <img src="img/payment/vnpay_logo.png" class="max-h-28" alt="">
+                        <img src="/img/payment/vnpay_logo.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/ZaloPay-logo-130x83.png" class="max-h-28" alt="">
+                        <img src="/img/payment/ZaloPay-logo-130x83.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/momopay.png" class="max-h-28" alt="">
+                        <img src="/img/payment/momopay.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/shopeepay_logo.png" class="max-h-28" alt="">
+                        <img src="/img/payment/shopeepay_logo.png" class="max-h-28" alt="">
                     </div>
                     <div class="w-1/5">
-                        <img src="img/payment/logo_moca_120.jpg" class="max-h-28" alt="">
+                        <img src="/img/payment/logo_moca_120.jpg" class="max-h-28" alt="">
                     </div>
                 </div>
             </div>
@@ -133,7 +132,7 @@
 
     </div>
     <div class="text-gray-300 w-5/6 mx-auto bg-white text-center pt-5">
-        Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 20/12/2005,
+        Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Việt Nam cấp ngày 20/12/2005,
         đăng ký thay đổi lần thứ 10, ngày 20/05/2022.
     </div>
 </template>

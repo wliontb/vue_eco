@@ -11,42 +11,7 @@
   <!-- category -->
   <AppCategoryHeader />
   <!-- flash sale -->
-  <div class="flex mt-4 flex-col">
-    <div class="flex bg-orange-300 w-full p-2">
-      <div class="flex items-center mr-2 font-bold">
-        <img src="/img/icon/flashsale.png" class="mr-2" alt=""> FLASH SALE
-      </div>
-      <div class="flex items-center border-l-2 border-gray-600 pl-2">
-        Kết Thúc Trong
-        <div class="flex items-center ml-2">
-          <div class="bg-white rounded-md p-1">00</div> :
-          <div class="bg-white rounded-md p-1">38</div> :
-          <div class="bg-white rounded-md p-1">05</div>
-        </div>
-      </div>
-    </div>
-    <div class="bg-white">
-      <ul class="flex">
-        <li class="w-1/5 p-5">
-          <ItemFlashSale />
-        </li>
-        <li class="w-1/5 p-5">
-          <ItemFlashSale />
-        </li>
-        <li class="w-1/5 p-5">
-          <ItemFlashSale />
-        </li>
-        <li class="w-1/5 p-5">
-          <ItemFlashSale />
-        </li>
-        <li class="w-1/5 p-5">
-          <ItemFlashSale />
-        </li>
-      </ul>
-      <div class="px-5 py-2 bg-orange-500 w-2/12 rounded-full text-center mx-auto mt-4 text-white font-semibold mb-5">Xem
-        Thêm</div>
-    </div>
-  </div>
+  <AppFlashsale />
   <!-- danh muc -->
   <div class="flex mt-4 flex-col bg-white p-4">
     <div class="flex border-b border-gray-200 pb-4">
@@ -99,17 +64,7 @@
     </div>
   </div>
   <!-- trending -->
-  <div class="flex flex-col mt-4">
-    <div class="flex bg-pink-200 p-4">
-      <img src="/img/icon/ico_dealhot.png" alt="">
-      <div class="font-bold ml-2">
-        XU HƯỚNG MUA SẮM
-      </div>
-    </div>
-    <AppListTrending />
-    <!-- combo -->
-    <AppListCombo />
-  </div>
+  <AppTrending />
 
   <!-- category -->
   <AppCategoryIndex v-for="goodCate in goodCates.result" :goodCate="goodCate" />

@@ -111,7 +111,6 @@ const supplier = ref({
 })
 
 const createSupplier = async () => {
-    console.log('create');
     await useFetch('http://localhost:3000/api/suppliers', {
         method: 'POST',
         body: $objstring(supplier.value),

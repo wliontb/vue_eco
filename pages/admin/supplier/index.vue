@@ -137,7 +137,6 @@ const removeItem = async (itemId) => {
     await useFetch(`http://localhost:3000/api/suppliers/${itemId}`, {
         method: 'DELETE',
         onResponse(response) {
-            console.log(response)
             if(response.ok) {
                 items.value = items.value.filter(item => item.id !== itemId)
                 alert('Remove item successfully')

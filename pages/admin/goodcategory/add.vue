@@ -53,7 +53,6 @@ const addGoodCate = async () => {
         method: 'POST',
         body: goodCate.value,
         onResponse({ response }) {
-            console.log(response)
             if (response.ok) {
                 alert('Add success');
                 useRouter().back()

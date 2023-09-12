@@ -61,7 +61,6 @@ const editSupplier = async () => {
         method: 'PATCH',
         body: goodCate,
         onResponse({ response }) {
-            console.log(response)
             if (response.ok) {
                 alert('Edit success')
             } else {

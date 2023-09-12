@@ -133,7 +133,6 @@ const updateUser = async () => {
     }
 
     if (checkCondSendReq) {
-        console.log(formData);
         await useFetch('http://localhost:3000/api/customers/'+user.value.id, {
             method: 'PATCH',
             body: $objstring(formData),

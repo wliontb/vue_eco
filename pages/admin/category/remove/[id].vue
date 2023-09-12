@@ -29,7 +29,6 @@ const removeCategory = async () => {
     await useFetch('http://localhost:3000/api/category/' + idCategory, {
         method: 'DELETE',
         onResponse({ response }) {
-            console.log(response)
             if (response.ok) {
                 alert('Remove success');
                 goBack()

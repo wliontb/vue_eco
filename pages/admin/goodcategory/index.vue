@@ -159,7 +159,6 @@ const removeItem = async (itemId) => {
 
     if(result.value.status == 'success') {
         items.value = items.value.filter(item => item.id !== itemId);
-        console.log(result)
     }
 }
 

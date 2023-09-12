@@ -57,15 +57,17 @@
                         {{ product.result.price.toLocaleString() }} đ
                     </div>
                     <div class="line-through mr-3">
-                        {{(product.result.price * product.result.discount + product.result.price).toLocaleString()}} đ
+                        {{ (product.result.price * product.result.discount + product.result.price).toLocaleString() }} đ
                     </div>
-                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md">-{{product.result.discount}}%</div>
+                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md">-{{ product.result.discount }}%</div>
                 </div>
                 <div class="flex flex-col mt-4">
                     <div class="font-semibold">Thời gian giao hàng: 24-48h</div>
                     <div class="font-semibold flex gap-x-2">
                         Chính sách đổi trả: Đổi trả sản phẩm trong 30 ngày
-                        <a href="#" class="text-blue-500 cursor-pointer font-semibold text-sm uppercase"><IconQuestion /></a>
+                        <a href="#" class="text-blue-500 cursor-pointer font-semibold text-sm uppercase">
+                            <IconQuestion />
+                        </a>
                     </div>
                 </div>
                 <div class="flex items-center mt-4">
@@ -76,7 +78,7 @@
             </div>
         </div>
         <div class="p-6 flex">
-            <button @click="() => {addToCart(product.result)}"
+            <button @click="() => { addToCart(product.result) }"
                 class="py-2 px-6 border-2 border-red-700 rounded-lg flex items-center text-red-700 font-bold cursor-pointer">
                 <IconCart class="mr-2" /> {{ alreadyInCart(product.result) ? 'Đã trong giỏ' : 'Thêm vào giỏ hàng' }}
             </button>
@@ -137,48 +139,20 @@
             <div class="font-semibold text-red-700 mb-2">Series Bộ</div>
             <div class="border-b-2 border-red-700 w-1/12"></div>
         </div>
-        <div class="flex">
-            <ul class="flex flex-row">
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-            </ul>
+        <div class="flex flex-wrap">
+            <div class="w-1/5" v-for="prodTrend in prodTrends.result" :id="prodTrend.id">
+                <ItemTrending :product="prodTrend" :isFlashSale="false" />
+            </div>
         </div>
     </div>
 
     <!-- buy with product -->
     <div class="mt-4 bg-white rounded-lg flex flex-col p-4">
         <div class="font-bold mb-4">SẢN PHẨM CÙNG MUA</div>
-        <div class="flex">
-            <ul class="flex flex-row">
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
-                </li>
-                <li>
-                    <ItemTrending :isFlashSale="false" />
-                </li>
-            </ul>
+        <div class="flex flex-wrap">
+            <div class="w-1/5" v-for="prodTrend in prodTrends.result" :id="prodTrend.id">
+                <ItemTrending :product="prodTrend" :isFlashSale="true" />
+            </div>
         </div>
     </div>
 
@@ -190,7 +164,7 @@
                 <div class="font-semibold mr-2 w-1/2">{{ prop.nameProp }}</div>
                 <div>{{ prop.valueProp }}</div>
             </div>
-            
+
         </div>
 
     </div>
@@ -200,19 +174,27 @@ import { useCartStore } from '~/store/cart';
 
 const idProduct = useRoute().params.id;
 
-const {data: product} = await useFetch('http://localhost:3000/api/products/'+idProduct);
+const { data: product } = await useFetch('http://localhost:3000/api/products/' + idProduct);
 
-const {data: prodProps} = await useFetch('http://localhost:3000/api/productprops', {
+const { data: prodProps } = await useFetch('http://localhost:3000/api/productprops', {
     method: 'GET',
     query: {
         product: idProduct
     }
 })
 
-const {data: prodChilds} = await useFetch('http://localhost:3000/api/productdetails', {
+const { data: prodChilds } = await useFetch('http://localhost:3000/api/productdetails', {
     method: 'GET',
     query: {
         product: idProduct
+    }
+})
+
+const { data: prodTrends } = await useFetch('http://localhost:3000/api/products', {
+    method: 'GET',
+    query: {
+        trending: true,
+        limit: 5
     }
 })
 
@@ -221,7 +203,7 @@ const cartStore = useCartStore();
 
 const alreadyInCart = (item) => {
     const x = cartStore.cart?.find(el => el.id === item.id)
-    if(x?.id) {
+    if (x?.id) {
         return true;
     } else {
         return false;
@@ -229,7 +211,7 @@ const alreadyInCart = (item) => {
 }
 
 const addToCart = (item) => {
-    if(!alreadyInCart(item)) {
+    if (!alreadyInCart(item)) {
         cartStore.addToCart(item);
     } else {
         alert(`${item.name} already in cart`)

@@ -207,7 +207,6 @@ items.value = initCates.value.result.map(cate => {
 })
 
 watch(initCates, () => {
-    console.log('change');
     items.value = initCates.value.result.map(cate => {
         return {
             id: cate.id,

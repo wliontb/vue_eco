@@ -29,7 +29,6 @@ const removeSupplier = async () => {
     await useFetch('http://localhost:3000/api/suppliers/'+idSupplier, {
         method: 'DELETE',
         onResponse({response}) {
-            console.log(response)
             if(response.ok) {
                 alert('Remove success')
             } else {

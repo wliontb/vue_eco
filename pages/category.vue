@@ -79,19 +79,19 @@
             </div>
             <div class="flex flex-wrap">
                 <div class="w-1/4 flex flex-col">
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
+                    <ItemTrending :isFlashSale="false"  />
                 </div>
                 <div class="w-1/4 flex flex-col">
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
+                    <ItemTrending :isFlashSale="false"  />
                 </div>
                 <div class="w-1/4 flex flex-col">
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
+                    <ItemTrending :isFlashSale="false"  />
                 </div>
                 <div class="w-1/4 flex flex-col">
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
+                    <ItemTrending :isFlashSale="false"  />
                 </div>
                 <div class="w-1/4 flex flex-col">
-                    <ItemTrending :isFlashSale="false" :isOOS="false" />
+                    <ItemTrending :isFlashSale="false"  />
                 </div>
             </div>
         </div>

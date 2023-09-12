@@ -59,6 +59,26 @@
                         </select>
                     </div>
                     <div class="flex items-center">
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Flash sale
+                        </div>
+                        <select v-model="product.is_flashsale"
+                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                            <option value="">Chọn trạng thái</option>
+                            <option value="true">Sale</option>
+                            <option value="false">Not flashsale</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Trending
+                        </div>
+                        <select v-model="product.is_trending"
+                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                            <option value="">Chọn trạng thái</option>
+                            <option value="true">Trend</option>
+                            <option value="false">Not trend</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center">
                         <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Trạng thái
                         </div>
                         <select v-model="product.product_available"
@@ -81,7 +101,7 @@
 </template>
 <script setup>
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin', middleware: 'auth-admin',
 })
 
 const {$objstring} = useNuxtApp();
@@ -95,7 +115,9 @@ const product = ref({
     discount_available: '',
     product_available: '',
     supplier_id: '',
-    category_id: ''
+    category_id: '',
+    is_flashsale: '',
+    is_trending: ''
 })
 
 const { data: categories } = await useFetch('http://localhost:3000/api/category');

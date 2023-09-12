@@ -58,6 +58,26 @@
                         <option value="false">không giảm</option>
                     </select>
                 </div>
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Flash sale
+                    </div>
+                    <select v-model="product.result.isFlashsale"
+                        class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                        <option value="">Chọn trạng thái</option>
+                        <option value="true">Sale</option>
+                        <option value="false">Not flashsale</option>
+                    </select>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Trending
+                    </div>
+                    <select v-model="product.result.isTrending"
+                        class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                        <option value="">Chọn trạng thái</option>
+                        <option value="true">Trend</option>
+                        <option value="false">Not trend</option>
+                    </select>
+                </div>
                 <div class="flex product.value.results-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Trạng thái
                     </div>
@@ -80,7 +100,7 @@
 </template>
 <script setup>
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin', middleware: 'auth-admin',
 })
 const idProd = useRoute().params.id;
 const { $objstring } = useNuxtApp();
@@ -102,7 +122,9 @@ const editProduct = async () => {
         discount_available: product.value.result.discountAvailable ? 1 : 0,
         product_available: product.value.result.productAvailable ? 1 : 0,
         supplier_id: product.value.result.supplierId,
-        category_id: product.value.result.categoryId
+        category_id: product.value.result.categoryId,
+        is_trending: product.value.result.isTrending,
+        is_flashsale: product.value.result.isFlashsale
     });
 
     await useFetch('http://localhost:3000/api/products/' + idProd, {

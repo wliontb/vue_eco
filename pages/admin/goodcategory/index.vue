@@ -94,7 +94,7 @@
 <script setup>
 import { ref } from "vue";
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin', middleware: 'auth-admin',
 })
 
 const goodCate = ref({

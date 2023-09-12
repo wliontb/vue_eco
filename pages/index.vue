@@ -112,19 +112,19 @@
   </div>
 
   <!-- category -->
-  <AppCategoryIndex v-for="goodCate in goodCates.result" :goodCate="goodCate"/>
+  <AppCategoryIndex v-for="goodCate in goodCates.result" :goodCate="goodCate" />
 
   <div class="flex bg-white mt-4 p-4">
-    <img src="/img/banner/uni1.jpg" alt="" class="w-1/12"><img src="/img/banner/uni2.jpg" alt="" class="w-1/12"><img
-      src="/img/banner/uni3.jpg" alt="" class="w-1/12"><img src="/img/banner/uni4.jpg" alt="" class="w-1/12"><img
-      src="/img/banner/uni5.jpg" alt="" class="w-1/12"><img src="/img/banner/uni6.jpg" alt="" class="w-1/12"><img
-      src="/img/banner/uni7.jpg" alt="" class="w-1/12"><img src="/img/banner/uni8.jpg" alt="" class="w-1/12"><img
-      src="/img/banner/uni9.jpg" alt="" class="w-1/12"><img src="/img/banner/uni10.jpg" alt="" class="w-1/12">
+    <img src="/img/banner/uni1.jpg" alt="" class="w-1/12"><img src="/img/banner/uni2.jpg" alt="" class="w-1/12">
+    <img src="/img/banner/uni3.jpg" alt="" class="w-1/12"><img src="/img/banner/uni4.jpg" alt="" class="w-1/12">
+    <img src="/img/banner/uni5.jpg" alt="" class="w-1/12"><img src="/img/banner/uni6.jpg" alt="" class="w-1/12">
+    <img src="/img/banner/uni7.jpg" alt="" class="w-1/12"><img src="/img/banner/uni6.jpg" alt="" class="w-1/12">
+    <img src="/img/banner/uni4.jpg" alt="" class="w-1/12"><img src="/img/banner/uni4.jpg" alt="" class="w-1/12">
   </div>
 </template>
 <script setup>
 
-const {data: goodCates} = await useFetch('http://localhost:3000/api/goods-category');
+const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category');
 
 </script>
   

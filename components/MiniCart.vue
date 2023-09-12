@@ -22,8 +22,6 @@ import { useCartStore } from '~/store/cart';
 
 const cartStore = useCartStore();
 
-console.log('hehe', cartStore.cart)
-
 const props = defineProps({
     isHoveringCart: {
         type: Boolean,

@@ -89,7 +89,7 @@
 <script setup>
 import { ref } from "vue";
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin', middleware: 'auth-admin',
 })
 
 const {data: products} = await useFetch('http://localhost:3000/api/products')

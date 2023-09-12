@@ -14,8 +14,7 @@
         <div class="relative mt-auto ml-4">
           <div class="group" @mouseenter="isHovering = true" @mouseleave="isHovering = false">
             <div class="flex">
-              <IconMenuBlack class="text-gray-800 cursor-pointer" />
-              <IconSmallDown class="w-3" />
+              <IconMenuBlack class="cursor-pointer" />
             </div>
             <div class="absolute right-0 top-full bg-white border border-gray-300 rounded-lg shadow-lg"
               :class="{ 'hidden': !isHovering }">
@@ -57,23 +56,32 @@
           <div class="group" @mouseenter="isHoveringAccount = false" @mouseleave="isHoveringAccount = true">
             <div class="flex flex-col items-center text-gray-800 mr-2 text-sm">
               <IconUser class="font-semibold" />
-              <div v-if="!store.isLoggin">{{ store.full_name }}</div>
-              <div v-else>
-                <NuxtLink to="/profile">{{ store.full_name }}</NuxtLink>
-              </div>
+              <div>{{ userStore.user.full_name }}</div>
             </div>
-            <div v-if="!store.isLoggin" class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded-b shadow-sm border-t"
+            <div v-if="!userStore.user.isLoggin" class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded shadow-sm border"
               :class="{ hidden: isHoveringAccount }">
               <button class="bg-red-700 text-white px-4 py-2 my-2 rounded-lg text-center font-semibold"
                 @click="displayLoginBox">Đăng nhập</button>
               <button @click="displayRegisterBox" class="border-2 font-semibold border-red-700 text-red-700 px-4 py-2 rounded-lg text-center">Đăng
                 ký</button>
             </div>
+            <div v-else class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-40 rounded shadow-sm border"
+              :class="{ hidden: isHoveringAccount }">
+              <div>
+                <NuxtLink to="/profile">Thông tin cá nhân</NuxtLink>
+              </div>
+              <div v-if="userStore.user.isAdmin">
+                <NuxtLink to="/admin">Quản lý website</NuxtLink>
+              </div>
+              <div class="border-t">
+                <div @click="logout" class="cursor-pointer">Đăng xuất</div>
+              </div>
+            </div>
           </div>
 
 
         </div>
-        <IconLanguage class="text-gray-800 text-sm" />
+        <IconLanguage class="text-gray-800 text-sm cursor-pointer" title="Đang phát triển" />
       </div>
     </div>
   </div>
@@ -96,7 +104,7 @@
         <div class="flex flex-col mb-4">
           <div>Mật khẩu</div>
           <div class="relative flex flex-col">
-            <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType" v-model="payloadLogin.password">
+            <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType" v-model="payloadLogin.password" @keyup.enter="submitLogin">
             <div class="absolute right-1.5 top-1.5">
               <button title="ẩn/hiện mật khẩu" class="cursor-pointer text-sm text-orange-600 hover:text-red-700" @click="passType == 'text' ? passType = 'password' : passType = 'text'"><IconEye/></button>
             </div>
@@ -186,7 +194,7 @@ const isHoveringCart = ref(true);
 const isDisplayLoginBox = ref(false);
 const isOnLogin = ref(true);
 const passType = ref('password');
-const store = useUserStore()
+const userStore = useUserStore()
 
 const payload = ref({
   phone: '',
@@ -235,9 +243,9 @@ const submitLogin = async () => {
     watch: false,
     async onResponse({request, response, options}) {
       if(response.ok){
-        const {id, full_name, phone} = response._data.result;
+        const dataUser = response._data.result;
 
-        store.addUser(id, phone, 'abc');
+        userStore.addUser(dataUser);
         alert('Login thành công');
         closeLoginBox();
 
@@ -255,9 +263,9 @@ const submitRegister = async () => {
     watch: false,
     async onResponse({request, response, options}) {
       if(response.ok){
-        const {id, phone} = response._data.result;
+        const dataUser = response._data.result;
 
-        store.addUser(id, phone, 'abc');
+        userStore.addUser(dataUser);
         alert('Đăng ký thành công');
         closeLoginBox();
 
@@ -266,6 +274,11 @@ const submitRegister = async () => {
       }
     },
   })
+}
+
+const logout = async () => {
+  userStore.removeUser();
+  await navigateTo('/');
 }
 
 </script>

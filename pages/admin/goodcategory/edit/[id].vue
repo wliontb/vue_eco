@@ -31,7 +31,7 @@
 </template>
 <script setup>
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin', middleware: 'auth-admin',
 })
 
 const route = useRoute();

@@ -1,7 +1,5 @@
 <template>
-    <div class="flex bg-white shadow-sm text-gray-500 font-semibold p-4 rounded">
-        Admin > Supplier > Edit > {{ route.params.id }}
-    </div>
+    <AdminItemBreadCrumb />
     <div class="flex flex-col gap-y-5 p-5 rounded-lg shadow-xl bg-white">
         <div class="text-sm font-semibold text-gray-500 uppercase" id="add">Sửa nhà cung cấp</div>
         <div class="flex gap-x-10">
@@ -84,7 +82,7 @@
 </template>
 <script setup>
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin', middleware: 'auth-admin',
 })
 
 const route = useRoute();
@@ -126,11 +124,10 @@ const editSupplier = async () => {
         method: 'PATCH',
         body: $objstring(supplier.value),
         onResponse({response}) {
-            console.log(response)
             if(response.ok) {
-                alert('Edit success')
+                alert('Sửa nhà cung cấp thành công');
             } else {
-                alert('Edit failed')
+                alert('Sửa nhà cung cấp thất bại')
             }
         },
     })

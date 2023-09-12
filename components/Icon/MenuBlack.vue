@@ -1,45 +1,7 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40"
-        viewBox="0 0 40 40">
-        <defs>
-            <clipPath id="a">
-                <rect class="a" width="40" height="40" transform="translate(584 88)" />
-            </clipPath>
-        </defs>
-        <g class="b" transform="translate(-584 -88)">
-            <g transform="translate(584 88)">
-                <path class="c" d="M0,0H40V40H0Z" />
-                <rect class="d" width="10" height="10" rx="1.667" transform="translate(6.667 6.667)" />
-                <rect class="d" width="10" height="10" rx="1.667" transform="translate(6.667 23.333)" />
-                <rect class="d" width="10" height="10" rx="1.667" transform="translate(23.333 23.333)" />
-                <circle class="e" cx="5" cy="5" r="5" transform="translate(23.333 6.667)" />
-            </g>
-        </g>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
     </svg>
 </template>
-<style>
-.a {
-    fill: #cdcfd0;
-}
-
-.b {
-    clip-path: url(#a);
-}
-
-.c,
-.d,
-.e {
-    fill: none;
-}
-
-.d,
-.e {
-    stroke: #7a7e7f;
-    stroke-width: 2.5px;
-}
-
-.d {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-</style>

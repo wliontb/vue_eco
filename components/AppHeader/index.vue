@@ -5,23 +5,21 @@
     </div>
   </div>
   <div class="bg-white">
-    <div class="flex w-5/6 mx-auto justify-between py-2">
+    <div class="flex w-5/6 mx-auto justify-between">
       <div class="flex justify-between items-center">
         <NuxtLink to="/">
           <!-- <img src="/img/fahasa_logo.png" alt=""> -->
           <div class="font-bold text-xl text-rose-700">HUYHANG</div>
         </NuxtLink>
-        <div class="relative mt-auto ml-4">
+        <div class="ml-5">
           <div class="group" @mouseenter="isHovering = true" @mouseleave="isHovering = false">
             <div class="flex">
-              <IconMenuBlack class="cursor-pointer" />
+              <IconMenuBlack class="cursor-pointer text-rose-700" />
             </div>
-            <div class="absolute right-0 top-full bg-white border border-gray-300 rounded-lg shadow-lg"
+            <div class="absolute bg-white border border-gray-300 rounded-lg shadow-lg"
               :class="{ 'hidden': !isHovering }">
               <!-- Nội dung của dropdown -->
-              <div class="p-2">
-                <NuxtLink to="/category">Chuyên mục</NuxtLink>
-              </div>
+              <AppHeaderMenuCategory />
             </div>
           </div>
         </div>
@@ -34,35 +32,37 @@
         </button>
       </div>
       <div class="flex justify-between items-center px-1 text-sm">
-        <div class="flex flex-col items-center text-gray-800 mr-2">
+        <div class="flex flex-col items-center text-gray-800 mr-2 cursor-pointer">
           <IconBell />
           <div>Thông báo</div>
         </div>
 
         <div class="relative">
           <div class="group" @mouseenter="isHoveringCart = false" @mouseleave="isHoveringCart = true">
-            <div class="flex flex-col items-center text-gray-800 mr-2 text-sm">
+            <div class="flex flex-col items-center text-gray-800 mr-2 text-sm cursor-pointer">
               <IconCart class="font-semibold" />
               <div>Giỏ hàng</div>
             </div>
             <MiniCart :isHoveringCart="isHoveringCart" class="z-50" />
           </div>
 
-          
+
         </div>
 
 
         <div class="relative">
           <div class="group" @mouseenter="isHoveringAccount = false" @mouseleave="isHoveringAccount = true">
-            <div class="flex flex-col items-center text-gray-800 mr-2 text-sm">
+            <div class="flex flex-col items-center text-gray-800 mr-2 text-sm cursor-pointer">
               <IconUser class="font-semibold" />
               <div>{{ userStore.user.full_name }}</div>
             </div>
-            <div v-if="!userStore.user.isLoggin" class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded shadow-sm border"
+            <div v-if="!userStore.user.isLoggin"
+              class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded shadow-sm border"
               :class="{ hidden: isHoveringAccount }">
               <button class="bg-red-700 text-white px-4 py-2 my-2 rounded-lg text-center font-semibold"
                 @click="displayLoginBox">Đăng nhập</button>
-              <button @click="displayRegisterBox" class="border-2 font-semibold border-red-700 text-red-700 px-4 py-2 rounded-lg text-center">Đăng
+              <button @click="displayRegisterBox"
+                class="border-2 font-semibold border-red-700 text-red-700 px-4 py-2 rounded-lg text-center">Đăng
                 ký</button>
             </div>
             <div v-else class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-40 rounded shadow-sm border"
@@ -85,6 +85,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="w-full h-full fixed top-0 left-0 z-50 bg-gray-800 bg-opacity-50 flex items-center justify-center"
     :class="{ hidden: !isDisplayLoginBox }" @click="closeLoginBox">
     <div class="bg-white p-4 mx-auto w-4/12 flex flex-col rounded-md" @click.stop>
@@ -99,24 +101,31 @@
       }">
         <div class="flex flex-col mb-4">
           <div>Số điện thoại/Email</div>
-          <input type="text" name="phone" v-model="payloadLogin.username" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại hoặc email">
+          <input type="text" name="phone" v-model="payloadLogin.username" class="border rounded-sm px-4 py-2"
+            placeholder="Nhập số điện thoại hoặc email">
         </div>
         <div class="flex flex-col mb-4">
           <div>Mật khẩu</div>
           <div class="relative flex flex-col">
-            <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType" v-model="payloadLogin.password" @keyup.enter="submitLogin">
+            <input class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" :type="passType"
+              v-model="payloadLogin.password" @keyup.enter="submitLogin">
             <div class="absolute right-1.5 top-1.5">
-              <button title="ẩn/hiện mật khẩu" class="cursor-pointer text-sm text-orange-600 hover:text-red-700" @click="passType == 'text' ? passType = 'password' : passType = 'text'"><IconEye/></button>
+              <button title="ẩn/hiện mật khẩu" class="cursor-pointer text-sm text-orange-600 hover:text-red-700"
+                @click="passType == 'text' ? passType = 'password' : passType = 'text'">
+                <IconEye />
+              </button>
             </div>
           </div>
         </div>
         <div class="text-right mb-4">
           <NuxtLink to="#" class="text-red-700 text-sm">Quên mật khẩu?</NuxtLink>
         </div>
-        <button @click="submitLogin" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 hover:bg-red-700 hover:text-white">Đăng
+        <button @click="submitLogin"
+          class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 hover:bg-red-700 hover:text-white">Đăng
           nhập</button>
         <button
-          class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
+          class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3"
+          @click="isDisplayLoginBox = false">Bỏ
           qua</button>
         <button
           class="px-4 py-2 text-white bg-blue-500 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 flex justify-center items-center">
@@ -133,7 +142,8 @@
         <div class="flex flex-col mb-4">
           <div>Số điện thoại</div>
           <div class="flex flex-col">
-            <input type="text" name="phone_reg" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại" v-model="payload.phone">
+            <input type="text" name="phone_reg" class="border rounded-sm px-4 py-2" placeholder="Nhập số điện thoại"
+              v-model="payload.phone">
           </div>
         </div>
         <div class="flex flex-col mb-4">
@@ -143,19 +153,23 @@
         <div class="flex flex-col mb-4">
           <div>Mật khẩu</div>
           <div class="flex flex-col">
-            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" v-model="payload.password">
+            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu"
+              v-model="payload.password">
           </div>
         </div>
         <div class="flex flex-col mb-4">
           <div>Nhập lại mật khẩu</div>
           <div class="flex flex-col">
-            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu" v-model="payload.re_password">
+            <input type="password" class="border rounded-sm px-4 py-2" placeholder="Nhập mật khẩu"
+              v-model="payload.re_password">
           </div>
         </div>
-        <button @click="submitRegister" class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 hover:bg-red-700 hover:text-white">Đăng
+        <button @click="submitRegister"
+          class="px-4 py-2 text-gray-700 bg-gray-200 font-semibold text-center w-3/5 rounded-md mx-auto mb-3 hover:bg-red-700 hover:text-white">Đăng
           ký</button>
         <button
-          class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3" @click="isDisplayLoginBox = false">Bỏ
+          class="px-4 py-2 text-red-700 bg-white border-red-700 border-2 font-semibold text-center w-3/5 rounded-md mx-auto mb-3"
+          @click="isDisplayLoginBox = false">Bỏ
           qua</button>
         <div class="text-center text-xs mt-4">
           Bằng việc đăng ký, bạn đã đồng ý với HuyHang.com về <br>
@@ -186,7 +200,7 @@
 import { ref, computed } from 'vue';
 import { useUserStore } from '~/store/user';
 
-const {$objstring} = useNuxtApp();
+const { $objstring } = useNuxtApp();
 
 const isHovering = ref(false);
 const isHoveringAccount = ref(true);
@@ -237,12 +251,12 @@ const closeLoginBox = () => {
 };
 
 const submitLogin = async () => {
-  await useFetch('http://localhost:3000/api/customers/login',{
+  await useFetch('http://localhost:3000/api/customers/login', {
     method: 'POST',
     body: $objstring(payloadLogin.value),
     watch: false,
-    async onResponse({request, response, options}) {
-      if(response.ok){
+    async onResponse({ request, response, options }) {
+      if (response.ok) {
         const dataUser = response._data.result;
 
         userStore.addUser(dataUser);
@@ -257,12 +271,12 @@ const submitLogin = async () => {
 }
 
 const submitRegister = async () => {
-  await useFetch('http://localhost:3000/api/customers/register',{
+  await useFetch('http://localhost:3000/api/customers/register', {
     method: 'POST',
     body: $objstring(payload.value),
     watch: false,
-    async onResponse({request, response, options}) {
-      if(response.ok){
+    async onResponse({ request, response, options }) {
+      if (response.ok) {
         const dataUser = response._data.result;
 
         userStore.addUser(dataUser);

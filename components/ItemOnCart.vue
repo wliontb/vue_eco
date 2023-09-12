@@ -23,7 +23,7 @@
         <div class="w-2/12 font-bold text-red-700 ml-2">
             {{ (item.qty * item.price).toLocaleString() }} đ
         </div>
-        <IconTrash class="w-1/12" />
+        <IconTrash @click="$emit('remove-item', item.id)" class="w-1/12 cursor-pointer" />
     </div>
 </template>
 <script setup>

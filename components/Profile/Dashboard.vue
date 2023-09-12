@@ -1,7 +1,7 @@
 <template>
-    <div class="flex bg-white p-4 mb-2 text-sm">
+    <div class="flex bg-white p-4 mb-2 text-sm items-center">
         <IconNotice class="text-red-700 mr-2" /> Bạn vui lòng cập nhật thông tin tài khoản:
-        <button @click="$emit('update-user')" class="font-semibold text-red-700 ml-2">Cập nhật thông tin ngay</button>
+        <button @click="$emit('update-user')" class="font-semibold text-red-700 ml-2">cập nhật ngay !</button>
     </div>
     <div class="bg-white p-4 flex flex-col">
         <div class="mb-3">BẢNG ĐIỀU KHIỂN CỦA KHÁCH HÀNG</div>

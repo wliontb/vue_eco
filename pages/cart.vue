@@ -1,24 +1,9 @@
 <template>
-    <!-- <div class="cart">
-        <h2>Giỏ hàng</h2>
-        <div v-if="cartItems.length === 0">
-            <p>Giỏ hàng trống.</p>
-        </div>
-        <div v-else>
-            <ul>
-                <li v-for="(item, index) in cartItems" :key="index">
-                    {{ item.name }} - {{ item.price }} đ
-                    <button @click="removeItem(index)">Xóa</button>
-                </li>
-            </ul>
-            <button @click="clearCart">Xóa toàn bộ giỏ hàng</button>
-        </div>
-    </div> -->
 
     <div class="flex flex-col my-3">
         <div class="flex my-2 items-center">
             <div class="text-xl mr-2">GIỎ HÀNG</div>
-            <div>(1 sản phẩm)</div>
+            <div>({{ cartStore.cart.length }} sản phẩm)</div>
         </div>
         <div class="flex">
             <div class="w-2/3 flex-col">
@@ -28,13 +13,13 @@
                     </div>
                     <div class="flex w-6/12 items-center">
                         <div class="mr-1 font-bold">Chọn tất cả</div>
-                        <div>(1 sản phẩm)</div>
+                        <div>({{ cartStore.cart.length }} sản phẩm)</div>
                     </div>
                     <div class="w-2/12">Số lượng</div>
                     <div class="w-2/12">Thành tiền</div>
                     <div class="w-1/12">Tác vụ</div>
                 </div>
-                <ItemOnCart :isChecked="checkedAll" :item="item" v-for="item in cartStore.cart" />
+                <ItemOnCart :isChecked="checkedAll" :item="item" v-for="item in cartStore.cart" @remove-item="removeItem" />
             </div>
             <div class="w-1/3 flex flex-col ml-3">
                 <div class="bg-white py-3 px-3 flex flex-col rounded-lg">
@@ -48,7 +33,6 @@
                             <IconRight />
                         </div>
                     </div>
-                    <ItemVoucher />
                     <ItemVoucher />
                     <ItemVoucher />
                     <div class="border-b border-dashed border-gray-300 my-2"></div>
@@ -70,17 +54,17 @@
                             Thành tiền
                         </div>
                         <div class="flex text-sm">
-                            69.300 đ
+                            {{ cartStore.totalPrice.toLocaleString() }} đ
                         </div>
                     </div>
                     <div class="border-b border-dashed border-gray-300 my-2"></div>
                     <div class="flex justify-between">
                         <div class="font-semibold">Tổng Số Tiền (gồm VAT)</div>
-                        <div class="font-bold text-red-700">69.300 đ</div>
+                        <div class="font-bold text-red-700">{{ (cartStore.totalPrice + cartStore.totalPrice*0.08).toLocaleString() }} đ</div>
                     </div>
-                    <div class="mt-3 bg-red-700 py-2 px-4 rounded-lg text-white text-center font-semibold text-xl">
+                    <button class="mt-3 bg-red-700 py-2 px-4 rounded-lg text-white text-center font-semibold text-xl hover:bg-red-500">
                         THANH TOÁN
-                    </div>
+                    </button>
                     <div class="text-red-700 text-sm">(Giảm giá trên web chỉ áp dụng cho bán lẻ)</div>
                 </div>
             </div>
@@ -93,5 +77,10 @@ import { useCartStore } from '~/store/cart';
 
 const checkedAll = ref(false);
 const cartStore = useCartStore();
+
+const removeItem = (id) => {
+    cartStore.removeItem(id);
+    alert('xóa thành công')
+}
 
 </script>

@@ -7,7 +7,7 @@
             </div>
             <div class="p-1 bg-white rounded-md w-3/6 flex">
                 <input type="text" placeholder="Nhập địa chỉ email của bạn" class="pl-4 w-5/6 h-auto focus:border-transparent focus:outline-none">
-                <button class="bg-orange-400 text-white rounded-md py-2 px-5 w-1/6">Đăng ký</button>
+                <button class="bg-rose-700 text-white rounded-md py-2 px-5 w-1/6">Đăng ký</button>
             </div>
         </div>
     </div>

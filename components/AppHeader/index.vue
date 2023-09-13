@@ -4,7 +4,7 @@
       <!-- <img src="/img/banner/banner-0.jpg" alt="" class="w-full"> -->
     </div>
   </div>
-  <div class="bg-white">
+  <div class="bg-white py-4">
     <div class="flex w-5/6 mx-auto justify-between">
       <div class="flex justify-between items-center">
         <NuxtLink to="/">
@@ -27,21 +27,21 @@
       <div class="rounded-lg border-gray-400 border ps-5 pe-1 flex items-center w-3/6 mx-5">
         <input type="text" placeholder="Tìm kiếm sản phẩm mong muốn.."
           class="w-full focus:border-transparent focus:outline-none" autocomplete="false">
-        <button class="bg-red-600 text-white rounded-lg ms-auto px-5 py-1">
+        <button class="bg-rose-700 text-white rounded-lg ms-auto px-5 py-1 hover:bg-rose-500">
           <IconGlass />
         </button>
       </div>
       <div class="flex justify-between items-center px-1 text-sm">
         <div class="flex flex-col items-center text-gray-800 mr-2 cursor-pointer">
           <IconBell />
-          <div>Thông báo</div>
+          <div class="uppercase font-semibold text-sm">Thông báo</div>
         </div>
 
         <div class="relative">
           <div class="group" @mouseenter="isHoveringCart = false" @mouseleave="isHoveringCart = true">
             <div class="flex flex-col items-center text-gray-800 mr-2 text-sm cursor-pointer">
               <IconCart class="font-semibold" />
-              <div>Giỏ hàng</div>
+              <div class="uppercase text-sm font-semibold">Giỏ hàng</div>
             </div>
             <MiniCart :isHoveringCart="isHoveringCart" class="z-50" />
           </div>
@@ -54,7 +54,7 @@
           <div class="group" @mouseenter="isHoveringAccount = false" @mouseleave="isHoveringAccount = true">
             <div class="flex flex-col items-center text-gray-800 mr-2 text-sm cursor-pointer">
               <IconUser class="font-semibold" />
-              <div>{{ userStore.user.full_name }}</div>
+              <div class="uppercase font-semibold text-sm">{{ userStore.user.full_name }}</div>
             </div>
             <div v-if="!userStore.user.isLoggin"
               class="flex flex-col absolute bg-white top-full right-0 px-4 py-2 w-60 rounded shadow-sm border"

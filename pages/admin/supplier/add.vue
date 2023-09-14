@@ -105,7 +105,7 @@ const supplier = ref({
     "country": "",
     "postal_code": "000000",
     "url": "",
-    "logo": "imgur",
+    "logo": "/img/default.jpg",
     "ranking": 1,
     "active": 1
 })

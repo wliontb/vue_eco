@@ -60,7 +60,7 @@ const {$objstring} = useNuxtApp()
 const category = ref({
     categoryName: '',
     description: '',
-    picture: 'imgur',
+    picture: '/img/default.jpg',
     active: '',
     goodCateId: ''
 })

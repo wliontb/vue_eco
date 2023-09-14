@@ -5,8 +5,9 @@
                 <div class="flex">
                     <div class="flex flex-col">
                         <div class="font-bold text-lg capitalize text-gray-700">Tổng quan</div>
-                        <div class="text-gray-500 text-sm">Đã bán 10k đơn <span class="text-green-500">+18%</span>
-                        </div>
+                        <!-- <div class="text-gray-500 text-sm">
+                            Đã bán 10k đơn <span class="text-green-500">+18%</span>
+                        </div> -->
                     </div>
                     <IconThreeDot class="ml-auto" />
                 </div>
@@ -16,7 +17,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">100</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ products.result.length }}</div>
                             <div class="text-sm text-gray-400">Sản phẩm</div>
                         </div>
                     </div>
@@ -34,34 +35,31 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">3000</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ products.result.length }}</div>
                             <div class="text-sm text-gray-400">Tồn kho</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-1/2 flex p-5 flex-col bg-white shadow-xl rounded-lg gap-y-3">
-                <div class="font-bold text-lg text-gray-700">Tìm kiếm theo</div>
+                <div class="font-bold text-lg text-gray-700">Tìm kiếm theo:</div>
                 <div class="flex gap-x-3">
                     <div class="w-1/3">
                         <select name="" id=""
                             class="border border-gray-300 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-500 outline-none">
-                            <option value="" disabled selected>Tên ngành hàng</option>
-                            <option value="">Sách</option>
-                            <option value="">Văn phòng phẩm</option>
-                            <option value="">Điện thoại</option>
+                            <option value="" disabled selected>Tên danh mục</option>
+                            <option :value="category.id" v-for="category in categories.result" :id="category.id">
+                                {{ category.categoryName }}
+                            </option>
                         </select>
                     </div>
                     <div class="w-1/3">
                         <select name="" id=""
-                            class="border border-gray-500 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-400">
-                            <option value="">Select Plan</option>
-                        </select>
-                    </div>
-                    <div class="w-1/3">
-                        <select name="" id=""
-                            class="border border-gray-500 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-400">
-                            <option value="">Select Status</option>
+                            class="border border-gray-300 px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-500 outline-none">
+                            <option value="" disabled selected>Tên nhà cung cấp</option>
+                            <option :value="supplier.id" v-for="supplier in suppliers.result" :id="supplier.id">
+                                {{ supplier.name }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -76,9 +74,9 @@
                 <div class="ml-auto flex gap-x-5">
                     <input type="text"
                         class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
-                        placeholder="Tìm danh mục...">
+                        placeholder="Tìm kiếm sản phẩm...">
                     <NuxtLink to="/admin/product/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
-                        Thêm sản phẩm
+                        Tạo sản phẩm
                     </NuxtLink>
                 </div>
             </div>
@@ -92,14 +90,20 @@ definePageMeta({
     layout: 'admin', middleware: 'auth-admin',
 })
 
-const {data: products} = await useFetch('http://localhost:3000/api/products')
+const { data: products } = await useFetch('http://localhost:3000/api/products');
+
+const { data: categories } = await useFetch('http://localhost:3000/api/category');
+
+const {data: suppliers} = await useFetch('http://localhost:3000/api/suppliers');
 
 const headers = ref([
     { text: "Tên sản phẩm", value: "name" },
-    { text: "Ảnh", value: "picture", sortable: true },
+    { text: "Ảnh đại diện", value: "picture", sortable: true },
+    { text: "Mô tả", value: "description", sortable: true },
     { text: "Giá", value: "price", sortable: true },
-    { text: "Danh mục", value: "category_id", sortable: true },
-    { text: "Nhà cung cấp", value: "supplier_id", sortable: true },
+    { text: "Số lượng", value: "qty", sortable: true },
+    { text: "Danh mục", value: "category_name", sortable: true },
+    { text: "Nhà cung cấp", value: "supplier_name", sortable: true },
 ])
 
 const items = ref([])
@@ -107,10 +111,12 @@ items.value = products.value.result.map((item) => {
     return {
         id: item.id,
         name: item.name,
-        picture: item.picture,
-        price: item.price,
-        category_id: item.category.id,
-        supplier_id: item.supplier.id
+        picture: `<img src='${item.picture}' class="w-1/5"/>`,
+        description: item.description,
+        qty: item.qty,
+        price: item.price.toLocaleString() + ' đ',
+        category_name: item.category.categoryName,
+        supplier_name: item.supplier.name
     }
 })
 

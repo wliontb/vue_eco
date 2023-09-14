@@ -31,7 +31,7 @@
                             class="mr-1"> Nữ</div>
                 </div>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between border-b border-dashed pb-3">
                 <div class="w-2/12">Avatar</div>
                 <div class="w-10/12 flex">
                     <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1" placeholder="nhập link ảnh"
@@ -39,17 +39,59 @@
                 </div>
             </div>
             <div class="flex justify-between">
+                <div class="w-2/12">Quốc gia 1</div>
+                <div class="w-10/12 flex">
+                    <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
+                        placeholder="nhập quốc gia" v-model="user.nation1">
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <div class="w-2/12">Thành phố 1</div>
+                <div class="w-10/12 flex">
+                    <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
+                        placeholder="nhập thành phố" v-model="user.city1">
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <div class="w-2/12">Quận/Huyện 1</div>
+                <div class="w-10/12 flex">
+                    <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
+                        placeholder="nhập quận/huyện" v-model="user.district1">
+                </div>
+            </div>
+            <div class="flex justify-between border-b border-dashed pb-3">
                 <div class="w-2/12">Địa chỉ 1</div>
                 <div class="w-10/12 flex">
                     <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
-                        placeholder="nhập địa chỉ nhận hàng 1" v-model="user.address1">
+                        placeholder="nhập địa 1" v-model="user.address1">
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <div class="w-2/12">Quốc gia 2</div>
+                <div class="w-10/12 flex">
+                    <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
+                        placeholder="nhập quốc gia" v-model="user.nation2">
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <div class="w-2/12">Thành phố 2</div>
+                <div class="w-10/12 flex">
+                    <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
+                        placeholder="nhập thành phố" v-model="user.city2">
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <div class="w-2/12">Quận/Huyện 2</div>
+                <div class="w-10/12 flex">
+                    <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
+                        placeholder="nhập quận/huyện" v-model="user.district2">
                 </div>
             </div>
             <div class="flex justify-between">
                 <div class="w-2/12">Địa chỉ 2</div>
                 <div class="w-10/12 flex">
                     <input type="text" class="w-full border rounded outline-none px-2 py-1 mr-1"
-                        placeholder="nhập địa chỉ nhận hàng 2" v-model="user.address2">
+                        placeholder="nhập địa 1" v-model="user.address2">
                 </div>
             </div>
             <div class="flex justify-between">
@@ -80,7 +122,7 @@
             </div>
             <button @click="updateUser"
                 class="text-center w-2/6 bg-red-700 rounded-lg Px-4 py-2 text-white mx-auto mt-4 uppercase text-sm hover:bg-red-500">
-                Lưu thay đổi
+                Cập nhật
             </button>
         </div>
     </div>

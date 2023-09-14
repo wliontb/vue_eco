@@ -14,6 +14,7 @@
                 <div class="border-b py-3 text-sm cursor-pointer">Đơn hàng của tôi</div>
                 <div class="border-b py-3 text-sm cursor-pointer">Voucher của tôi</div>
                 <div class="border-b py-3 text-sm cursor-pointer">Thông báo</div>
+                <div class="border-b py-3 text-sm cursor-pointer" @click="logout">Đăng xuất</div>
             </div>
         </div>
         <div class="w-9/12 flex flex-col">
@@ -47,5 +48,14 @@ const showProfileTab = () => {
     isDashboardTab.value = false;
     isProfileTab.value = true;
 };
+
+if(useRoute().hash == '#edit'){
+    showProfileTab();
+}
+
+const logout = () => {
+    userStore.removeUser();
+    navigateTo('/');
+}
 </script>
   

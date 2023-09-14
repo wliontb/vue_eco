@@ -5,12 +5,12 @@
     </div>
     <div class="bg-white rounded-lg">
         <div class="flex p-4">
-            <div class="flex flex-col w-1/12">
-                <img src="/img/product/op.jpg" alt="">
+            <div class="flex flex-col w-1/12 p-2">
+                <img :src="product.result.picture" alt="">
                 <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" alt="">
             </div>
-            <div class="flex w-3/12">
-                <img src="/img/product/op.jpg" alt="">
+            <div class="flex w-3/12 p-2">
+                <img :src="product.result.picture" class="rounded" alt="">
             </div>
             <div class="flex w-7/12 flex-col">
                 <p class="font-semibold text-2xl">{{ product.result.name }}</p>
@@ -57,9 +57,9 @@
                         {{ product.result.price.toLocaleString() }} đ
                     </div>
                     <div class="line-through mr-3">
-                        {{ (product.result.price * product.result.discount + product.result.price).toLocaleString() }} đ
+                        {{ (product.result.price * (product.result.discount/100) + product.result.price).toLocaleString() }} đ
                     </div>
-                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md">-{{ product.result.discount }}%</div>
+                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md text-sm">-{{ product.result.discount }}%</div>
                 </div>
                 <div class="flex flex-col mt-4">
                     <div class="font-semibold">Thời gian giao hàng: 24-48h</div>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="flex items-center mt-4">
                     <div class="font-bold mr-4 w-1/6">Số lượng:</div>
-                    <ItemInputNumberRange class="w-1/6" />
+                    <ItemInputNumberRange class="w-1/6" v-model:count="product.result.qty" />
 
                 </div>
             </div>

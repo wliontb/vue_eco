@@ -14,13 +14,18 @@ export const useCartStore = defineStore('cart', () => {
         cart.value = cart.value.filter((item) => item.id !== id);
     }
 
+    function removeCart() {
+        cart.value = [];
+    }
+
     const totalPrice = computed(() => cart.value.reduce((total, item) => total + item.price * item.qty, 0))
 
     return {
         cart,
         addToCart,
         totalPrice,
-        removeItem
+        removeItem,
+        removeCart
     }
 }, {
     persist: true

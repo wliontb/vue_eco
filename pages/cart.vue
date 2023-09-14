@@ -62,9 +62,9 @@
                         <div class="font-semibold">Tổng Số Tiền (gồm VAT)</div>
                         <div class="font-bold text-red-700">{{ (cartStore.totalPrice + cartStore.totalPrice*0.08).toLocaleString() }} đ</div>
                     </div>
-                    <NuxtLink to="/checkout/one" class="mt-3 bg-red-700 py-2 px-4 rounded-lg text-white text-center font-semibold text-xl hover:bg-red-500">
+                    <button @click="checkout" class="mt-3 bg-red-700 py-2 px-4 rounded-lg text-white text-center font-semibold text-xl hover:bg-red-500">
                         THANH TOÁN
-                    </NuxtLink>
+                    </button>
                     <div class="text-red-700 text-sm">(Giảm giá trên web chỉ áp dụng cho bán lẻ)</div>
                 </div>
             </div>
@@ -72,6 +72,10 @@
     </div>
 </template>
 <script setup>
+definePageMeta({
+    middleware: 'auth'
+})
+
 import { ref } from 'vue';
 import { useCartStore } from '~/store/cart';
 
@@ -81,6 +85,14 @@ const cartStore = useCartStore();
 const removeItem = (id) => {
     cartStore.removeItem(id);
     alert('xóa thành công')
+}
+
+const checkout = () => {
+    if(cartStore.cart.length > 0){
+        navigateTo('/checkout/one');
+    } else {
+        alert('Giỏ hàng trống! Vui lòng mua thêm sản phẩm')
+    }
 }
 
 </script>

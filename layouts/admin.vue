@@ -9,14 +9,14 @@
                     <button>
                         <IconSearch class="text-gray-500 font-bold" />
                     </button>
-                    <input type="text" placeholder="Search" class="bg-transparent outline-none w-full text-gray-500">
+                    <input type="text" placeholder="Tìm kiếm..." class="bg-transparent outline-none w-full text-gray-500">
                 </form>
                 <div class="flex ml-auto space-x-2 items-center justify-end text-gray-500">
-                    <IconLanguage />
-                    <IconNight />
-                    <IconBell />
+                    <IconLanguage class="cursor-pointer" />
+                    <IconNight class="cursor-pointer" />
+                    <IconBell class="cursor-pointer" />
                     <div class="rounded-full bg-rose-500 p-1.5 text-white">
-                        admin
+                        <NuxtLink to="/profile">{{ userStore.user.full_name }}</NuxtLink>
                     </div>
                 </div>
             </div>
@@ -25,6 +25,9 @@
     </div>
 </template>
 <script setup>
+import { useUserStore } from '~/store/user';
+
+const userStore = useUserStore();
 const addClassScroll = ref(false);
 
 if (process.client) {

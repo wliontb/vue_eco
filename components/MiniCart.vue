@@ -5,7 +5,7 @@
             <div class="font-semibold">Giỏ hàng ({{ cartStore.cart?.length || 0 }})</div>
         </div>
         
-        <ItemMiniCart v-for="item in cartStore.cart" :item="item" />
+        <ItemMiniCart v-for="item in cartStore.cart" :item="item" :id="item.id" />
         <div class="flex justify-between items-center bg-white px-3 pb-2 rounded-b-lg">
             <div class="flex flex-col">
                 <div>Tổng cộng</div>

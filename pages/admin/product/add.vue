@@ -52,7 +52,7 @@
                         <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] uppercase text-sm">Giảm giá
                         </div>
                         <select v-model="product.discount_available"
-                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                            class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none bg-admin">
                             <option value="">Chọn trạng thái</option>
                             <option value="1">Giảm</option>
                             <option value="0">Không giảm</option>
@@ -116,8 +116,8 @@ const product = ref({
     description: '',
     picture: '/img/default.jpg',
     price: '',
-    discount: '',
-    discount_available: '',
+    discount: '0',
+    discount_available: '0',
     product_available: '',
     supplier_id: '',
     category_id: '',

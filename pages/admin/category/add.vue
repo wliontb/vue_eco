@@ -35,8 +35,8 @@
                     <select placeholder="nhập đường dẫn..."
                         class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500" v-model="category.active">
                         <option value="" selected disabled>Chọn trạng thái</option>
-                        <option value="0">Disactive</option>
-                        <option value="1">Active</option>
+                        <option value="1">Hoạt động</option>
+                        <option value="0">Không hoạt động</option>
                     </select>
                 </div>
             </div>
@@ -77,9 +77,9 @@ const addCate = async () => {
         body: $objstring(category.value),
         onResponse: ({ response }) => {
             if (response.ok) {
-                alert('Add success')
+                alert('Thêm danh mục thành công');
             } else {
-                alert('Add failed')
+                alert('Thêm danh mục thất bại');
             }
         }
     })

@@ -136,10 +136,10 @@
                         <div class="text-gray-300 line-through">{{ (product.price*product.discount + product.price).toLocaleString() }} đ</div>
                     </div>
                     <div class="w-2/12 p-4">
-                        {{ product.qty }}
+                        {{ product.qtyItem }}
                     </div>
                     <div class="w-1/12 p-4">
-                        {{ (product.qty * product.price).toLocaleString() }} đ
+                        {{ (product.qtyItem * product.price).toLocaleString() }} đ
                     </div>
                 </div>
             </div>
@@ -207,8 +207,8 @@ const invoiceChild = ref([]);
 invoiceChild.value = cartStore.cart.map(item => {
     return {
         productId: item.id,
-        qty: item.qty,
-        total: item.qty*item.price
+        qty: item.qtyItem,
+        total: item.qtyItem*item.price
     }
 })
 

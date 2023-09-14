@@ -17,10 +17,15 @@ const props = defineProps({
     count: {
         type: Number,
         default: 0
+    },
+    max: {
+        type: Number,
+        default: 2
     }
 });
 
-const count = ref(props.count)
+const count = ref(props.count);
+const max = ref(props.max);
 
 const decreaseCount = () => {
     if (count.value > 0) {
@@ -31,7 +36,11 @@ const decreaseCount = () => {
 };
 
 const increaseCount = () => {
-    count.value++;
+    if (count.value < max.value) {
+        count.value++;
+    } else {
+        alert("Giá trị không được lớn hơn "+max.value);
+    }
 };
 </script>
   

@@ -46,7 +46,7 @@
                 <div class="flex flex-col gap-y-3">
                     <div class="flex items-center">
                         <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-xs uppercase">Tên ngành hàng</div>
-                        <input type="text" placeholder="nhập tên" v-model="goodCate.good_name"
+                        <input type="text" placeholder="nhập tên ngành hàng" v-model="goodCate.good_name"
                             class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
                     </div>
                     <div class="flex items-center">
@@ -100,7 +100,7 @@ definePageMeta({
 const goodCate = ref({
     good_name: '',
     description: '',
-    picture: 'imgur',
+    picture: '/img/default.jpg',
 })
 
 const headers = ref([
@@ -119,7 +119,7 @@ const { data: goodsCategories } = await useFetch('http://localhost:3000/api/good
 items.value = goodsCategories.value.result.map(gc => ({
   name: gc.goodName,
   description: gc.description,
-  picture: gc.picture,
+  picture: `<img src="${gc.picture}" class="w-1/3">`,
   id: gc.id
 }));
 
@@ -132,15 +132,16 @@ const addGoodCate = async () => {
             request, response, options
         }) {
             if (response.ok) {
+                alert('Tạo ngành hàng thành công!')
                 const result = response._data.result;
                 items.value.unshift({
                     name: result.goodName,
                     description: result.description,
-                    picture: result.picture,
+                    picture: `<img src="${result.picture}" class="w-1/3">`,
                     id: result.id
                 })
             } else {
-                alert('Tạo danh mục không thành công')
+                alert('Tạo ngành hàng thất bại!')
             }
         }
     })

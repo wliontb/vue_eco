@@ -17,7 +17,7 @@
                             <td class="border p-3 w-1/3">Nhà cung cấp</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.supplierId"
-                                    class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none bg-admin text-sm ">
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none bg-admin text-sm ">
                                     <option value="">Chọn nhà cung cấp</option>
                                     <option v-for="sup in suppliers.result" :value="sup.id">{{ sup.name }}</option>
                                 </select>
@@ -27,7 +27,7 @@
                             <td class="border p-3 w-1/3">Danh mục</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.categoryId"
-                                    class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  text-sm ">
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  text-sm ">
                                     <option value="">Chọn danh mục</option>
                                     <option v-for="cate in categories.result" :value="cate.id">{{ cate.categoryName }}
                                     </option>
@@ -38,43 +38,45 @@
                             <td class="border p-3 w-1/3">Tên</td>
                             <td class="border p-3 w-2/3">
                                 <input type="text" v-model="product.result.name" placeholder="nhập tên sản phẩm"
-                                    class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                                    class="w-full px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                             </td>
                         </tr>
                         <tr class="text-gray-600">
                             <td class="border p-3 w-1/3">Mô tả</td>
                             <td class="border p-3 w-2/3">
                                 <textarea v-model="product.result.description" placeholder="nhập mô tả cho sản phẩm"
-                                    class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
+                                    class="w-full px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500"></textarea>
                             </td>
                         </tr>
                         <tr class="text-gray-600">
                             <td class="border p-3 w-1/3" id="avatar">Ảnh đại diện</td>
-                            <td class="border p-3 w-2/3 flex items-center">
-                                <img :src="product.result.picture" class="w-1/3" alt="">
-                                <input type="text" v-model="product.result.picture" placeholder="nhập link ảnh đại diện"
-                                    class="h-fit w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                            <td class="border p-3 w-2/3">
+                                <div class="flex items-center gap-x-3">
+                                    <img :src="product.result.picture" class="w-1/4" alt="">
+                                    <input type="text" v-model="product.result.picture" placeholder="nhập link ảnh đại diện"
+                                        class="h-fit w-3/4 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                                </div>
                             </td>
                         </tr>
                         <tr class="text-gray-600">
                             <td class="border p-3 w-1/3">Số lượng</td>
                             <td class="border p-3 w-2/3">
                                 <input type="number" v-model="product.result.qty" placeholder="nhập số lượng"
-                                    class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                                    class="w-full px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                             </td>
                         </tr>
                         <tr class="text-gray-600">
                             <td class="border p-3 w-1/3">Giá</td>
                             <td class="border p-3 w-2/3">
                                 <input type="number" v-model="product.result.price" placeholder="nhập giá"
-                                    class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                                    class="w-full px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                             </td>
                         </tr>
                         <tr class="text-gray-600">
                             <td class="border p-3 w-1/3">Giảm giá</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.discountAvailable"
-                                    class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
                                     <option value="">Chọn trạng thái</option>
                                     <option value="true">Giảm</option>
                                     <option value="false">Không</option>
@@ -85,14 +87,14 @@
                             <td class="border p-3 w-1/3">% giảm giá</td>
                             <td class="border p-3 w-2/3">
                                 <input type="number" v-model="product.result.discount" placeholder="nhập giảm giá"
-                                    class="w-2/3 px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
+                                    class="w-full px-2 py-2.5 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin placeholder:lowercase focus:border-red-500">
                             </td>
                         </tr>
                         <tr class="text-gray-600">
                             <td class="border p-3 w-1/3">Flashsale</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.isFlashsale"
-                                    class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
                                     <option value="">Chọn trạng thái</option>
                                     <option value="true">Có</option>
                                     <option value="false">Không</option>
@@ -103,7 +105,7 @@
                             <td class="border p-3 w-1/3">Trending</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.isTrending"
-                                    class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
                                     <option value="">Chọn trạng thái</option>
                                     <option value="true">Có</option>
                                     <option value="false">Không</option>
@@ -114,7 +116,7 @@
                             <td class="border p-3 w-1/3">Có sẵn</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.productAvailable"
-                                    class="w-2/3 px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
                                     <option value="">Chọn trạng thái</option>
                                     <option value="true">Có</option>
                                     <option value="false">Không</option>
@@ -144,6 +146,7 @@
             </div>
         </div>
 
+
         <div class="w-1/3 flex gap-x-3">
             <button class="text-white rounded py-1 px-4 flex items-center" @click="toggleProductProp" :class="{
                 'bg-red-500': !hiddenAddProdPropBox,
@@ -157,8 +160,6 @@
                 @click="toggleProductDetail">
                 <IconPlus />ảnh mô tả
             </button>
-            <button class="text-gray-600 border border-gray-600 rounded py-1 px-4" @click="useRouter().back()">quay
-                lại</button>
         </div>
         <div class="border border-green-500 rounded p-4 flex flex-col gap-y-3" :class="{ hidden: hiddenAddProdDetailBox }">
             <div class="flex">
@@ -171,6 +172,13 @@
                 <button class="w-1/2 border rounded text-white bg-sky-500">Reset</button>
             </div>
         </div>
+        <div class="flex gap-x-3">
+            <button class="text-white bg-orange-500 rounded py-1 px-4" @click="editProduct">Cập nhật sản phẩm</button>
+            <button class="text-gray-600 border border-gray-600 rounded py-1 px-4" @click="useRouter().back()">Trở
+                lại</button>
+        </div>
+
+        <!-- image -->
         <div class="flex flex-col text-gray-500">
             <div class="flex">
                 <div class="w-full border bg-gray-400 text-white p-2">Ảnh mô tả cho sản phẩm</div>
@@ -286,6 +294,37 @@ const addProductDetail = async () => {
                 // useRouter().back()
             } else {
                 alert('Add failed')
+            }
+        }
+    })
+}
+
+const editProduct = async () => {
+    const formData = ref({
+        name: product.value.result.name,
+        description: product.value.result.description,
+        picture: product.value.result.picture,
+        price: product.value.result.price,
+        discount: product.value.result.discount,
+        discount_available: product.value.result.discountAvailable ? 1 : 0,
+        product_available: product.value.result.productAvailable ? 1 : 0,
+        supplier_id: product.value.result.supplierId,
+        category_id: product.value.result.categoryId,
+        is_trending: product.value.result.isTrending,
+        is_flashsale: product.value.result.isFlashsale,
+        qty: product.value.result.qty
+    });
+
+    await useFetch('http://localhost:3000/api/products/' + idProd, {
+        method: 'PATCH',
+        body: $objstring(formData.value),
+        watch: false,
+        onResponse: ({ response }) => {
+            if (response.ok) {
+                alert('Sửa sản phẩm thành công');
+                // useRouter().back()
+            } else {
+                alert('Sửa sản phẩm thất bại')
             }
         }
     })

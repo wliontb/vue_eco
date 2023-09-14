@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="w-1/2 flex mb-1">
-                        <div class="w-1/2 font-semibold">Số sản phẩm con:</div>
-                        <div class="w-1/2">{{ prodChilds.result.length }}</div>
+                        <div class="w-1/2 font-semibold">Số sản phẩm còn lại:</div>
+                        <div class="w-1/2">{{ product.result.qty }}</div>
                     </div>
                     <div class="w-1/2 flex mb-1">
                         <div class="w-1/2 font-semibold">Mô tả:</div>
@@ -72,15 +72,15 @@
                 </div>
                 <div class="flex items-center mt-4">
                     <div class="font-bold mr-4 w-1/6">Số lượng:</div>
-                    <ItemInputNumberRange class="w-1/6" v-model:count="product.result.qty" />
+                    <ItemInputNumberRange class="w-1/6" v-model:count="qtyItem" :max="product.result.qty" />
 
                 </div>
             </div>
         </div>
         <div class="p-6 flex">
-            <button @click="() => { addToCart(product.result) }"
+            <button @click="addCart"
                 class="py-2 px-6 border-2 border-red-700 rounded-lg flex items-center text-red-700 font-bold cursor-pointer">
-                <IconCart class="mr-2" /> {{ alreadyInCart(product.result) ? 'Đã trong giỏ' : 'Thêm vào giỏ hàng' }}
+                <IconCart class="mr-2" /> Thêm vào giỏ hàng
             </button>
             <div class="bg-red-700 py-2 px-10 text-white rounded-lg font-bold cursor-pointer ml-2">
                 Mua ngay
@@ -174,6 +174,13 @@ import { useCartStore } from '~/store/cart';
 
 const idProduct = useRoute().params.id;
 
+const qtyItem = ref(1);
+
+const addCart = () => {
+    // alert(qtyItem.value);
+    cartStore.addToCart(product.value.result, qtyItem.value);
+}
+
 const { data: product } = await useFetch('http://localhost:3000/api/products/' + idProduct);
 
 const { data: prodProps } = await useFetch('http://localhost:3000/api/productprops', {
@@ -200,22 +207,5 @@ const { data: prodTrends } = await useFetch('http://localhost:3000/api/products'
 
 //cart
 const cartStore = useCartStore();
-
-const alreadyInCart = (item) => {
-    const x = cartStore.cart?.find(el => el.id === item.id)
-    if (x?.id) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-const addToCart = (item) => {
-    if (!alreadyInCart(item)) {
-        cartStore.addToCart(item);
-    } else {
-        alert(`${item.name} already in cart`)
-    }
-}
 
 </script>

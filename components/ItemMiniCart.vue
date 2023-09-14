@@ -8,7 +8,7 @@
                 </NuxtLink>
             </div>
             <div>
-                <b>{{ item.price.toLocaleString() }} đ</b> x {{ item.qty }}
+                <b>{{ item.price.toLocaleString() }} đ</b> x {{ item.qtyItem }}
             </div>
         </div>
     </div>

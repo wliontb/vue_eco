@@ -49,10 +49,10 @@
                     <div class="w-1/3">
                         <select name="" id=""
                             class="px-2 py-2.5 rounded-lg bg-admin w-full appearance-none text-sm text-gray-500 outline-none border border-gray-200">
-                            <option value="" disabled selected>Tên ngành hàng</option>
-                            <option value="">Sách</option>
-                            <option value="">Văn phòng phẩm</option>
-                            <option value="">Điện thoại</option>
+                            <option value="" disabled selected>Tên</option>
+                            <option value="">Email</option>
+                            <option value="">SĐT</option>
+                            <option value="">URL</option>
                         </select>
                     </div>
                     <div class="w-1/3 hidden">

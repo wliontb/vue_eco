@@ -260,11 +260,11 @@ const submitLogin = async () => {
         const dataUser = response._data.result;
 
         userStore.addUser(dataUser);
-        alert('Login thành công');
+        alert('Đăng nhập thành công');
         closeLoginBox();
 
       } else {
-        alert(response._data.message)
+        alert('Đăng nhập không thành công!')
       }
     },
   })

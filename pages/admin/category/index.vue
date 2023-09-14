@@ -5,7 +5,8 @@
                 <div class="flex">
                     <div class="flex flex-col">
                         <div class="text-gray-500 font-bold text-lg capitalize">Tổng quan</div>
-                        <div class="text-gray-400 text-sm">Đã bán 10k đơn <span class="text-green-400">+18%</span>
+                        <div class="text-gray-400 text-sm">
+                            <!-- Đã bán 10k đơn <span class="text-green-400">+18%</span> -->
                         </div>
                     </div>
                     <IconThreeDot class="ml-auto" />
@@ -76,8 +77,8 @@
                             class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none text-gray-500 bg-admin text-sm"
                             v-model="category.active">
                             <option value="" selected disabled>Chọn trạng thái</option>
-                            <option value="1">Active</option>
-                            <option value="0">Disactive</option>
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Không hoạt động</option>
                         </select>
                     </div>
                 </div>
@@ -145,7 +146,7 @@ const {$objstring} = useNuxtApp()
 
 const category = ref({
     categoryName: '',
-    picture: '',
+    picture: '/img/default.jpg',
     goodCateId: '',
     description: '',
     active: ''
@@ -154,12 +155,7 @@ const category = ref({
 const goBack = () => {
     useRouter().back()
 }
-
-const refreshPage = () => {
-    refresh()
-}
-
-const { data: goodCates, refresh } = await useFetch('http://localhost:3000/api/goods-category')
+const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category')
 
 const headers = ref([
     { text: "Tên danh mục", value: "categoryName" },
@@ -176,17 +172,17 @@ const addCategory = async () => {
         watch: false,
         onResponse({ response }) {
             if (response.ok) {
-                refresh();
+                alert('Thêm danh mục thành công!')
                 const result = response._data.result;
                 items.value.unshift({
                     categoryName: result.categoryName,
-                    picture: result.picture,
-                    goodCateId: result.goodCategory.id,
+                    picture: `<img src="${result.picture}" class="w-1/3">`,
+                    goodCateId: result.goodCategory.goodName,
                     description: result.description,
                     active: result.active
                 })
             } else {
-                alert('Add failed')
+                alert('Thêm danh mục thất bại')
             }
         }
     })
@@ -200,9 +196,9 @@ items.value = initCates.value.result.map(cate => {
     return {
         id: cate.id,
         categoryName: cate.categoryName,
-        picture: cate.picture,
+        picture: `<img src="${cate.picture}" class="w-1/3">`,
         active: cate.active,
-        goodCateId: cate.goodCategory.id
+        goodCateId: cate.goodCategory.goodName
     }
 })
 
@@ -211,7 +207,7 @@ watch(initCates, () => {
         return {
             id: cate.id,
             categoryName: cate.categoryName,
-            picture: cate.picture,
+            picture: `<img src="${cate.picture}" class="w-1/3">`,
             active: cate.active,
             goodCateId: cate.goodCategory.goodName
         }

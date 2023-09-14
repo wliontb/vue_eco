@@ -101,10 +101,10 @@ const supplier = ref({
     "phone": "",
     "email": "@gmail.com",
     "address": "",
-    "city": "",
-    "country": "",
+    "city": "Hà Nội",
+    "country": "Việt Nam",
     "postal_code": "000000",
-    "url": "",
+    "url": ".com",
     "logo": "/img/default.jpg",
     "ranking": 1,
     "active": 1

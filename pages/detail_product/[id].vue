@@ -1,7 +1,7 @@
 <template>
     <!-- breadcrumb -->
     <div class="flex my-2">
-        SÁCH TIẾNG VIỆT > {{ product.result.category.categoryName }} > {{ product.result.name }}
+        Ngành hàng > <NuxtLink :to="'/category/'+product.result.category.id">{{ product.result.category.categoryName }}</NuxtLink> > {{ product.result.name }}
     </div>
     <div class="bg-white rounded-lg">
         <div class="flex p-4">
@@ -140,31 +140,46 @@
             <div class="border-b-2 border-red-700 w-1/12"></div>
         </div>
         <div class="flex flex-wrap">
-            <div class="w-1/5" v-for="prodTrend in prodTrends.result" :id="prodTrend.id">
-                <ItemTrending :product="prodTrend" :isFlashSale="false" />
+            <div class="w-1/5" v-for="prod in productSameCates.result" :id="prod.id">
+                <ItemTrending :product="prod" :isFlashSale="false" />
             </div>
         </div>
     </div>
 
     <!-- buy with product -->
-    <div class="mt-4 bg-white rounded-lg flex flex-col p-4">
+    <!-- <div class="mt-4 bg-white rounded-lg flex flex-col p-4">
         <div class="font-bold mb-4">SẢN PHẨM CÙNG MUA</div>
         <div class="flex flex-wrap">
             <div class="w-1/5" v-for="prodTrend in prodTrends.result" :id="prodTrend.id">
                 <ItemTrending :product="prodTrend" :isFlashSale="true" />
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- product information -->
     <div class="mt-4 bg-white p-4 rounded-lg">
         <div class="font-bold text-md mb-4">Thông tin sản phẩm</div>
         <div class="flex flex-col">
-            <div class="flex" v-for="prop in prodProps.result">
+            <div class="flex border p-4" v-for="prop in prodProps.result">
                 <div class="font-semibold mr-2 w-1/2">{{ prop.nameProp }}</div>
                 <div>{{ prop.valueProp }}</div>
             </div>
-
+            <div class="flex border p-4">
+                <div class="font-semibold mr-2 w-1/2">Nhà cung cấp</div>
+                <div>{{ product.result.supplier.name }}</div>
+            </div>
+            <div class="flex border p-4">
+                <div class="font-semibold mr-2 w-1/2">Danh mục</div>
+                <div>{{ product.result.category.categoryName }}</div>
+            </div>
+            <div class="flex border p-4">
+                <div class="font-semibold mr-2 w-1/2">Trạng thái</div>
+                <div>{{ product.result.productAvailable ? 'có sẵn' : 'không có sẵn' }}</div>
+            </div>
+            <div class="flex border p-4">
+                <div class="font-semibold mr-2 w-1/2">Mô tả</div>
+                <div>{{ product.result.description }}</div>
+            </div>
         </div>
 
     </div>
@@ -183,10 +198,18 @@ const addCart = () => {
 
 const { data: product } = await useFetch('http://localhost:3000/api/products/' + idProduct);
 
+const { data: productSameCates} = await useFetch('http://localhost:3000/api/products', {
+        method: 'GET',
+        query: {
+            categoryId: product.value.result.category.id
+        }
+})
+
 const { data: prodProps } = await useFetch('http://localhost:3000/api/productprops', {
     method: 'GET',
     query: {
-        product: idProduct
+        product: idProduct,
+        limit: 3
     }
 })
 
@@ -194,14 +217,6 @@ const { data: prodChilds } = await useFetch('http://localhost:3000/api/productde
     method: 'GET',
     query: {
         product: idProduct
-    }
-})
-
-const { data: prodTrends } = await useFetch('http://localhost:3000/api/products', {
-    method: 'GET',
-    query: {
-        trending: true,
-        limit: 5
     }
 })
 

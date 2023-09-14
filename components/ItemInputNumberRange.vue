@@ -3,7 +3,8 @@
         <button class=" text-gray-400 font-bold w-1/3" @click="decreaseCount">
             -
         </button>
-        <input class="w-1/3 text-center font-bold focus:border-none" type="number" v-model="count">
+        <input class="w-1/3 text-center font-bold focus:border-none" type="number" :value="props.count">
+        <!-- {{ props.count }} -->
         <button class=" text-gray-400 font-bold w-1/3" @click="increaseCount">
             +
         </button>
@@ -11,7 +12,6 @@
 </template>
   
 <script setup>
-import { ref } from 'vue';
 
 const props = defineProps({
     count: {
@@ -24,22 +24,21 @@ const props = defineProps({
     }
 });
 
-const count = ref(props.count);
-const max = ref(props.max);
+const emit = defineEmits(['update:count']);
 
 const decreaseCount = () => {
-    if (count.value > 0) {
-        count.value--;
+    if (props.count > 0) {
+        emit('update:count', props.count-1);
     } else {
         alert("Giá trị không được nhỏ hơn 0");
     }
 };
 
 const increaseCount = () => {
-    if (count.value < max.value) {
-        count.value++;
+    if (props.count < props.max) {
+        emit('update:count', props.count+1);
     } else {
-        alert("Giá trị không được lớn hơn "+max.value);
+        alert("Giá trị không được lớn hơn "+props.max);
     }
 };
 </script>

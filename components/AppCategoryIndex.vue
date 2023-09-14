@@ -1,24 +1,25 @@
 <template>
     <div class="flex flex-col bg-white mt-4">
-        <div class="font-bold p-4">
-            {{ goodCate.goodName }}
+        <div class="font-bold p-4 uppercase">
+            Ngành hàng: {{ goodCate.goodName }}
         </div>
         <div class="flex border-gray-300 border-b pb-4">
-            <ul class="flex py-2 px-8 items-center">
-                <li class="mr-4 px-4 py-2 text-orange-500 border-orange-500 border rounded-lg">Board Game</li>
-                <li class="mr-4" v-for="category in categories.result">{{ category.categoryName }}</li>
-            </ul>
+            <div class="flex py-2 px-8 items-center">
+                <NuxtLink :to="'/category/'+category.id" class="mr-4 px-4 py-2 first:text-orange-500 first:border-orange-500 first:border first:rounded-lg" v-for="category in categories.result" :id="category.id">{{ category.categoryName }}</NuxtLink>
+            </div>
         </div>
-        <div class="flex">
-            <img src="/img/banner/bannerdochoi.jpg" class="pl-8 py-4" alt="">
-            <div class="flex flex-col">
+        <div class="flex py-4">
+            <div class="pl-8 w-1/3">
+                <img src="/img/banner/bannerdochoi.jpg" alt="">
+            </div>
+            <div class="w-2/3 flex flex-col">
                 <div class="flex flex-wrap">
-                    <ItemCategoryIndex v-for="category in categories.result" v-bind:category="category" />
+                    <ItemCategoryIndex v-for="category in categories.result" :id="category.id" :category="category" />
                 </div>
-                <div
-                    class="text-center text-red-500 border-2 border-red-500 px-4 py-2 rounded-lg w-1/6 mx-auto my-4 font-semibold">
+                <NuxtLink :to="'/good_cate/'+goodCate.id"
+                    class="text-center text-red-500 border-2 border-red-500 px-2 py-1 rounded-lg w-1/6 mx-auto my-4 font-semibold">
                     Xem Thêm
-                </div>
+                </NuxtLink>
             </div>
         </div>
 

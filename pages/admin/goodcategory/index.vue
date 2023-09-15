@@ -119,7 +119,7 @@ const { data: goodsCategories } = await useFetch('http://localhost:3000/api/good
 items.value = goodsCategories.value.result.map(gc => ({
   name: gc.goodName,
   description: gc.description,
-  picture: `<img src="${gc.picture}" class="w-1/3">`,
+  picture: `<img src="${gc.picture}" class="w-1/3 mx-auto">`,
   id: gc.id
 }));
 

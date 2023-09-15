@@ -6,11 +6,11 @@
     <div class="bg-white rounded-lg">
         <div class="flex p-4 gap-x-3">
             <div class="flex flex-col w-1/12 p-2 gap-y-3">
-                <img :src="product.result.picture" class="h-1/3" alt="">
+                <img :src="product.result.picture" class="h-1/3 mx-auto" alt="">
                 <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" class="w-full" alt="">
             </div>
             <div class="flex w-2/12 p-2">
-                <img :src="product.result.picture" class="rounded" alt="">
+                <img :src="product.result.picture" class="rounded mx-auto" alt="">
             </div>
             <div class="flex w-9/12 flex-col">
                 <p class="font-semibold text-2xl">{{ product.result.name }}</p>

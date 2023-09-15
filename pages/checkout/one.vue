@@ -126,7 +126,7 @@
                 </div>
                 <div class="flex border-b border-r border-l" v-for="product in cartStore.cart" :id="product.id">
                     <div class="w-2/12 p-4">
-                        <img :src="product.picture" class="w-1/2" alt="">
+                        <img :src="product.picture" class="w-1/2 mx-auto" alt="">
                     </div>
                     <div class="w-6/12 p-4">
                         <NuxtLink :to="'/detail_product/'+product.id">{{product.name}}</NuxtLink>

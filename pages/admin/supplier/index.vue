@@ -128,7 +128,7 @@ items.value = data.value.result.map((item) => {
         prodQty: 0,
         description: item.description,
         address: item.address,
-        logo: item.logo,
+        logo: `<img src="${item.logo}" class="w-1/3 mx-auto">`,
         isSelected: false
     }
 });

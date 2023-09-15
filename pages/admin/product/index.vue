@@ -111,7 +111,7 @@ items.value = products.value.result.map((item) => {
     return {
         id: item.id,
         name: item.name,
-        picture: `<img src='${item.picture}' class="w-1/5"/>`,
+        picture: `<img src='${item.picture}' class="w-1/4 mx-auto"/>`,
         description: item.description,
         qty: item.qty,
         price: item.price.toLocaleString() + ' đ',

@@ -95,7 +95,7 @@ const {data: customers} = await useFetch('http://localhost:3000/api/customers');
 const items = ref([]);
 items.value = customers.value.result.map(item => {
     return {
-        avatar: `<img src="${item.avatar}" class="w-1/5">`,
+        avatar: `<img src="${item.avatar}" class="w-1/5 mx-auto">`,
         full_name: item.firstName + ' ' + item.lastName,
         phone: item.phone,
         email: item.email,

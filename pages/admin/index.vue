@@ -273,7 +273,7 @@ const headerCustomers = ref([
 const itemCustomers = ref([]);
 itemCustomers.value = customers.value.result.map(item => {
     return {
-        avatar: `<img src="${item.avatar}" class="w-1/5">`,
+        avatar: `<img src="${item.avatar}" class="w-1/5 mx-auto">`,
         full_name: item.firstName + ' ' + item.lastName,
         phone: item.phone,
         email: item.email,
@@ -293,7 +293,7 @@ itemProducts.value = products.value.result.map((item) => {
     return {
         id: item.id,
         name: item.name,
-        picture: `<img src='${item.picture}' class="w-1/5"/>`,
+        picture: `<img src='${item.picture}' class="w-1/5 mx-auto"/>`,
         qty: item.qty,
         price: item.price.toLocaleString() + ' đ',
     }

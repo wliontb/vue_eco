@@ -24,7 +24,7 @@
             </div>
             <div class="flex border-b border-r border-l" v-for="ivc in invoice.invoiceChild" :id="ivc.id"> 
                 <div class="w-2/12 p-4">
-                    <img :src="ivc.product.picture" class="w-1/2" alt="">
+                    <img :src="ivc.product.picture" class="w-1/2 mx-auto" alt="">
                 </div>
                 <div class="w-6/12 p-4">
                     <NuxtLink :to="'/detail_product/'+ivc.product.id">{{ ivc.product.name }}</NuxtLink>

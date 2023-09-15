@@ -1,7 +1,7 @@
 <template>
     <div class="w-1/2 flex" v-for="product in products.result">
         <NuxtLink :to="'/detail_product/' + product.id" class="w-1/3">
-            <img :src="product.picture" class="p-2 w-full h-full" alt="">
+            <img :src="product.picture" class="p-2 w-full mx-auto" alt="">
         </NuxtLink>
         <div class="flex flex-col w-2/3 p-2">
             <NuxtLink class="text-lg font-semibold" :to="'/detail_product/' + product.id">{{ product.name }}</NuxtLink>

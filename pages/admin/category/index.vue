@@ -196,7 +196,7 @@ items.value = initCates.value.result.map(cate => {
     return {
         id: cate.id,
         categoryName: cate.categoryName,
-        picture: `<img src="${cate.picture}" class="w-1/3">`,
+        picture: `<img src="${cate.picture}" class="w-1/3 mx-auto">`,
         active: cate.active,
         goodCateId: cate.goodCategory.goodName
     }

@@ -14,8 +14,8 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">{{ customers.result.length }}</div>
-                            <div class="text-sm text-gray-400">Người dùng</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ invoices.result.length }}</div>
+                            <div class="text-sm text-gray-400">Đơn hàng</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-4 w-1/3">
@@ -23,8 +23,8 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">{{ customers.result.filter(item => item.isAdmin).length }}</div>
-                            <div class="text-sm text-gray-400">Admin</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ invoices.result.filter(item => item.status == 2).length }}</div>
+                            <div class="text-sm text-gray-400">Đã duyệt</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-4 w-1/3">
@@ -32,8 +32,8 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">{{ customers.result.filter(item => !item.isAdmin).length }}</div>
-                            <div class="text-sm text-gray-400">Khách hàng</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ invoices.result.filter(item => item.status == 0).length }}</div>
+                            <div class="text-sm text-gray-400">Đã hủy</div>
                         </div>
                     </div>
                 </div>
@@ -65,9 +65,9 @@
             <div class="ml-auto flex gap-x-5">
                 <input type="text"
                     class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
-                    placeholder="Tìm người dùng...">
-                <NuxtLink to="/admin/customer/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
-                    Thêm người dùng
+                    placeholder="Tìm hóa đơn...">
+                <NuxtLink to="/admin/invoice/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
+                    Thêm hóa đơn
                 </NuxtLink>
             </div>
         </div>
@@ -81,36 +81,32 @@ definePageMeta({
 })
 
 const headers = ref([
-    { text: "Ảnh đại diện", value: "avatar" },
+    { text: "Mã hóa đơn", value: "invoice_id" },
     { text: "Họ và tên", value: "full_name" },
-    { text: "SĐT", value: "phone", sortable: true },
-    { text: "Email", value: "email", sortable: true },
-    { text: "Giới tính", value: "gender", sortable: true },
-    { text: "Vai trò", value: "role", sortable: true },
+    { text: "SĐT người đặt", value: "phone", sortable: true },
+    { text: "Địa chỉ", value: "address", sortable: true },
+    { text: "Người tạo", value: "user", sortable: true },
+    { text: "Số đơn hàng", value: "qty", sortable: true },
+    { text: "Tổng tiền", value: "total", sortable: true },
     { text: "Trạng thái", value: "status", sortable: true },
 ])
 
-const {data: customers} = await useFetch('http://localhost:3000/api/customers');
+const {data: invoices} = await useFetch('http://localhost:3000/api/invoice');
 
 const items = ref([]);
-items.value = customers.value.result.map(item => {
+items.value = invoices.value.result.map(item => {
     return {
-        avatar: `<img src="${item.avatar}" class="w-1/5">`,
-        full_name: item.firstName + ' ' + item.lastName,
+        id: item.id,
+        invoice_id: '#'+item.id,
+        full_name: item.full_name,
         phone: item.phone,
-        email: item.email,
-        gender: item.gender ? 'Nam' : 'Nữ',
-        role: item.isAdmin ? 'Admin' : 'Khách hàng',
-        status: item.active ? 'Đang hoạt động' : 'Bị khóa',
-        id: item.id
+        address: item.address,
+        user: item.customer.phone,
+        qty: item.invoiceChild.length,
+        total: item.total.toLocaleString()+ ' đ',
+        status: item.status == 1 ? `<span class="bg-orange-500 text-white px-2 rounded">CHỜ DUYỆT</span>` :  item.status == 2 ? `<span class="bg-green-500 text-white px-2 rounded">ĐÃ DUYỆT</span>` : `<span class="bg-red-500 text-white px-2 rounded">TỪ CHỐI</span>`
     }
 })
-
-const changeSelect = (itemId, selectedValue) => {
-    items.value = items.map(item =>
-        item.id === itemId ? { ...item, isSelected: selectedValue } : item
-    );
-};
 
 
 </script>

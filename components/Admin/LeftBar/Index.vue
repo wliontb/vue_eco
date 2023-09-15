@@ -24,7 +24,7 @@ let dataRoute = ref([
         data: [
             {
                 url: '/admin/supplier',
-                name: 'Tổng quan'
+                name: 'Danh sách'
             },
             {
                 url: '/admin/supplier/add',
@@ -37,7 +37,7 @@ let dataRoute = ref([
         data: [
             {
                 url: '/admin/goodcategory',
-                name: 'Tổng quan',
+                name: 'Danh sách',
             },
             {
                 url: '/admin/goodcategory/add',
@@ -50,7 +50,7 @@ let dataRoute = ref([
         data: [
             {
                 url: '/admin/category',
-                name: 'Tổng quan'
+                name: 'Danh sách'
             },
             {
                 url: '/admin/category/add',
@@ -63,7 +63,7 @@ let dataRoute = ref([
         data: [
             {
                 url: '/admin/product',
-                name: 'Tổng quan'
+                name: 'Danh sách'
             },
             {
                 url: '/admin/product/add',
@@ -72,11 +72,11 @@ let dataRoute = ref([
         ]
     },
     {
-        name: 'Khách hàng',
+        name: 'Người dùng',
         data: [
             {
                 url: '/admin/customer',
-                name: 'Tổng quan'
+                name: 'Danh sách'
             },
             {
                 url: '/admin/customer/add',
@@ -85,31 +85,40 @@ let dataRoute = ref([
         ]
     },
     {
-        name: 'Shipper',
+        name: 'Hóa đơn',
         data: [
             {
-                url: '/admin/shipper',
-                name: 'Tổng quan'
-            },
-            {
-                url: '/admin/shipper/add',
-                name: 'Thêm mới'
+                url: '/admin/invoice',
+                name: 'Danh sách'
             }
         ]
     },
-    {
-        name: 'Hình thức thanh toán',
-        data: [
-            {
-                url: '/admin/payment',
-                name: 'Tổng quan'
-            },
-            {
-                url: '/admin/payment/add',
-                name: 'Thêm mới'
-            }
-        ]
-    },
+    // {
+    //     name: 'Shipper',
+    //     data: [
+    //         {
+    //             url: '/admin/shipper',
+    //             name: 'Danh sách'
+    //         },
+    //         {
+    //             url: '/admin/shipper/add',
+    //             name: 'Thêm mới'
+    //         }
+    //     ]
+    // },
+    // {
+    //     name: 'Hình thức thanh toán',
+    //     data: [
+    //         {
+    //             url: '/admin/payment',
+    //             name: 'Danh sách'
+    //         },
+    //         {
+    //             url: '/admin/payment/add',
+    //             name: 'Thêm mới'
+    //         }
+    //     ]
+    // },
 ])
 
 dataRoute.value = dataRoute.value.map(item => {

@@ -19,7 +19,7 @@
                     <div class="w-2/12">Thành tiền</div>
                     <div class="w-1/12">Tác vụ</div>
                 </div>
-                <ItemOnCart :isChecked="checkedAll" :item="item" v-for="item in cartStore.cart" @remove-item="removeItem" />
+                <ItemOnCart :isChecked="checkedAll" :item="item" v-for="item in cartStore.cart" :id="item.id" />
             </div>
             <div class="w-1/3 flex flex-col ml-3">
                 <div class="bg-white py-3 px-3 flex flex-col rounded-lg">
@@ -59,8 +59,8 @@
                     </div>
                     <div class="border-b border-dashed border-gray-300 my-2"></div>
                     <div class="flex justify-between">
-                        <div class="font-semibold">Tổng Số Tiền (gồm VAT)</div>
-                        <div class="font-bold text-red-700">{{ (cartStore.totalPrice + cartStore.totalPrice*0.08).toLocaleString() }} đ</div>
+                        <div class="font-semibold">Tổng Số Tiền (đã bao gồm VAT)</div>
+                        <div class="font-bold text-red-700">{{ (cartStore.totalPrice).toLocaleString() }} đ</div>
                     </div>
                     <button @click="checkout" class="mt-3 bg-red-700 py-2 px-4 rounded-lg text-white text-center font-semibold text-xl hover:bg-red-500">
                         THANH TOÁN
@@ -81,11 +81,6 @@ import { useCartStore } from '~/store/cart';
 
 const checkedAll = ref(false);
 const cartStore = useCartStore();
-
-const removeItem = (id) => {
-    cartStore.removeItem(id);
-    alert('xóa thành công')
-}
 
 const checkout = () => {
     if(cartStore.cart.length > 0){

@@ -79,10 +79,10 @@
         </div>
         <div class="p-6 flex">
             <button @click="addCart"
-                class="py-2 px-6 border-2 border-red-700 rounded-lg flex items-center text-red-700 font-bold cursor-pointer">
+                class="py-2 px-6 border-2 border-rose-700 rounded-lg flex items-center text-rose-700 font-bold cursor-pointer hover:bg-rose-700 hover:text-red-50">
                 <IconCart class="mr-2" /> Thêm vào giỏ hàng
             </button>
-            <div class="bg-red-700 py-2 px-10 text-white rounded-lg font-bold cursor-pointer ml-2">
+            <div @click="buyNow" class="bg-rose-700 py-2 px-10 text-red-50 rounded-lg font-bold cursor-pointer ml-2">
                 Mua ngay
             </div>
         </div>
@@ -192,8 +192,12 @@ const idProduct = useRoute().params.id;
 const qtyItem = ref(1);
 
 const addCart = () => {
-    // alert(qtyItem.value);
     cartStore.addToCart(product.value.result, qtyItem.value);
+}
+
+const buyNow = () => {
+    cartStore.addToCart(product.value.result, 1);
+    navigateTo('/cart')
 }
 
 const { data: product } = await useFetch('http://localhost:3000/api/products/' + idProduct);

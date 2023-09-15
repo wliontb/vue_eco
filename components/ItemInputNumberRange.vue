@@ -3,7 +3,7 @@
         <button class=" text-gray-400 font-bold w-1/3" @click="decreaseCount">
             -
         </button>
-        <input class="w-1/3 text-center font-bold focus:border-none" type="number" :value="props.count">
+        <input class="w-1/3 text-center font-bold focus:border-none" type="number" :value="props.count" disabled>
         <!-- {{ props.count }} -->
         <button class=" text-gray-400 font-bold w-1/3" @click="increaseCount">
             +

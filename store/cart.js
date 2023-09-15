@@ -7,20 +7,28 @@ export const useCartStore = defineStore("cart", () => {
     const existingItem = cart.value.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
-      existingItem.qtyItem += qtyItem;
+      const newQtyItem = existingItem.qtyItem + qtyItem;
+      if(newQtyItem > existingItem.qty){
+        alert('Không thể thêm nhiều hơn số lượng trong kho');
+      } else {
+        existingItem.qtyItem = newQtyItem;
+        alert('Thêm sản phẩm thành công');
+      }
     } else {
-      cart.value.push({
-        ...item,
-        qtyItem: qtyItem,
-      });
+      if(qtyItem > item.qty) {
+        alert('Không thể thêm nhiều hơn số lượng trong kho!')
+      } else {
+        cart.value.push({
+          ...item,
+          qtyItem: qtyItem,
+        });
+        alert('Thêm sản phẩm thành công!');
+      }
     }
   }
 
   function removeItem(id) {
-    const index = cart.value.findIndex((item) => item.id === id);
-    if (index !== -1) {
-      cart.value.splice(index, 1);
-    }
+    cart.value = cart.value.filter((item) => item.id !== id);
   }
 
   function removeCart() {

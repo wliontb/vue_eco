@@ -2,12 +2,12 @@
     <table class="table-auto border-collapse">
         <thead>
             <tr class="bg-gray-200">
-                <th class="p-2">
+                <th class="p-2 text-center">
                     <input type="checkbox" @click="toggleAllCheckbox()">
                 </th>
-                <th v-for="item in headers" :key="item" class="text-gray-500 text-left uppercase font-semibold text-sm py-2.5 px-5">{{
+                <th v-for="item in headers" :key="item" class="text-gray-500 text-center uppercase font-semibold text-sm py-2.5 px-5">{{
                     item.text }}</th>
-                <th class="text-center text-gray-500 uppercase font-semibold text-sm">Tác vụ</th>
+                <th class="text-center text-gray-500 uppercase font-semibold text-sm" v-if="showAction">Tác vụ</th>
             </tr>
         </thead>
         <tbody>
@@ -18,9 +18,9 @@
                         @change="$emit('changeSelect', item.id, item.isSelected)" />
                 </td>
 
-                <td class="text-left px-5 py-2.5 text-sm text-gray-500" v-for="header in headers" :key="header" v-html="item[header.value]">
+                <td class="text-center px-5 py-2.5 text-sm text-gray-500" v-for="header in headers" :key="header" v-html="item[header.value]">
                 </td>
-                <td class="text-center flex gap-x-1 justify-end p-4">
+                <td class="text-center flex gap-x-1 justify-end p-4" v-if="showAction">
                     <NuxtLink :to="`${route.path}/${item.id}`" class="rounded bg-sky-500 text-white px-3 py-1.5">Xem</NuxtLink>
                     <NuxtLink :to="`${route.path}/edit/${item.id}`" class="rounded bg-orange-500 text-white px-3 py-1.5">Sửa</NuxtLink>
                     <NuxtLink :to="`${route.path}/remove/${item.id}`" class="rounded bg-red-500 text-white px-3 py-1.5">Xóa</NuxtLink>
@@ -44,6 +44,10 @@ const props = defineProps({
     items: {
         type: Array,
         required: true
+    },
+    showAction: {
+        type: Boolean,
+        default: true
     }
 });
 

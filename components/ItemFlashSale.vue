@@ -1,6 +1,6 @@
 <template>
     <NuxtLink :to="'/detail_product/'+product.id" class="relative">
-        <img :src="product.picture" :alt="product.name">
+        <img :src="product.picture" :alt="product.name" class="h-48">
         <div class="bg-orange-500 text-white rounded-full p-0.5 absolute top-5 right-0 z-10">{{product.discount}}%</div>
         <div class="absolute inset-0 flex items-center justify-center" :class="{hidden: product.productAvailable}">
             <div class="absolute inset-0 bg-black opacity-50"></div>

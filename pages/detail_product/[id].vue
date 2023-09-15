@@ -4,15 +4,15 @@
         Ngành hàng > <NuxtLink :to="'/category/'+product.result.category.id">{{ product.result.category.categoryName }}</NuxtLink> > {{ product.result.name }}
     </div>
     <div class="bg-white rounded-lg">
-        <div class="flex p-4">
-            <div class="flex flex-col w-1/12 p-2">
-                <img :src="product.result.picture" alt="">
-                <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" alt="">
+        <div class="flex p-4 gap-x-3">
+            <div class="flex flex-col w-1/12 p-2 gap-y-3">
+                <img :src="product.result.picture" class="h-1/3" alt="">
+                <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" class="w-full" alt="">
             </div>
-            <div class="flex w-3/12 p-2">
+            <div class="flex w-2/12 p-2">
                 <img :src="product.result.picture" class="rounded" alt="">
             </div>
-            <div class="flex w-7/12 flex-col">
+            <div class="flex w-9/12 flex-col">
                 <p class="font-semibold text-2xl">{{ product.result.name }}</p>
                 <div class="flex flex-wrap mt-4">
                     <div class="w-1/2 flex mb-1">
@@ -220,7 +220,8 @@ const { data: prodProps } = await useFetch('http://localhost:3000/api/productpro
 const { data: prodChilds } = await useFetch('http://localhost:3000/api/productdetails', {
     method: 'GET',
     query: {
-        product: idProduct
+        product: idProduct,
+        limit: 3
     }
 })
 

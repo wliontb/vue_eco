@@ -1,7 +1,7 @@
 <template>
     <div class="p-4 hover:shadow-md">
         <NuxtLink :to="'/detail_product/'+product.id" class="relative">
-            <img :src="product.picture" class="rounded" alt="">
+            <img :src="product.picture" class="rounded h-48" alt="">
             <div class="bg-orange-500 text-white rounded-full absolute top-5 right-1 z-10 text-sm p-0.5">{{product.discount}} %</div>
             <div v-if="!product.productAvailable" class="absolute inset-0 flex items-center justify-center">
                 <div class="absolute inset-0 bg-black opacity-50"></div>

@@ -71,7 +71,7 @@
                 </NuxtLink>
             </div>
         </div>
-        <AdminItemTable :headers="headers" :items="items" @changeSelect="changeSelect" />
+        <AdminItemTable :headers="headers" :items="items" />
     </div>
 </template>
 <script setup>

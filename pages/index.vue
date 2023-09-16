@@ -14,52 +14,16 @@
   <AppFlashsale />
   <!-- danh muc -->
   <div class="flex mt-4 flex-col bg-white p-4">
-    <div class="flex border-b border-gray-200 pb-4">
+    <div class="flex border-b border-gray-200 pb-4 items-center gap-x-2">
       <IconMenu />
       <div class="font-bold">
-        Danh mục sản phẩm
+        Danh mục ngành hàng
       </div>
     </div>
-    <div class="flex justify-between mt-4">
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat1.jpg" alt="">
-        VPP DCHS
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat2.jpg" alt="">
-        Đồ Chơi
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat3.jpg" alt="">
-        Ngôn tình đam mỹ
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat4.jpg" alt="">
-        Sách học ngoại ngữ
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat5.jpg" alt="">
-        Manga
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat6.jpg" alt="">
-        Tâm linh luân hồi
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat7.jpg" alt="">
-        Tâm lý thao túng
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat8.jpg" alt="">
-        Đối mặt thức tỉnh
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat9.jpg" alt="">
-        Tiểu thuyết
-      </div>
-      <div class="w-1/12 flex flex-col">
-        <img src="/img/categories/cat10.jpg" alt="">
-        Light Novel
+    <div class="flex mt-4 flex-wrap">
+      <div class="w-1/12 flex flex-col items-center" v-for="goodCate in goodCates.result" :id="goodCate.id">
+        <img :src="goodCate.picture" alt="" class="mx-auto max-h-24">
+        <NuxtLink :to="'/good_cate/'+goodCate.id" class="text-center">{{ goodCate.goodName }}</NuxtLink>
       </div>
     </div>
   </div>
@@ -69,13 +33,16 @@
   <!-- category -->
   <AppCategoryIndex v-for="goodCate in goodCates.result" :goodCate="goodCate" />
 
-  <div class="flex bg-white mt-4 p-4">
-    <img src="/img/banner/uni1.jpg" alt="" class="w-1/12"><img src="/img/banner/uni2.jpg" alt="" class="w-1/12">
-    <img src="/img/banner/uni3.jpg" alt="" class="w-1/12"><img src="/img/banner/uni4.jpg" alt="" class="w-1/12">
-    <img src="/img/banner/uni5.jpg" alt="" class="w-1/12"><img src="/img/banner/uni6.jpg" alt="" class="w-1/12">
-    <img src="/img/banner/uni7.jpg" alt="" class="w-1/12"><img src="/img/banner/uni6.jpg" alt="" class="w-1/12">
-    <img src="/img/banner/uni4.jpg" alt="" class="w-1/12"><img src="/img/banner/uni4.jpg" alt="" class="w-1/12">
+  <div class="flex bg-white mt-4 p-4 justify-between items-center max-h-48">
+    <div class="w-1/6"><img src="/img/banner/uni1.jpg"></div>
+    <div class="w-1/6"><img src="/img/banner/uni2.jpg"></div>
+    <div class="w-1/6"><img src="/img/banner/uni3.jpg"></div>
+    <div class="w-1/6"><img src="/img/banner/uni4.jpg"></div>
+    <div class="w-1/6"><img src="/img/banner/uni5.jpg"></div>
+    <div class="w-1/6"><img src="/img/banner/uni8.jpg"></div>
   </div>
+
+
 </template>
 <script setup>
 

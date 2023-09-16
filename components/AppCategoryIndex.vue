@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col bg-white mt-4">
         <div class="font-bold p-4 uppercase">
-            Ngành hàng: {{ goodCate.goodName }}
+            <NuxtLink :to="'/good_cate/'+goodCate.id">Ngành hàng: {{ goodCate.goodName }}</NuxtLink>
         </div>
         <div class="flex border-gray-300 border-b pb-4">
             <div class="flex py-2 px-8 items-center">
@@ -10,7 +10,7 @@
         </div>
         <div class="flex py-4">
             <div class="pl-8 w-1/3">
-                <img src="/img/banner/bannerdochoi.jpg" alt="">
+                <NuxtLink :to="'/good_cate/'+goodCate.id"><img :src="goodCate.picture" class="h-80 border-r w-full" alt=""></NuxtLink>
             </div>
             <div class="w-2/3 flex flex-col">
                 <div class="flex flex-wrap">

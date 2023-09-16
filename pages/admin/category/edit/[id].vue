@@ -35,9 +35,8 @@
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] ">Trạng thái</div>
                     <select v-model="cate.active"
                         class="w-2/3 px-2 py-2 border-gray-300 rounded-lg border outline-none bg-admin placeholder:lowercase focus:border-red-500 text-gray-500">
-                        <option value="" selected disabled>Chọn trạng thái</option>
-                        <option value="1">Active</option>
-                        <option value="0">Disactive</option>
+                        <option value="true">Hoạt động</option>
+                        <option value="false">Không hoạt động</option>
                     </select>
                 </div>
             </div>
@@ -81,18 +80,19 @@ const { data: initCate } = await useFetch('http://localhost:3000/api/category/' 
 cate.value = {
     ...initCate.value.result,
     goodCateId: initCate.value.result.goodCategory.id,
-    active: initCate.value.result.active ? 1 : 0
+    active: initCate.value.result.active
 }
 
 const editCategory = async () => {
     await useFetch('http://localhost:3000/api/category/' + idCate, {
         method: 'PATCH',
         body: $objstring(cate.value),
+        watch: false,
         onResponse({ response }) {
             if (response.ok) {
-                alert('Edit success')
+                alert('Sửa danh mục thành công')
             } else {
-                alert('Edit failed')
+                alert('Sửa danh mục thất bại')
             }
         },
     })

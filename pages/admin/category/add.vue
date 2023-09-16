@@ -33,7 +33,8 @@
                 <div class="flex items-center">
                     <div class="w-1/3 text-gray-600 font-semibold after:content-[':'] text-sm uppercase">Trạng thái</div>
                     <select placeholder="nhập đường dẫn..."
-                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500" v-model="category.active">
+                        class="w-2/3 px-2 py-2.5 border-gray-300 rounded-lg border outline-none bg-admin uppercase text-xs text-gray-500 focus:border-red-500"
+                        v-model="category.active">
                         <option value="" selected disabled>Chọn trạng thái</option>
                         <option value="1">Hoạt động</option>
                         <option value="0">Không hoạt động</option>
@@ -42,11 +43,10 @@
             </div>
         </div>
 
-        <div class="flex flex-col gap-y-3 mx-auto">
-            <div class="w-1/3 flex gap-x-3">
-                <button class="text-white bg-green-500 rounded py-1 px-4" @click="addCate">Thêm</button>
-                <button class="text-gray-400 border border-gray-400 rounded py-1 px-4" @click="resetCate">Reset</button>
-            </div>
+        <div class="flex gap-x-3 mx-auto">
+            <button class="text-white bg-green-500 rounded py-1 px-4" @click="addCate">Thêm</button>
+            <button class="text-gray-400 border border-gray-400 rounded py-1 px-4" @click="useRouter().back()">Quay
+                lại</button>
         </div>
     </div>
 </template>
@@ -55,7 +55,7 @@ definePageMeta({
     layout: 'admin', middleware: 'auth-admin',
 })
 
-const {$objstring} = useNuxtApp()
+const { $objstring } = useNuxtApp()
 
 const category = ref({
     categoryName: '',
@@ -66,10 +66,6 @@ const category = ref({
 })
 
 const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category');
-
-const resetCate = () => {
-
-}
 
 const addCate = async () => {
     await useFetch('http://localhost:3000/api/category', {

@@ -23,7 +23,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">300</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ categories.result.length }}</div>
                             <div class="text-sm text-gray-500">Danh mục</div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">1000</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ products.result.length }}</div>
                             <div class="text-sm text-gray-500">Sản phẩm</div>
                         </div>
                     </div>
@@ -100,9 +100,11 @@ definePageMeta({
 const goodCate = ref({
     good_name: '',
     description: '',
-    picture: '/img/default.jpg',
+    picture: 'https://i.imgur.com/sMj9lpf.jpg',
 })
 
+const {data: categories} = await useFetch('http://localhost:3000/api/category');
+const {data: products} = await useFetch('http://localhost:3000/api/products');
 const headers = ref([
     { text: "Tên ngành hàng", value: "name" },
     { text: "Mô tả", value: "description", sortable: true },

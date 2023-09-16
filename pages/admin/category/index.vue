@@ -26,7 +26,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">200</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ products.result.length }}</div>
                             <div class="text-sm text-gray-400">Sản phẩm</div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">3000</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ (products.result.length * 2)+1 }}</div>
                             <div class="text-sm text-gray-400">Đã bán</div>
                         </div>
                     </div>
@@ -85,8 +85,7 @@
                 <div class="flex flex-col gap-y-3">
                     <div class="w-2/3 flex ml-auto gap-x-3">
                         <button class="text-white bg-green-600 rounded py-1 px-4" @click="addCategory">Thêm</button>
-                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4"
-                            @click="goBack">Reset</button>
+                        <button class="text-gray-400 border border-gray-400 rounded py-1 px-4">Reset</button>
                     </div>
                 </div>
             </div>
@@ -152,10 +151,10 @@ const category = ref({
     active: ''
 })
 
-const goBack = () => {
-    useRouter().back()
-}
-const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category')
+const { data: goodCates } = await useFetch('http://localhost:3000/api/goods-category');
+
+const {data: products} = await useFetch('http://localhost:3000/api/products');
+
 
 const headers = ref([
     { text: "Tên danh mục", value: "categoryName" },
@@ -176,10 +175,10 @@ const addCategory = async () => {
                 const result = response._data.result;
                 items.value.unshift({
                     categoryName: result.categoryName,
-                    picture: `<img src="${result.picture}" class="w-1/3">`,
+                    picture: `<img src="${result.picture}" class="w-1/3 mx-auto">`,
                     goodCateId: result.goodCategory.goodName,
                     description: result.description,
-                    active: result.active
+                    active: result.active ? 'Hoạt động' : 'khóa'
                 })
             } else {
                 alert('Thêm danh mục thất bại')
@@ -197,7 +196,7 @@ items.value = initCates.value.result.map(cate => {
         id: cate.id,
         categoryName: cate.categoryName,
         picture: `<img src="${cate.picture}" class="w-1/3 mx-auto">`,
-        active: cate.active,
+        active: cate.active ? 'Hoạt động' : 'Khóa',
         goodCateId: cate.goodCategory.goodName
     }
 })
@@ -208,7 +207,7 @@ watch(initCates, () => {
             id: cate.id,
             categoryName: cate.categoryName,
             picture: `<img src="${cate.picture}" class="w-1/3">`,
-            active: cate.active,
+            active: cate.active ? 'Hoạt động' : 'Khóa',
             goodCateId: cate.goodCategory.goodName
         }
     })

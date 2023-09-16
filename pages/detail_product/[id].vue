@@ -1,7 +1,15 @@
 <template>
     <!-- breadcrumb -->
-    <div class="flex my-2">
-        Ngành hàng > <NuxtLink :to="'/category/'+product.result.category.id">{{ product.result.category.categoryName }}</NuxtLink> > {{ product.result.name }}
+    <div class="flex my-3 text-sm items-center gap-x-3 uppercase">
+        <NuxtLink to="/" class="uppercase flex items-center gap-x-2">
+            <IconHome /> Trang Chủ
+        </NuxtLink> 
+        &rArr;
+        <NuxtLink :to="'/category/'+product.result.category.goodCategory.id">{{ product.result.category.goodCategory.goodName }}</NuxtLink>
+        &rArr;
+        <NuxtLink :to="'/category/'+product.result.category.id">{{ product.result.category.categoryName }}</NuxtLink>
+        &rArr;
+        <span class="text-gray-500">{{ product.result.name }}</span>
     </div>
     <div class="bg-white rounded-lg">
         <div class="flex p-4 gap-x-3">
@@ -57,9 +65,11 @@
                         {{ product.result.price.toLocaleString() }} đ
                     </div>
                     <div class="line-through mr-3">
-                        {{ (product.result.price * (product.result.discount/100) + product.result.price).toLocaleString() }} đ
+                        {{ (product.result.price * (product.result.discount / 100) + product.result.price).toLocaleString() }}
+                        đ
                     </div>
-                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md text-sm">-{{ product.result.discount }}%</div>
+                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md text-sm">-{{ product.result.discount }}%
+                    </div>
                 </div>
                 <div class="flex flex-col mt-4">
                     <div class="font-semibold">Thời gian giao hàng: 24-48h</div>
@@ -202,11 +212,11 @@ const buyNow = () => {
 
 const { data: product } = await useFetch('http://localhost:3000/api/products/' + idProduct);
 
-const { data: productSameCates} = await useFetch('http://localhost:3000/api/products', {
-        method: 'GET',
-        query: {
-            categoryId: product.value.result.category.id
-        }
+const { data: productSameCates } = await useFetch('http://localhost:3000/api/products', {
+    method: 'GET',
+    query: {
+        categoryId: product.value.result.category.id
+    }
 })
 
 const { data: prodProps } = await useFetch('http://localhost:3000/api/productprops', {

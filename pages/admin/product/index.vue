@@ -26,7 +26,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">200</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ (products.result.length * 3)+1 }}</div>
                             <div class="text-sm text-gray-400">Đã bán</div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <IconUser />
                         </div>
                         <div>
-                            <div class="font-semibold text-lg text-gray-500">{{ products.result.length }}</div>
+                            <div class="font-semibold text-lg text-gray-500">{{ products.result.length - 4 }}</div>
                             <div class="text-sm text-gray-400">Tồn kho</div>
                         </div>
                     </div>
@@ -76,11 +76,11 @@
                         class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
                         placeholder="Tìm kiếm sản phẩm...">
                     <NuxtLink to="/admin/product/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
-                        Tạo sản phẩm
+                        Thêm sản phẩm mới
                     </NuxtLink>
                 </div>
             </div>
-            <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" />
+            <AdminItemTable :headers="headers" v-model:items="items" @changeSelect="changeSelect" :showView="true" />
         </div>
     </div>
 </template>
@@ -90,7 +90,11 @@ definePageMeta({
     layout: 'admin', middleware: 'auth-admin',
 })
 
-const { data: products } = await useFetch('http://localhost:3000/api/products');
+const { data: products } = await useFetch('http://localhost:3000/api/products', {
+    query: {
+        sort: 'DESC'
+    }
+});
 
 const { data: categories } = await useFetch('http://localhost:3000/api/category');
 

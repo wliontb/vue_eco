@@ -292,7 +292,7 @@ const submitRegister = async () => {
 
 const logout = async () => {
   userStore.removeUser();
-  await navigateTo('/');
+  navigateTo('/');
 }
 
 </script>

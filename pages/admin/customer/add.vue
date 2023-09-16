@@ -120,7 +120,7 @@
 
         <div class="flex gap-x-3 mx-auto">
             <button class="text-white bg-green-500 rounded py-1 px-4" @click="addCustomer">Thêm người dùng</button>
-            <button class="text-gray-400 border border-gray-400 rounded py-1 px-4" @click="useRouter().back()">Trở
+            <button class="text-gray-400 border border-gray-400 rounded py-1 px-4" @click="useRouter().back()">Quay
                 lại</button>
         </div>
     </div>

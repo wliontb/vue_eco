@@ -1,6 +1,10 @@
 <template>
     <div class="flex my-3 text-sm items-center gap-x-3">
-        <NuxtLink to="/" class="uppercase flex items-center gap-x-2"><IconHome/> Trang Chủ</NuxtLink> > <NuxtLink :to="'/good_cate/'+category.result.goodCategory.id" class="uppercase">{{ category.result.goodCategory.goodName }}</NuxtLink> > <span class="uppercase">{{ category.result.categoryName }}</span>
+        <NuxtLink to="/" class="uppercase flex items-center gap-x-2">
+            <IconHome /> Trang Chủ
+        </NuxtLink> &rArr; <NuxtLink :to="'/good_cate/' + category.result.goodCategory.id" class="uppercase">{{
+            category.result.goodCategory.goodName }}</NuxtLink> > <span class="uppercase">{{ category.result.categoryName
+    }}</span>
     </div>
     <div class="flex">
         <div class="w-2/12 bg-white p-4 shadow-sm">
@@ -79,19 +83,19 @@
             </div>
             <div class="flex flex-wrap">
                 <div class="w-1/4 flex flex-col" v-for="product in products.result" :id="product.id">
-                    <ItemTrending :product="product" :isFlashSale="false"  />
+                    <ItemTrending :product="product" :isFlashSale="false" />
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script setup>
-    const idCate = useRoute().params.id;
-    const {data: category} = await useFetch('http://localhost:3000/api/category/'+idCate);
-    const {data: products} = await useFetch('http://localhost:3000/api/products', {
-        method: 'GET',
-        query: {
-            categoryId: idCate
-        }
-    })
+const idCate = useRoute().params.id;
+const { data: category } = await useFetch('http://localhost:3000/api/category/' + idCate);
+const { data: products } = await useFetch('http://localhost:3000/api/products', {
+    method: 'GET',
+    query: {
+        categoryId: idCate
+    }
+})
 </script>

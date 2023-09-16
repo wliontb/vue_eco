@@ -66,12 +66,12 @@
                 <input type="text"
                     class="border border-gray-300 bg-admin rounded px-3 py-1.5 focus:border-red-500 outline-none placeholder:text-sm"
                     placeholder="Tìm hóa đơn...">
-                <NuxtLink to="/admin/invoice/add" class="bg-green-500 text-white px-3 py-1.5 rounded">
+                <button class="bg-green-500 text-white px-3 py-1.5 rounded" @click="wip">
                     Thêm hóa đơn
-                </NuxtLink>
+                </button>
             </div>
         </div>
-        <AdminItemTable :headers="headers" :items="items" />
+        <AdminItemTable :headers="headers" :items="items" :show-view="true" />
     </div>
 </template>
 <script setup>
@@ -79,6 +79,10 @@ import { ref } from "vue";
 definePageMeta({
     layout: 'admin', middleware: 'auth-admin',
 })
+
+const wip = () => {
+    alert('tính năng đang phát triển');
+}
 
 const headers = ref([
     { text: "Mã hóa đơn", value: "invoice_id" },

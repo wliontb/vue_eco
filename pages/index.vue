@@ -21,9 +21,9 @@
       </div>
     </div>
     <div class="flex mt-4 flex-wrap">
-      <div class="w-1/12 flex flex-col items-center" v-for="goodCate in goodCates.result" :id="goodCate.id">
+      <div class="w-1/12 flex flex-col items-center justify-between gap-y-2" v-for="goodCate in goodCates.result" :id="goodCate.id">
         <img :src="goodCate.picture" alt="" class="mx-auto max-h-24">
-        <NuxtLink :to="'/good_cate/'+goodCate.id" class="text-center">{{ goodCate.goodName }}</NuxtLink>
+        <NuxtLink :to="'/good_cate/'+goodCate.id" class="text-center text-sm font-semibold">{{ goodCate.goodName }}</NuxtLink>
       </div>
     </div>
   </div>

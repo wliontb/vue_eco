@@ -20,9 +20,9 @@
 
                 <td class="text-center px-5 py-2.5 text-sm text-gray-500" v-for="header in headers" :key="header" v-html="item[header.value]">
                 </td>
-                <td class="text-center flex gap-x-1 justify-end p-4" v-if="showAction">
-                    <NuxtLink :to="`${route.path}/${item.id}`" class="rounded bg-sky-500 text-white px-3 py-1.5">Xem</NuxtLink>
-                    <NuxtLink :to="`${route.path}/edit/${item.id}`" class="rounded bg-orange-500 text-white px-3 py-1.5">Sửa</NuxtLink>
+                <td class="text-center p-4" v-if="showAction">
+                    <NuxtLink :to="`${route.path}/${item.id}`" class="rounded bg-sky-500 text-white px-3 py-1.5" v-if="showView">Xem</NuxtLink>
+                    <NuxtLink :to="`${route.path}/edit/${item.id}`" class="rounded bg-orange-500 text-white px-3 py-1.5 mx-1">Sửa</NuxtLink>
                     <NuxtLink :to="`${route.path}/remove/${item.id}`" class="rounded bg-red-500 text-white px-3 py-1.5">Xóa</NuxtLink>
                 </td>
             </tr>
@@ -48,6 +48,10 @@ const props = defineProps({
     showAction: {
         type: Boolean,
         default: true
+    },
+    showView: {
+        type: Boolean,
+        default: false
     }
 });
 

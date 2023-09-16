@@ -77,7 +77,6 @@
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.discountAvailable"
                                     class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
-                                    <option value="">Chọn trạng thái</option>
                                     <option value="true">Giảm</option>
                                     <option value="false">Không</option>
                                 </select>
@@ -95,7 +94,6 @@
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.isFlashsale"
                                     class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
-                                    <option value="">Chọn trạng thái</option>
                                     <option value="true">Có</option>
                                     <option value="false">Không</option>
                                 </select>
@@ -106,7 +104,6 @@
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.isTrending"
                                     class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
-                                    <option value="">Chọn trạng thái</option>
                                     <option value="true">Có</option>
                                     <option value="false">Không</option>
                                 </select>
@@ -116,8 +113,7 @@
                             <td class="border p-3 w-1/3">Có sẵn</td>
                             <td class="border p-3 w-2/3">
                                 <select v-model="product.result.productAvailable"
-                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin  ">
-                                    <option value="">Chọn trạng thái</option>
+                                    class="w-full px-2 py-2 text-gray-500 border-gray-300 rounded-lg border outline-none  bg-admin">
                                     <option value="true">Có</option>
                                     <option value="false">Không</option>
                                 </select>
@@ -263,7 +259,7 @@ const addProductProp = async () => {
         watch: false,
         onResponse: ({ response }) => {
             if (response.ok) {
-                alert('Add success');
+                alert('Thêm thành công');
                 const item = response._data.result;
                 itemProps.value.result.push({
                     nameProp: item.nameProp,
@@ -271,7 +267,7 @@ const addProductProp = async () => {
                 })
                 // thêm hàng mới có giá trị item.name và item.value
             } else {
-                alert('Add failed')
+                alert('Thêm thất bại')
             }
         }
     })
@@ -306,8 +302,8 @@ const editProduct = async () => {
         picture: product.value.result.picture,
         price: product.value.result.price,
         discount: product.value.result.discount,
-        discount_available: product.value.result.discountAvailable ? 1 : 0,
-        product_available: product.value.result.productAvailable ? 1 : 0,
+        discount_available: product.value.result.discountAvailable,
+        product_available: product.value.result.productAvailable,
         supplier_id: product.value.result.supplierId,
         category_id: product.value.result.categoryId,
         is_trending: product.value.result.isTrending,
@@ -321,10 +317,10 @@ const editProduct = async () => {
         watch: false,
         onResponse: ({ response }) => {
             if (response.ok) {
-                alert('Sửa sản phẩm thành công');
+                alert('Cập nhật sản phẩm thành công');
                 // useRouter().back()
             } else {
-                alert('Sửa sản phẩm thất bại')
+                alert('Cập nhật sản phẩm thất bại')
             }
         }
     })

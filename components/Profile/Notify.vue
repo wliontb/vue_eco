@@ -1,0 +1,3 @@
+<template>
+    Thông báo
+</template>

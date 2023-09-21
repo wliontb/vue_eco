@@ -4,7 +4,7 @@
       <!-- <img src="/img/banner/banner-0.jpg" alt="" class="w-full"> -->
     </div>
   </div>
-  <div class="bg-white py-4">
+  <div class="bg-white py-4 fixed w-full border-b z-50">
     <div class="flex w-5/6 mx-auto justify-between">
       <div class="flex justify-between items-center">
         <NuxtLink to="/">

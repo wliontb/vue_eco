@@ -15,7 +15,7 @@
         </div>
         <div class="bg-white">
             <ul class="flex">
-                <li class="w-1/5 p-5" v-for="product in products.result" :id="product.id">
+                <li class="w-1/5 p-5 hover:shadow-lg" v-for="product in products.result" :id="product.id">
                     <ItemFlashSale :product="product" />
                 </li>
             </ul>

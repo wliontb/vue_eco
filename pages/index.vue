@@ -31,7 +31,7 @@
   <AppTrending />
 
   <!-- category -->
-  <AppCategoryIndex v-for="goodCate in goodCates.result" :goodCate="goodCate" />
+  <AppCategory v-for="goodCate in goodCates.result" :goodCate="goodCate" />
 
   <div class="flex bg-white mt-4 p-4 justify-between items-center max-h-48">
     <div class="w-1/6"><img src="/img/banner/uni1.jpg"></div>

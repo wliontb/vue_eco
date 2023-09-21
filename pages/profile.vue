@@ -5,21 +5,24 @@
                 Quản lý TÀI KHOẢN
             </div>
             <div class="p-4 bg-white shadow-md">
-                <div class="border-b py-3 text-sm cursor-pointer" @click="showDashboardTab" :class="{'text-orange-700': isDashboardTab}">
+                <div class="border-b py-3 text-sm cursor-pointer" @click="changeTab('dashboard')" :class="{'text-orange-700': isDashboardTab}">
                     Bảng điều khiển tài khoản
                 </div>
-                <div class="border-b py-3 text-sm cursor-pointer" @click="showProfileTab" :class="{'text-orange-700': isProfileTab}">
+                <div class="border-b py-3 text-sm cursor-pointer" @click="changeTab('profile')" :class="{'text-orange-700': isProfileTab}">
                     Thông tin tài khoản
                 </div>
-                <div class="border-b py-3 text-sm cursor-pointer">Đơn hàng của tôi</div>
-                <div class="border-b py-3 text-sm cursor-pointer">Voucher của tôi</div>
-                <div class="border-b py-3 text-sm cursor-pointer">Thông báo</div>
+                <div class="border-b py-3 text-sm cursor-pointer" @click="changeTab('invoice')">Đơn hàng của tôi</div>
+                <div class="border-b py-3 text-sm cursor-pointer" @click="changeTab('voucher')">Voucher của tôi</div>
+                <div class="border-b py-3 text-sm cursor-pointer" @click="changeTab('notify')">Thông báo</div>
                 <div class="border-b py-3 text-sm cursor-pointer" @click="logout">Đăng xuất</div>
             </div>
         </div>
         <div class="w-9/12 flex flex-col">
-            <ProfileDashboard v-if="isDashboardTab" :class="{ hidden: !isDashboardTab }" v-bind:user="user.result" @update-user="showProfileTab" />
-            <ProfileUser v-if="isProfileTab" v-bind:user="user.result" :class="{ hidden: !isProfileTab }" />
+            <ProfileDashboard v-if="listTabDisplay.dashboard"  v-bind:user="user.result" @update-user="showProfileTab" />
+            <ProfileUser v-if="listTabDisplay.profile" v-bind:user="user.result" />
+            <ProfileInvoice v-if="listTabDisplay.invoice" />
+            <ProfileVoucher v-if="listTabDisplay.voucher" />
+            <ProfileNotify v-if="listTabDisplay.notify" />
         </div>
     </div>
 </template>
@@ -34,6 +37,24 @@ definePageMeta({
 
 const isDashboardTab = ref(true);
 const isProfileTab = ref(false);
+
+const listTabDisplay = ref({
+    dashboard: true,
+    profile: false,
+    invoice: false,
+    voucher: false,
+    notify: false,
+})
+
+const changeTab = (nameTab) => {
+    for (const key in listTabDisplay.value) {
+        if(key == nameTab){
+            listTabDisplay.value[key] = true;
+        } else {
+            listTabDisplay.value[key] = false;
+        }
+    }
+}
 
 const userStore = useUserStore();
 const userId = userStore.user.id;

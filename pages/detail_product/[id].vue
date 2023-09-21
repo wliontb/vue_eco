@@ -13,7 +13,7 @@
     </div>
     <div class="bg-white rounded-lg">
         <div class="flex p-4 gap-x-3">
-            <div class="flex flex-col w-1/12 p-2 gap-y-3">
+            <div class="flex flex-col w-1/12 p-2 gap-y-3 max-h-80 overflow-y-scroll">
                 <img :src="product.result.picture" class="h-1/3 mx-auto" alt="">
                 <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" class="w-full" alt="">
             </div>
@@ -68,7 +68,7 @@
                         {{ (product.result.price * (product.result.discount / 100) + product.result.price).toLocaleString() }}
                         đ
                     </div>
-                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md text-sm">-{{ product.result.discount }}%
+                    <div class="bg-red-700 font-semibold text-white p-1 rounded-md text-sm" v-if="product.result.discount > 0">-{{ product.result.discount }}%
                     </div>
                 </div>
                 <div class="flex flex-col mt-4">
@@ -92,7 +92,7 @@
                 class="py-2 px-6 border-2 border-rose-700 rounded-lg flex items-center text-rose-700 font-bold cursor-pointer hover:bg-rose-700 hover:text-red-50">
                 <IconCart class="mr-2" /> Thêm vào giỏ hàng
             </button>
-            <div @click="buyNow" class="bg-rose-700 py-2 px-10 text-red-50 rounded-lg font-bold cursor-pointer ml-2">
+            <div @click="buyNow" class="bg-rose-700 py-2 px-10 text-red-50 rounded-lg font-bold cursor-pointer ml-2 hover:bg-rose-800">
                 Mua ngay
             </div>
         </div>

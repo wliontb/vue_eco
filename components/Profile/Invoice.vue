@@ -1,0 +1,3 @@
+<template>
+    Hóa đơn
+</template>

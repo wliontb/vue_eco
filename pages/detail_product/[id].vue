@@ -15,10 +15,10 @@
         <div class="flex p-4 gap-x-3">
             <div class="flex flex-col w-1/12 p-2 gap-y-3 max-h-80 overflow-y-scroll">
                 <img :src="product.result.picture" class="h-1/3 mx-auto" alt="">
-                <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" class="w-full" alt="">
+                <img v-for="prodChild in prodChilds.result" :src="prodChild.picture" @mouseenter="lookUp(prodChild.picture)" @mouseleave="resetPicture" class="w-full" alt="">
             </div>
             <div class="flex w-2/12 p-2">
-                <img :src="product.result.picture" class="rounded mx-auto" alt="">
+                <img :src="pictureURLChange" class="rounded mx-auto h-72" alt="">
             </div>
             <div class="flex w-9/12 flex-col">
                 <p class="font-semibold text-2xl">{{ product.result.name }}</p>
@@ -201,6 +201,10 @@ const idProduct = useRoute().params.id;
 
 const qtyItem = ref(1);
 
+const pictureURL = ref('');
+const pictureURLChange = ref('');
+
+
 const addCart = () => {
     cartStore.addToCart(product.value.result, qtyItem.value);
 }
@@ -211,6 +215,10 @@ const buyNow = () => {
 }
 
 const { data: product } = await useFetch('http://localhost:3000/api/products/' + idProduct);
+
+pictureURL.value = product.value.result.picture;
+pictureURLChange.value = product.value.result.picture;
+
 
 const { data: productSameCates } = await useFetch('http://localhost:3000/api/products', {
     method: 'GET',
@@ -237,5 +245,13 @@ const { data: prodChilds } = await useFetch('http://localhost:3000/api/productde
 
 //cart
 const cartStore = useCartStore();
+
+const lookUp = (imgurl) => {
+    pictureURLChange.value = imgurl;
+}
+
+const resetPicture = () => {
+    pictureURLChange.value = pictureURL.value;
+}
 
 </script>

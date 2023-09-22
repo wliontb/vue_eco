@@ -3,7 +3,7 @@
         <AdminLeftBar class="w-left" />
         <div class="w-right px-5 flex flex-col relative gap-y-5">
             <div class="flex pt-4 transition duration-700 mb-8" :class="{
-                'sticky top-0 px-4 pb-4 bg-hehe z-50 border border-b-gray-200': addClassScroll
+                'sticky top-0 px-4 pb-4 bg-hehe z-50 border-b border-b-gray-200': addClassScroll
             }">
                 <form class="flex space-x-2 items-center w-4/6">
                     <button>
